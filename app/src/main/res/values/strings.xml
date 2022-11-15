@@ -3,6 +3,9 @@
     <string name="single_player_game_label">Single Player Game</string>
     <string name="exit_game_label">Exit</string>
     <string name="redirect_activity_is_missing_message">Redirect activity is missing!</string>
-    <string name="about_text"></string>
-    <string name="help_text"></string>
+    <string name="about_text">ABOUT</string>
+    <string name="help_text">HELP</string>
+    <string name="new_game_menu">New Game</string>
+    <string name="help_menu">Help</string>
+    <string name="about_menu">About</string>
 </resources>
