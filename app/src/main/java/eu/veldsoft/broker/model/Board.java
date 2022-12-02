@@ -8,6 +8,16 @@ import java.util.List;
  */
 class Board {
     /**
+     * List of companies.
+     */
+    List<Company> companies = new ArrayList<Company>();
+
+    /**
+     * Deck with the cards.
+     */
+    Deck deck = null;
+
+    /**
      * Number of active players.
      */
     int numberOfPlayers = 0;
@@ -15,12 +25,19 @@ class Board {
     /**
      * List of players.
      */
-    List<Player> players = new ArrayList<>();
+    List<Player> players = new ArrayList<Player>();
 
     /**
      * Board constructor without parameters.
      */
     public Board() {
+        companies.add(new Company("A"));
+        companies.add(new Company("B"));
+        companies.add(new Company("C"));
+        companies.add(new Company("D"));
+
+        Deck deck = new Deck(companies);
+
         /*
          * The maximum number of players is 6.
          */
@@ -38,9 +55,9 @@ class Board {
         }
         this.numberOfPlayers = numberOfPlayers;
 
-        Deck.shuffle();
+        deck.shuffle();
         for(int p=0; p<numberOfPlayers; p++) {
-            players.get(p).getInitialCards( Deck.deal() );
+            players.get(p).getInitialCards( deck.deal() );
         }
     }
 }
