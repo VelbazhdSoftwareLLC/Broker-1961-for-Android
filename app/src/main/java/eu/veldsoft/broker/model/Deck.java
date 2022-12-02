@@ -17,14 +17,25 @@ class Deck {
     private static int index4060 = 0;
     private static List<Card> cards4060 = new ArrayList<Card>();
 
-    static{
-        //TODO Add 68 cards.
+    /**
+     * Constructor of the deck with information for the companies.
+     * @param companies List of the companies.
+     */
+    public Deck(List<Company> companies) {
+        /*
+         * Each company should have 3 cards of type 100.
+         */
+        for(Company c : companies) {
+            for(int i=0; i<3; i++) {
+                cards100.add(new Card100(c));
+            }
+        }
     }
 
     /**
      * Shuffles all cards.
      */
-    static void shuffle() {
+    void shuffle() {
         index100 = 0;
         index2x = 0;
         index4060 = 0;
@@ -33,7 +44,7 @@ class Deck {
         Collections.shuffle(cards4060);
     }
 
-    static List<Card> deal() {
+    List<Card> deal() {
         List<Card> cards = new ArrayList<Card>();
 
         /*
