@@ -27,7 +27,31 @@ class Deck {
          */
         for(Company c : companies) {
             for(int i=0; i<3; i++) {
-                cards100.add(new Card100(c));
+                cards100.add(new Card100(c, companies));
+            }
+        }
+
+        /*
+         * Each company should have 3 cards of type 2x and 3 cards of type x1/2.
+         */
+        for(Company c : companies) {
+            for(int i=0; i<3; i++) {
+                cards2x.add(new Card2mul(c));
+            }
+            for(int i=0; i<3; i++) {
+                cards2x.add(new Card2div(c));
+            }
+        }
+
+        /*
+         * Each company should have 4 cards of type 60 and 4 cards of type 40.
+         */
+        for(Company c : companies) {
+            for(int i=0; i<4; i++) {
+                cards4060.add(new Card60(c));
+            }
+            for(int i=0; i<4; i++) {
+                cards4060.add(new Card40(c));
             }
         }
     }
@@ -56,7 +80,7 @@ class Deck {
         }
 
         /*
-         * Each player has two cards of type x2.
+         * Each player has three cards of type x2.
          */
         for(int i=0; i<3; i++) {
             cards.add(cards2x.get(index2x));
@@ -64,7 +88,7 @@ class Deck {
         }
 
         /*
-         * Each player has two cards of type 40/60.
+         * Each player has five cards of type 40/60.
          */
         for(int i=0; i<5; i++) {
             cards.add(cards4060.get(index4060));
