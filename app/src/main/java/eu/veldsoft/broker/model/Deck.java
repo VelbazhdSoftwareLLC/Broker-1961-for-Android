@@ -9,24 +9,25 @@ import java.util.List;
  */
 class Deck {
     private static int index100 = 0;
-    private static List<Card> cards100 = new ArrayList<Card>();
+    private static final List<Card> cards100 = new ArrayList<Card>();
 
     private static int index2x = 0;
-    private static List<Card> cards2x = new ArrayList<Card>();
+    private static final List<Card> cards2x = new ArrayList<Card>();
 
     private static int index4060 = 0;
-    private static List<Card> cards4060 = new ArrayList<Card>();
+    private static final List<Card> cards4060 = new ArrayList<Card>();
 
     /**
      * Constructor of the deck with information for the companies.
+     *
      * @param companies List of the companies.
      */
     public Deck(List<Company> companies) {
         /*
          * Each company should have 3 cards of type 100.
          */
-        for(Company c : companies) {
-            for(int i=0; i<3; i++) {
+        for (Company c : companies) {
+            for (int i = 0; i < 3; i++) {
                 cards100.add(new Card100(c, companies));
             }
         }
@@ -34,11 +35,11 @@ class Deck {
         /*
          * Each company should have 3 cards of type 2x and 3 cards of type x1/2.
          */
-        for(Company c : companies) {
-            for(int i=0; i<3; i++) {
+        for (Company c : companies) {
+            for (int i = 0; i < 3; i++) {
                 cards2x.add(new Card2mul(c));
             }
-            for(int i=0; i<3; i++) {
+            for (int i = 0; i < 3; i++) {
                 cards2x.add(new Card2div(c));
             }
         }
@@ -46,11 +47,11 @@ class Deck {
         /*
          * Each company should have 4 cards of type 60 and 4 cards of type 40.
          */
-        for(Company c : companies) {
-            for(int i=0; i<4; i++) {
+        for (Company c : companies) {
+            for (int i = 0; i < 4; i++) {
                 cards4060.add(new Card60(c));
             }
-            for(int i=0; i<4; i++) {
+            for (int i = 0; i < 4; i++) {
                 cards4060.add(new Card40(c));
             }
         }
@@ -74,7 +75,7 @@ class Deck {
         /*
          * Each player has two cards of type 100.
          */
-        for(int i=0; i<2; i++) {
+        for (int i = 0; i < 2; i++) {
             cards.add(cards100.get(index100));
             index100 = (index100 + 1) % cards100.size();
         }
@@ -82,7 +83,7 @@ class Deck {
         /*
          * Each player has three cards of type x2.
          */
-        for(int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             cards.add(cards2x.get(index2x));
             index2x = (index2x + 1) % cards2x.size();
         }
@@ -90,7 +91,7 @@ class Deck {
         /*
          * Each player has five cards of type 40/60.
          */
-        for(int i=0; i<5; i++) {
+        for (int i = 0; i < 5; i++) {
             cards.add(cards4060.get(index4060));
             index4060 = (index4060 + 1) % cards4060.size();
         }

@@ -41,7 +41,7 @@ class Board {
         /*
          * The maximum number of players is 6.
          */
-        for(int i=0; i<6; i++) {
+        for (int i = 0; i < 6; i++) {
             players.add(new Player());
         }
     }
@@ -50,14 +50,14 @@ class Board {
      * Start new game or restart current game.
      */
     public void newGame(int numberOfPlayers) {
-        if(numberOfPlayers < 2 && 6 < numberOfPlayers) {
+        if (numberOfPlayers < 2 && 6 < numberOfPlayers) {
             throw new RuntimeException("Incorrect number of players!");
         }
         this.numberOfPlayers = numberOfPlayers;
 
         deck.shuffle();
-        for(int p=0; p<numberOfPlayers; p++) {
-            players.get(p).getInitialCards( deck.deal() );
+        for (int p = 0; p < numberOfPlayers; p++) {
+            players.get(p).getInitialCards(deck.deal());
         }
     }
 }

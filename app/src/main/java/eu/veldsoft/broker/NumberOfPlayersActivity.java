@@ -1,13 +1,13 @@
 package eu.veldsoft.broker;
 
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
+
 /**
- * About the product screen.
+ * Number of players ane their names.
  */
-public class AboutActivity extends AppCompatActivity {
+public class NumberOfPlayersActivity extends AppCompatActivity {
 
     /**
      * {@inheritDoc}
@@ -15,6 +15,6 @@ public class AboutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_number_of_players);
     }
 }
