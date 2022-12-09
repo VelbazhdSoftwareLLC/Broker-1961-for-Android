@@ -33,6 +33,7 @@ public class GameActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.new_game:
+                startActivity(new Intent(GameActivity.this, NumberOfPlayersActivity.class));
                 break;
             case R.id.help:
                 startActivity(new Intent(GameActivity.this, HelpActivity.class));

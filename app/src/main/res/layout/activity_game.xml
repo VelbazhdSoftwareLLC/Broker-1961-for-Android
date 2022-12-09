@@ -10,39 +10,48 @@
         android:id="@+id/boardImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/board"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/board" />
 
     <ImageView
         android:id="@+id/aPullImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/pull"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="282dp" />
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="270dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/marker" />
 
     <ImageView
         android:id="@+id/bPullImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/pull"
-        tools:layout_editor_absoluteX="169dp"
-        tools:layout_editor_absoluteY="282dp" />
+        android:layout_marginLeft="136dp"
+        android:layout_marginTop="270dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/marker"
+        />
 
     <ImageView
         android:id="@+id/cPullImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/pull"
-        tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="282dp" />
+        android:layout_marginLeft="202dp"
+        android:layout_marginTop="270dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/marker" />
 
     <ImageView
         android:id="@+id/dPullImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/pull"
-        tools:layout_editor_absoluteX="303dp"
-        tools:layout_editor_absoluteY="282dp" />
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="270dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/marker" />
 </androidx.constraintlayout.widget.ConstraintLayout>

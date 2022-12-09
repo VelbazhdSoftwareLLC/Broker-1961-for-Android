@@ -7,7 +7,7 @@ class Company {
     /**
      * Default inital company value.
      */
-    private static int DEFAULT_VALUE = 100;
+    private static final int DEFAULT_VALUE = 100;
 
     /**
      * Name of the company.
@@ -21,6 +21,7 @@ class Company {
 
     /**
      * Constructor by compoany name only with default company value.
+     *
      * @param name The name of the company.
      */
     public Company(String name) {
@@ -29,7 +30,8 @@ class Company {
 
     /**
      * Constructor with all parameters needed.
-     * @param name The name of the company.
+     *
+     * @param name  The name of the company.
      * @param price The initial price of the company.
      */
     public Company(String name, int price) {
@@ -39,6 +41,7 @@ class Company {
 
     /**
      * Set new price.
+     *
      * @param price New price value.
      */
     void price(int price) {
@@ -48,6 +51,7 @@ class Company {
 
     /**
      * Get current price.
+     *
      * @return Current price value.
      */
     int price() {

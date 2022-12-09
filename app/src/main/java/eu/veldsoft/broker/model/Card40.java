@@ -7,6 +7,7 @@ class Card40 extends Card {
 
     /**
      * Constructor with parameters.
+     *
      * @param company Company which should down its price with 50.
      */
     public Card40(Company company) {
@@ -23,17 +24,18 @@ class Card40 extends Card {
      */
     @Override
     public void play() {
-        for(Company u : up) {
-            u.price( u.price() + 40 );
+        for (Company u : up) {
+            u.price(u.price() + 40);
         }
 
-        for(Company d : down) {
-            d.price( d.price() - 50 );
+        for (Company d : down) {
+            d.price(d.price() - 50);
         }
     }
 
     /**
      * Selection of a company to increase its price with 40.
+     *
      * @param company Company to be changed by user desire.
      */
     @Override

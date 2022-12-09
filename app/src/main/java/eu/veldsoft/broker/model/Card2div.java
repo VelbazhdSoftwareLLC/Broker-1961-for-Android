@@ -7,6 +7,7 @@ class Card2div extends Card {
 
     /**
      * Constructor with parameters.
+     *
      * @param company Company which should half its price.
      */
     public Card2div(Company company) {
@@ -23,18 +24,19 @@ class Card2div extends Card {
      */
     @Override
     public void play() {
-        for(Company u : up) {
-            u.price( u.price() * 2 );
+        for (Company u : up) {
+            u.price(u.price() * 2);
         }
 
-        for(Company d : down) {
+        for (Company d : down) {
             //TODO Check division according to the game's rule.
-            d.price( d.price() / 2 );
+            d.price(d.price() / 2);
         }
     }
 
     /**
      * Selection of a company to double its price.
+     *
      * @param company Company to be changed by user desire.
      */
     @Override

@@ -24,6 +24,7 @@ abstract class Card {
 
     /**
      * The player can select only one company.
+     *
      * @param company Company to be changed by user desire.
      */
     public abstract void select(Company company);

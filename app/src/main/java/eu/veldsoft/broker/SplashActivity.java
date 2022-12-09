@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Initial splash screen.
+ */
 public class SplashActivity extends AppCompatActivity {
     /**
      * Timeout to switch to product functional screens.
@@ -23,7 +26,6 @@ public class SplashActivity extends AppCompatActivity {
      * Screen to load after the ad timeout.
      */
     private String redirect = "";
-
 
     /**
      * {@inheritDoc}
