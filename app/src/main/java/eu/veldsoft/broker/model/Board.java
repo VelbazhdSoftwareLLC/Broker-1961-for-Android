@@ -1,12 +1,13 @@
 package eu.veldsoft.broker.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Represents all objects available in the game.
  */
-class Board {
+public class Board {
     /**
      * List of companies.
      */
@@ -59,5 +60,8 @@ class Board {
         for (int p = 0; p < numberOfPlayers; p++) {
             players.get(p).getInitialCards(deck.deal());
         }
+
+        //TODO It is better each player to be able to be in each order.
+        Collections.shuffle(players);
     }
 }

@@ -8,8 +8,21 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import eu.veldsoft.broker.model.Board;
+
+/**
+ * Main game screen.
+ */
 public class GameActivity extends AppCompatActivity {
 
+    /**
+     * The link between view layer and object model is the instance of the Board class.
+     */
+    Board board = new Board();
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,5 +56,11 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    /**
+     * After change in the object model the user interface should be updated.
+     */
+    void redrawViews() {
     }
 }
