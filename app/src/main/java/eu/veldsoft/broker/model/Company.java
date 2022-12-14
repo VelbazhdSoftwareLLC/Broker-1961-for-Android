@@ -20,6 +20,11 @@ class Company {
     private int price = DEFAULT_VALUE;
 
     /**
+     * When the price goes above the upper limit, the dividend is given.
+     */
+    private int dividend = 0;
+
+    /**
      * Constructor by compoany name only with default company value.
      *
      * @param name The name of the company.
@@ -45,8 +50,19 @@ class Company {
      * @param price New price value.
      */
     void price(int price) {
-        //TODO Price setting should be controlled according ot the game rules.
         this.price = price;
+
+        /*
+         * Price setting should be controlled according ot the game rules.
+         */
+        this.price /= 10;
+        this.price *= 10;
+
+        //TODO Magic numbers should not be used.
+        if (this.price > 250) {
+            dividend = this.price - 250;
+            this.price = 250;
+        }
     }
 
     /**
@@ -56,5 +72,23 @@ class Company {
      */
     int price() {
         return price;
+    }
+
+    /**
+     * Set current divident;
+     *
+     * @param dividend The value of the dividend.
+     */
+    void dividend(int dividend) {
+        this.dividend = dividend;
+    }
+
+    /**
+     * Get current dividend.
+     *
+     * @return Current company dividend.
+     */
+    int dividend() {
+        return dividend;
     }
 }
