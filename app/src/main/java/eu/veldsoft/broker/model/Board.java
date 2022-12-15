@@ -19,11 +19,6 @@ public class Board {
     Deck deck = null;
 
     /**
-     * Number of active players.
-     */
-    int numberOfPlayers = 0;
-
-    /**
      * List of players.
      */
     List<Player> players = new ArrayList<Player>();
@@ -38,27 +33,31 @@ public class Board {
         companies.add(new Company("D"));
 
         Deck deck = new Deck(companies);
-
-        /*
-         * The maximum number of players is 6.
-         */
-        for (int i = 0; i < 6; i++) {
-            players.add(new Player());
-        }
     }
 
     /**
      * Start new game or restart current game.
+     *
+     * @param playersNames List with the names of the players.
      */
-    public void newGame(int numberOfPlayers) {
-        if (numberOfPlayers < 2 && 6 < numberOfPlayers) {
+    public void newGame(String playersNames[]) {
+        if (playersNames.length < 2 && 6 < playersNames.length) {
             throw new RuntimeException("Incorrect number of players!");
         }
-        this.numberOfPlayers = numberOfPlayers;
 
+        /*
+         * The maximum number of players is 6.
+         */
+        for (String name : playersNames) {
+            players.add(new Player(name));
+        }
+
+        /*
+         * Deal cards to the players.
+         */
         deck.shuffle();
-        for (int p = 0; p < numberOfPlayers; p++) {
-            players.get(p).getInitialCards(deck.deal());
+        for (Player p : players) {
+            p.getInitialCards(deck.deal());
         }
 
         //TODO It is better each player to be able to be in each order.
