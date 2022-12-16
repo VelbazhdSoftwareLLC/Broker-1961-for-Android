@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.ViewGroup;
+import android.widget.AbsoluteLayout;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,11 @@ public class GameActivity extends AppCompatActivity {
     private static int LAUNCH_PLAYERS_LIST_ACTIVITY = 1;
 
     /**
+     * Array of references to markes views.
+     */
+    private ImageView markers[] = new ImageView[4];
+
+    /**
      * The link between view layer and object model is the instance of the Board class.
      */
     Board board = new Board();
@@ -37,6 +45,14 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        /*
+         * Get markers views references.
+         */
+        markers[0] = findViewById(R.id.aPullImageView);
+        markers[1] = findViewById(R.id.bPullImageView);
+        markers[2] = findViewById(R.id.cPullImageView);
+        markers[3] = findViewById(R.id.dPullImageView);
     }
 
     /**
@@ -76,36 +92,48 @@ public class GameActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == LAUNCH_PLAYERS_LIST_ACTIVITY) {
-            Toast.makeText(GameActivity.this, "Test ...", Toast.LENGTH_LONG).show();
-
             List<String> names = new ArrayList<String>();
             SharedPreferences shared = getPreferences(Context.MODE_PRIVATE);
-            if(shared.getBoolean("player1Enabled", false) == true) {
-                names.add( shared.getString("player1Name", "") );
+            if (shared.getBoolean("player1Enabled", false) == true) {
+                names.add(shared.getString("player1Name", ""));
             }
-            if(shared.getBoolean("player2Enabled", false) == true) {
-                names.add( shared.getString("player2Name", "") );
+            if (shared.getBoolean("player2Enabled", false) == true) {
+                names.add(shared.getString("player2Name", ""));
             }
-            if(shared.getBoolean("player3Enabled", false) == true) {
-                names.add( shared.getString("player3Name", "") );
+            if (shared.getBoolean("player3Enabled", false) == true) {
+                names.add(shared.getString("player3Name", ""));
             }
-            if(shared.getBoolean("player4Enabled", false) == true) {
-                names.add( shared.getString("player4Name", "") );
+            if (shared.getBoolean("player4Enabled", false) == true) {
+                names.add(shared.getString("player4Name", ""));
             }
-            if(shared.getBoolean("player5Enabled", false) == true) {
-                names.add( shared.getString("player5Name", "") );
+            if (shared.getBoolean("player5Enabled", false) == true) {
+                names.add(shared.getString("player5Name", ""));
             }
-            if(shared.getBoolean("player6Enabled", false) == true) {
-                names.add( shared.getString("player6Name", "") );
+            if (shared.getBoolean("player6Enabled", false) == true) {
+                names.add(shared.getString("player6Name", ""));
             }
 
-            board.newGame( (String[])names.toArray() );
+            /*
+             * Convert the list of names to array of names.
+             */
+//            Toast.makeText(GameActivity.this, names.toString(), Toast.LENGTH_LONG).show();
+//            board.newGame( names.toArray(new String[0]) );
+            board.newGame(new String[]{"Player 1", "Player 2"});
         }
+
+        redraw();
     }
 
     /**
      * After change in the object model the user interface should be updated.
      */
-    void redrawViews() {
+    void redraw() {
+        setTitle(board.playing().name() + " plays ...");
+
+        int prices[] = board.prices();
+        for(int i=0; i<prices.length && i<markers.length; i++){
+            AbsoluteLayout.LayoutParams layoutParams=new AbsoluteLayout.LayoutParams(170, 130, 200+i*170, -20+(int)(prices[i]*6.85));
+            markers[i].setLayoutParams(layoutParams);
+        }
     }
 }

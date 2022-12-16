@@ -24,6 +24,11 @@ public class Board {
     List<Player> players = new ArrayList<Player>();
 
     /**
+     * The player who is playing at the moment.
+     */
+    Player playing = null;
+
+    /**
      * Board constructor without parameters.
      */
     public Board() {
@@ -32,7 +37,32 @@ public class Board {
         companies.add(new Company("C"));
         companies.add(new Company("D"));
 
-        Deck deck = new Deck(companies);
+        deck = new Deck(companies);
+    }
+
+    /**
+     * Get the player on turn.
+     *
+     * @return Currently playing player.
+     */
+    public Player playing() {
+        return playing;
+    }
+
+    /**
+     * Get prices of all companies.
+     *
+     * @return Array with companies' prices.
+     */
+    public int[] prices() {
+        int prices[] = new int[companies.size()];
+
+        int i = 0;
+        for (Company c : companies) {
+            prices[i++] = c.price();
+        }
+
+        return prices;
     }
 
     /**
@@ -62,5 +92,10 @@ public class Board {
 
         //TODO It is better each player to be able to be in each order.
         Collections.shuffle(players);
+
+        /*
+         * The first player plays after start of the game.
+         */
+        playing = players.get(0);
     }
 }

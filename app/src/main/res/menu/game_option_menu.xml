@@ -5,6 +5,15 @@
         android:id="@+id/new_game"
         android:title="@string/new_game_menu" />
     <item
+        android:id="@+id/buy_sell"
+        android:title="@string/buy_sell_menu" />
+    <item
+        android:id="@+id/play_card"
+        android:title="@string/play_card_menu" />
+    <item
+        android:id="@+id/end_turn"
+        android:title="@string/end_turn_menu" />
+    <item
         android:id="@+id/help"
         android:title="@string/help_menu" />
     <item
