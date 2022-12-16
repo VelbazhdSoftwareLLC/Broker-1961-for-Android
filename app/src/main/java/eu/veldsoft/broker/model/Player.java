@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Represents the players.
  */
-class Player {
+public class Player {
 
     /**
      * Flag for an active player.
@@ -41,6 +41,15 @@ class Player {
     public Player(String name) {
         super();
         this.name = name;
+    }
+
+    /**
+     * Get player's name.
+     *
+     * @return The name of the player.
+     */
+    public String name() {
+        return name;
     }
 
     /**
