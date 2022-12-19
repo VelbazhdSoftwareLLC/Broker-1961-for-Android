@@ -1,18 +1,14 @@
 package eu.veldsoft.broker;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.AbsoluteLayout;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,32 +89,30 @@ public class GameActivity extends AppCompatActivity {
 
         if (requestCode == LAUNCH_PLAYERS_LIST_ACTIVITY) {
             List<String> names = new ArrayList<String>();
-            SharedPreferences shared = getPreferences(Context.MODE_PRIVATE);
-            if (shared.getBoolean("player1Enabled", false) == true) {
-                names.add(shared.getString("player1Name", ""));
+
+            if (data.getBooleanExtra("player1Enabled", false)) {
+                names.add(data.getCharSequenceExtra("player1Name").toString());
             }
-            if (shared.getBoolean("player2Enabled", false) == true) {
-                names.add(shared.getString("player2Name", ""));
+            if (data.getBooleanExtra("player2Enabled", false)) {
+                names.add(data.getCharSequenceExtra("player2Name").toString());
             }
-            if (shared.getBoolean("player3Enabled", false) == true) {
-                names.add(shared.getString("player3Name", ""));
+            if (data.getBooleanExtra("player3Enabled", false)) {
+                names.add(data.getCharSequenceExtra("player3Name").toString());
             }
-            if (shared.getBoolean("player4Enabled", false) == true) {
-                names.add(shared.getString("player4Name", ""));
+            if (data.getBooleanExtra("player4Enabled", false)) {
+                names.add(data.getCharSequenceExtra("player4Name").toString());
             }
-            if (shared.getBoolean("player5Enabled", false) == true) {
-                names.add(shared.getString("player5Name", ""));
+            if (data.getBooleanExtra("player5Enabled", false)) {
+                names.add(data.getCharSequenceExtra("player5Name").toString());
             }
-            if (shared.getBoolean("player6Enabled", false) == true) {
-                names.add(shared.getString("player6Name", ""));
+            if (data.getBooleanExtra("player6Enabled", false)) {
+                names.add(data.getCharSequenceExtra("player6Name").toString());
             }
 
             /*
              * Convert the list of names to array of names.
              */
-//            Toast.makeText(GameActivity.this, names.toString(), Toast.LENGTH_LONG).show();
-//            board.newGame( names.toArray(new String[0]) );
-            board.newGame(new String[]{"Player 1", "Player 2"});
+            board.newGame(names.toArray(new String[0]));
         }
 
         redraw();
@@ -131,8 +125,8 @@ public class GameActivity extends AppCompatActivity {
         setTitle(board.playing().name() + " plays ...");
 
         int prices[] = board.prices();
-        for(int i=0; i<prices.length && i<markers.length; i++){
-            AbsoluteLayout.LayoutParams layoutParams=new AbsoluteLayout.LayoutParams(170, 130, 200+i*170, -20+(int)(prices[i]*6.85));
+        for (int i = 0; i < prices.length && i < markers.length; i++) {
+            AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(170, 130, 200 + i * 170, -20 + (int) (prices[i] * 6.85));
             markers[i].setLayoutParams(layoutParams);
         }
     }
