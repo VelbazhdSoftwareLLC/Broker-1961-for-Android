@@ -1,8 +1,9 @@
 package eu.veldsoft.broker;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
@@ -20,28 +21,28 @@ public class NumberOfPlayersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_of_players);
-    }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onStop() {
-        super.onStop();
+        ((Button) findViewById(R.id.playersDone))
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent();
+                        intent.putExtra("player1Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer1)).isChecked());
+                        intent.putExtra("player1Name", ((EditText) findViewById(R.id.textNamePlayer1)).getText().toString());
+                        intent.putExtra("player2Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer2)).isChecked());
+                        intent.putExtra("player2Name", ((EditText) findViewById(R.id.textNamePlayer2)).getText().toString());
+                        intent.putExtra("player3Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer3)).isChecked());
+                        intent.putExtra("player3Name", ((EditText) findViewById(R.id.textNamePlayer3)).getText().toString());
+                        intent.putExtra("player4Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer4)).isChecked());
+                        intent.putExtra("player4Name", ((EditText) findViewById(R.id.textNamePlayer4)).getText().toString());
+                        intent.putExtra("player5Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer5)).isChecked());
+                        intent.putExtra("player5Name", ((EditText) findViewById(R.id.textNamePlayer5)).getText().toString());
+                        intent.putExtra("player6Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer6)).isChecked());
+                        intent.putExtra("player6Name", ((EditText) findViewById(R.id.textNamePlayer6)).getText().toString());
+                        setResult(AppCompatActivity.RESULT_OK, intent);
 
-        SharedPreferences.Editor editor = getPreferences(Context.MODE_PRIVATE).edit();
-        editor.putBoolean("player1Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer1)).isChecked());
-        editor.putString("player1Name", ((EditText) findViewById(R.id.textNamePlayer1)).getText().toString());
-        editor.putBoolean("player2Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer2)).isChecked());
-        editor.putString("player2Name", ((EditText) findViewById(R.id.textNamePlayer2)).getText().toString());
-        editor.putBoolean("player3Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer3)).isChecked());
-        editor.putString("player3Name", ((EditText) findViewById(R.id.textNamePlayer3)).getText().toString());
-        editor.putBoolean("player4Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer4)).isChecked());
-        editor.putString("player4Name", ((EditText) findViewById(R.id.textNamePlayer4)).getText().toString());
-        editor.putBoolean("player5Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer5)).isChecked());
-        editor.putString("player5Name", ((EditText) findViewById(R.id.textNamePlayer5)).getText().toString());
-        editor.putBoolean("player6Enabled", ((CheckBox) findViewById(R.id.ckeckPlayer6)).isChecked());
-        editor.putString("player6Name", ((EditText) findViewById(R.id.textNamePlayer6)).getText().toString());
-        editor.apply();
+                        NumberOfPlayersActivity.this.finish();
+                    }
+                });
     }
 }
