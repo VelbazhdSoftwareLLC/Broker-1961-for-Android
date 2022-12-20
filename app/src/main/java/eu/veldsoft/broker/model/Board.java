@@ -29,6 +29,16 @@ public class Board {
     Player playing = null;
 
     /**
+     * All transactions done in the game.
+     */
+    List<Transaction> transactions = new ArrayList<Transaction>();
+
+    /**
+     * List of cards played during the gameplay.
+     */
+    List<Card> cards = new ArrayList<Card>();
+
+    /**
      * Board constructor without parameters.
      */
     public Board() {
@@ -97,5 +107,15 @@ public class Board {
          * The first player plays after start of the game.
          */
         playing = players.get(0);
+
+        /*
+         * Clear transactions of previous games.
+         */
+        transactions.clear();
+
+        /*
+         * Clear cards played in previous games.
+         */
+        cards.clear();
     }
 }

@@ -8,10 +8,11 @@ class Card2mul extends Card {
     /**
      * Constructor with parameters.
      *
+     * @param key     Key value used in some collections.
      * @param company Company which should double its price.
      */
-    public Card2mul(Company company) {
-        super();
+    public Card2mul(String key, Company company) {
+        super(key);
 
         up.clear();
         up.add(company);

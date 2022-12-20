@@ -32,7 +32,9 @@ The 1983 (9th edition) by Ravensburger Spieleverlag GmbH changes the title sligh
     <string name="new_game_menu">New Game</string>
     <string name="help_menu">Help</string>
     <string name="about_menu">About</string>
-    <string name="buy_sell_menu">Buy/Sell</string>
+    <string name="buy_sell_menu">Buy / Sell</string>
     <string name="play_card_menu">Play Card</string>
     <string name="end_turn_menu">End Turn</string>
+    <string name="exit_menu">Exit</string>
+    <string name="played_cards_menu">Played Cards</string>
 </resources>
