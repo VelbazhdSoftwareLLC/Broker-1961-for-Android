@@ -26,7 +26,7 @@ class Transaction {
     /**
      * Reference to the shares object.
      */
-    private Share sahre = null;
+    private Share share = null;
 
     /**
      * When transaction is done - before or after card playing.
@@ -38,7 +38,55 @@ class Transaction {
      */
     private Player player = null;
 
-    //TODO Create constructor with all parameters.
+    /**
+     * Constructor with all parameters.
+     *
+     * @param type   Is it a buy o sell transaction.
+     * @param share  Reference to shares object.
+     * @param time   Before or after card playing.
+     * @param player The player who did the transaction.
+     */
+    public Transaction(Type type, Share share, Time time, Player player) {
+        super();
+        this.type = type;
+        this.share = share;
+        this.time = time;
+        this.player = player;
+    }
 
-    //TODO Create all getters. Do not crate setters!
+    /**
+     * Get type of transaction.
+     *
+     * @return Type of the transaction.
+     */
+    public Type type() {
+        return type;
+    }
+
+    /**
+     * Get share of the transaction.
+     *
+     * @return Shares participating in the transaction.
+     */
+    public Share share() {
+        return share;
+    }
+
+    /**
+     * Get time of transaction.
+     *
+     * @return Time of the transaction - before or after card playing.
+     */
+    public Time time() {
+        return time;
+    }
+
+    /**
+     * Get reference to the player object.
+     *
+     * @return Reference to the player instance.
+     */
+    public Player player() {
+        return player;
+    }
 }

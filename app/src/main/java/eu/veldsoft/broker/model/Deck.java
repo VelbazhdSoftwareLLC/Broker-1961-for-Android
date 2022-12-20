@@ -26,35 +26,82 @@ class Deck {
         /*
          * Each company should have 3 cards of type 100.
          */
-        for (Company c : companies) {
-            for (int i = 0; i < 3; i++) {
-                cards100.add(new Card100(c, companies));
-            }
-        }
+        cards100.add(new Card100("100_A_10_3", companies.get(0), companies));
+        cards100.add(new Card100("100_A_10_3", companies.get(0), companies));
+        cards100.add(new Card100("100_A_10_3", companies.get(0), companies));
+        cards100.add(new Card100("100_B_10_3", companies.get(1), companies));
+        cards100.add(new Card100("100_B_10_3", companies.get(1), companies));
+        cards100.add(new Card100("100_B_10_3", companies.get(1), companies));
+        cards100.add(new Card100("100_C_10_3", companies.get(2), companies));
+        cards100.add(new Card100("100_C_10_3", companies.get(2), companies));
+        cards100.add(new Card100("100_C_10_3", companies.get(2), companies));
+        cards100.add(new Card100("100_D_10_3", companies.get(3), companies));
+        cards100.add(new Card100("100_D_10_3", companies.get(3), companies));
+        cards100.add(new Card100("100_D_10_3", companies.get(3), companies));
 
         /*
          * Each company should have 3 cards of type 2x and 3 cards of type x1/2.
          */
-        for (Company c : companies) {
-            for (int i = 0; i < 3; i++) {
-                cards2x.add(new Card2mul(c));
-            }
-            for (int i = 0; i < 3; i++) {
-                cards2x.add(new Card2div(c));
-            }
-        }
+        cards2x.add(new Card2mul("2x_A_12_1", companies.get(0)));
+        cards2x.add(new Card2mul("2x_A_12_1", companies.get(0)));
+        cards2x.add(new Card2mul("2x_A_12_1", companies.get(0)));
+        cards2x.add(new Card2mul("2x_B_12_1", companies.get(1)));
+        cards2x.add(new Card2mul("2x_B_12_1", companies.get(1)));
+        cards2x.add(new Card2mul("2x_B_12_1", companies.get(1)));
+        cards2x.add(new Card2mul("2x_C_12_1", companies.get(2)));
+        cards2x.add(new Card2mul("2x_C_12_1", companies.get(2)));
+        cards2x.add(new Card2mul("2x_C_12_1", companies.get(2)));
+        cards2x.add(new Card2mul("2x_D_12_1", companies.get(3)));
+        cards2x.add(new Card2mul("2x_D_12_1", companies.get(3)));
+        cards2x.add(new Card2mul("2x_D_12_1", companies.get(3)));
+        cards2x.add(new Card2div("2x_1_12_A", companies.get(0)));
+        cards2x.add(new Card2div("2x_1_12_A", companies.get(0)));
+        cards2x.add(new Card2div("2x_1_12_A", companies.get(0)));
+        cards2x.add(new Card2div("2x_1_12_B", companies.get(1)));
+        cards2x.add(new Card2div("2x_1_12_B", companies.get(1)));
+        cards2x.add(new Card2div("2x_1_12_B", companies.get(1)));
+        cards2x.add(new Card2div("2x_1_12_C", companies.get(2)));
+        cards2x.add(new Card2div("2x_1_12_C", companies.get(2)));
+        cards2x.add(new Card2div("2x_1_12_C", companies.get(2)));
+        cards2x.add(new Card2div("2x_1_12_D", companies.get(3)));
+        cards2x.add(new Card2div("2x_1_12_D", companies.get(3)));
+        cards2x.add(new Card2div("2x_1_12_D", companies.get(3)));
 
         /*
          * Each company should have 4 cards of type 60 and 4 cards of type 40.
          */
-        for (Company c : companies) {
-            for (int i = 0; i < 4; i++) {
-                cards4060.add(new Card60(c));
-            }
-            for (int i = 0; i < 4; i++) {
-                cards4060.add(new Card40(c));
-            }
-        }
+        cards4060.add(new Card60("60_A_30_1", companies.get(0)));
+        cards4060.add(new Card60("60_A_30_1", companies.get(0)));
+        cards4060.add(new Card60("60_A_30_1", companies.get(0)));
+        cards4060.add(new Card60("60_A_30_1", companies.get(0)));
+        cards4060.add(new Card60("60_B_30_1", companies.get(1)));
+        cards4060.add(new Card60("60_B_30_1", companies.get(1)));
+        cards4060.add(new Card60("60_B_30_1", companies.get(1)));
+        cards4060.add(new Card60("60_B_30_1", companies.get(1)));
+        cards4060.add(new Card60("60_C_30_1", companies.get(2)));
+        cards4060.add(new Card60("60_C_30_1", companies.get(2)));
+        cards4060.add(new Card60("60_C_30_1", companies.get(2)));
+        cards4060.add(new Card60("60_C_30_1", companies.get(2)));
+        cards4060.add(new Card60("60_D_30_1", companies.get(3)));
+        cards4060.add(new Card60("60_D_30_1", companies.get(3)));
+        cards4060.add(new Card60("60_D_30_1", companies.get(3)));
+        cards4060.add(new Card60("60_D_30_1", companies.get(3)));
+        cards4060.add(new Card40("40_1_50_A", companies.get(0)));
+        cards4060.add(new Card40("40_1_50_A", companies.get(0)));
+        cards4060.add(new Card40("40_1_50_A", companies.get(0)));
+        cards4060.add(new Card40("40_1_50_A", companies.get(0)));
+        cards4060.add(new Card40("40_1_50_B", companies.get(1)));
+        cards4060.add(new Card40("40_1_50_B", companies.get(1)));
+        cards4060.add(new Card40("40_1_50_B", companies.get(1)));
+        cards4060.add(new Card40("40_1_50_B", companies.get(1)));
+        cards4060.add(new Card40("40_1_50_C", companies.get(2)));
+        cards4060.add(new Card40("40_1_50_C", companies.get(2)));
+        cards4060.add(new Card40("40_1_50_C", companies.get(2)));
+        cards4060.add(new Card40("40_1_50_C", companies.get(2)));
+        cards4060.add(new Card40("40_1_50_D", companies.get(3)));
+        cards4060.add(new Card40("40_1_50_D", companies.get(3)));
+        cards4060.add(new Card40("40_1_50_D", companies.get(3)));
+        cards4060.add(new Card40("40_1_50_D", companies.get(3)));
     }
 
     /**

@@ -8,6 +8,11 @@ import java.util.List;
  */
 abstract class Card {
     /**
+     * Key value of the card used in some collections.
+     */
+    private String key = "";
+
+    /**
      * List of all companies which will go up.
      */
     protected List<Company> up = new ArrayList<Company>();
@@ -28,4 +33,13 @@ abstract class Card {
      * @param company Company to be changed by user desire.
      */
     public abstract void select(Company company);
+
+    /**
+     * Constructor with card key.
+     *
+     * @param key Key value used in some collections.
+     */
+    public Card(String key) {
+        this.key = key;
+    }
 }

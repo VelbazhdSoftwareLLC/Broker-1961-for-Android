@@ -8,10 +8,11 @@ class Card2div extends Card {
     /**
      * Constructor with parameters.
      *
+     * @param key     Key value used in some collections.
      * @param company Company which should half its price.
      */
-    public Card2div(Company company) {
-        super();
+    public Card2div(String key, Company company) {
+        super(key);
 
         up.clear();
 

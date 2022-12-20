@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import eu.veldsoft.broker.model.Board;
 
@@ -25,6 +27,11 @@ public class GameActivity extends AppCompatActivity {
     private static int LAUNCH_PLAYERS_LIST_ACTIVITY = 1;
 
     /**
+     * Map of the card key and card image.
+     */
+    private static final Map<String, Integer> CARDS_IMAGES = new HashMap<String, Integer>();
+
+    /**
      * Array of references to markes views.
      */
     private ImageView markers[] = new ImageView[4];
@@ -32,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
     /**
      * The link between view layer and object model is the instance of the Board class.
      */
-    Board board = new Board();
+    private Board board = new Board();
 
     /**
      * {@inheritDoc}
@@ -41,6 +48,32 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        /*
+         * Map card keys to card image resource identifiers.
+         */
+        if (CARDS_IMAGES.size() == 0) {
+            CARDS_IMAGES.put("100_A_10_3", R.drawable.a100);
+            CARDS_IMAGES.put("100_B_10_3", R.drawable.b100);
+            CARDS_IMAGES.put("100_C_10_3", R.drawable.c100);
+            CARDS_IMAGES.put("100_D_10_3", R.drawable.d100);
+            CARDS_IMAGES.put("2x_1_12_A", R.drawable.a2div);
+            CARDS_IMAGES.put("2x_1_12_B", R.drawable.b2div);
+            CARDS_IMAGES.put("2x_1_12_C", R.drawable.c2div);
+            CARDS_IMAGES.put("2x_1_12_D", R.drawable.d2div);
+            CARDS_IMAGES.put("2x_A_12_1", R.drawable.a2x);
+            CARDS_IMAGES.put("2x_B_12_1", R.drawable.b2x);
+            CARDS_IMAGES.put("2x_C_12_1", R.drawable.c2x);
+            CARDS_IMAGES.put("2x_D_12_1", R.drawable.d2x);
+            CARDS_IMAGES.put("40_1_50_A", R.drawable.a50);
+            CARDS_IMAGES.put("40_1_50_B", R.drawable.b50);
+            CARDS_IMAGES.put("40_1_50_C", R.drawable.c50);
+            CARDS_IMAGES.put("40_1_50_D", R.drawable.d50);
+            CARDS_IMAGES.put("60_A_30_1", R.drawable.a60);
+            CARDS_IMAGES.put("60_B_30_1", R.drawable.b60);
+            CARDS_IMAGES.put("60_C_30_1", R.drawable.c60);
+            CARDS_IMAGES.put("60_D_30_1", R.drawable.d60);
+        }
 
         /*
          * Get markers views references.
@@ -70,11 +103,17 @@ public class GameActivity extends AppCompatActivity {
             case R.id.new_game:
                 startActivityForResult(new Intent(GameActivity.this, NumberOfPlayersActivity.class), LAUNCH_PLAYERS_LIST_ACTIVITY);
                 break;
+            case R.id.played_cards:
+                startActivity(new Intent(GameActivity.this, PlayedCardsActivity.class));
+                break;
             case R.id.help:
                 startActivity(new Intent(GameActivity.this, HelpActivity.class));
                 break;
             case R.id.about:
                 startActivity(new Intent(GameActivity.this, AboutActivity.class));
+                break;
+            case R.id.exitt:
+                GameActivity.this.finish();
                 break;
         }
         return true;

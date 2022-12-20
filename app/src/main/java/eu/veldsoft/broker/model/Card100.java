@@ -9,11 +9,12 @@ class Card100 extends Card {
     /**
      * Constructor with one of the companies as a reference.
      *
+     * @param key       Key value used in some collections.
      * @param company   Compnay reference.
      * @param companies List of all companies.
      */
-    public Card100(Company company, List<Company> companies) {
-        super();
+    public Card100(String key, Company company, List<Company> companies) {
+        super(key);
 
         up.clear();
         up.add(company);

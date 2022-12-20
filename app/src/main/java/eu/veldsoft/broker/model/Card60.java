@@ -8,10 +8,11 @@ class Card60 extends Card {
     /**
      * Constructor with parameters.
      *
+     * @param key     Key value used in some collections.
      * @param company Company which should rise its price with 60.
      */
-    public Card60(Company company) {
-        super();
+    public Card60(String key, Company company) {
+        super(key);
 
         up.clear();
         up.add(company);

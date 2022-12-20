@@ -14,10 +14,16 @@
         android:id="@+id/end_turn"
         android:title="@string/end_turn_menu" />
     <item
+        android:id="@+id/played_cards"
+        android:title="@string/played_cards_menu" />
+    <item
         android:id="@+id/help"
         android:title="@string/help_menu" />
     <item
         android:id="@+id/about"
         android:title="@string/about_menu" />
+    <item
+        android:id="@+id/exitt"
+        android:title="@string/exit_menu" />
 
 </menu>
