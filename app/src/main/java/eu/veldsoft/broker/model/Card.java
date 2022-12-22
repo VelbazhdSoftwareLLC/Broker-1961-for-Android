@@ -42,4 +42,13 @@ abstract class Card {
     public Card(String key) {
         this.key = key;
     }
+
+    /**
+     * Get card key.
+     *
+     * @return Card key.
+     */
+    public String key() {
+        return key;
+    }
 }

@@ -20,6 +20,13 @@
         android:theme="@style/Theme.Broker1961"
         tools:targetApi="31">
         <activity
+            android:name=".PlayerCardsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".PlayedCardsActivity"
             android:exported="false">
             <meta-data

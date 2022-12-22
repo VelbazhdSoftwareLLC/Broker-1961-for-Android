@@ -53,6 +53,15 @@ public class Player {
     }
 
     /**
+     * Get list of cards hold by the player.
+     *
+     * @return List of the cards reference.
+     */
+    public List<Card> cards() {
+        return cards;
+    }
+
+    /**
      * Get cards in the start of the game.
      *
      * @param cards List of cards.

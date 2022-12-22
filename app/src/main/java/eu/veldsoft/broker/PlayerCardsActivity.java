@@ -1,7 +1,10 @@
 package eu.veldsoft.broker;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -11,9 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Visualization of the cards played during the gameplay.
+ * Visualization of the cards hold by a particular player.
  */
-public class PlayedCardsActivity extends AppCompatActivity {
+public class PlayerCardsActivity extends AppCompatActivity {
     /**
      * Map of the card key and card image reference.
      */
@@ -40,17 +43,17 @@ public class PlayedCardsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_played_cards);
+        setContentView(R.layout.activity_player_cards);
 
-        PlayedCardsActivity.CARDS_IMAGES = GameActivity.CARDS_IMAGES;
+        PlayerCardsActivity.CARDS_IMAGES = GameActivity.CARDS_IMAGES;
 
-        image = ((ImageView) findViewById(R.id.playedCard));
-        bar = findViewById(R.id.cardsScroller);
+        image = ((ImageView) findViewById(R.id.currentCard));
+        bar = findViewById(R.id.cardSelector);
         bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 if (keys != null && keys.length > 0) {
-                    image.setImageResource(CARDS_IMAGES.get(keys[keys.length - i - 1]));
+                    image.setImageResource(CARDS_IMAGES.get(keys[i]));
                 } else {
                     image.setImageResource(R.drawable.back);
                 }
@@ -62,6 +65,14 @@ public class PlayedCardsActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        ((Button) findViewById(R.id.playIt)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", bar.getProgress()));
+                PlayerCardsActivity.this.finish();
             }
         });
     }
