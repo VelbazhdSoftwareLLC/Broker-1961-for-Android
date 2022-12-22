@@ -76,6 +76,40 @@ public class Board {
     }
 
     /**
+     * List of played cards keys getter.
+     *
+     * @return Array with cards keys.
+     */
+    public String[] playedCardsKyes() {
+        List<String> keys = new ArrayList<String>();
+
+        for (Card c : cards) {
+            keys.add(c.key());
+        }
+
+        return keys.toArray(new String[0]);
+    }
+
+    /**
+     * List of current player cards keys getter.
+     *
+     * @return Array with cards keys.
+     */
+    public String[] currentPlayerCardsKyes() {
+        if (playing == null) {
+            return new String[0];
+        }
+
+        List<String> keys = new ArrayList<String>();
+
+        for (Card c : playing.cards()) {
+            keys.add(c.key());
+        }
+
+        return keys.toArray(new String[0]);
+    }
+
+    /**
      * Start new game or restart current game.
      *
      * @param playersNames List with the names of the players.

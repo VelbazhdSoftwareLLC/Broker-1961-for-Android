@@ -27,9 +27,14 @@ public class GameActivity extends AppCompatActivity {
     private static int LAUNCH_PLAYERS_LIST_ACTIVITY = 1;
 
     /**
+     * The identifier for launching activity.
+     */
+    private static int LAUNCH_PLAY_CARD_ACTIVITY = 2;
+
+    /**
      * Map of the card key and card image.
      */
-    private static final Map<String, Integer> CARDS_IMAGES = new HashMap<String, Integer>();
+    static final Map<String, Integer> CARDS_IMAGES = new HashMap<String, Integer>();
 
     /**
      * Array of references to markes views.
@@ -103,8 +108,11 @@ public class GameActivity extends AppCompatActivity {
             case R.id.new_game:
                 startActivityForResult(new Intent(GameActivity.this, NumberOfPlayersActivity.class), LAUNCH_PLAYERS_LIST_ACTIVITY);
                 break;
+            case R.id.play_card:
+                startActivityForResult((new Intent(GameActivity.this, PlayerCardsActivity.class)).putExtra("keys", board.currentPlayerCardsKyes()), LAUNCH_PLAY_CARD_ACTIVITY);
+                break;
             case R.id.played_cards:
-                startActivity(new Intent(GameActivity.this, PlayedCardsActivity.class));
+                startActivity((new Intent(GameActivity.this, PlayedCardsActivity.class)).putExtra("keys", board.playedCardsKyes()));
                 break;
             case R.id.help:
                 startActivity(new Intent(GameActivity.this, HelpActivity.class));
@@ -152,6 +160,10 @@ public class GameActivity extends AppCompatActivity {
              * Convert the list of names to array of names.
              */
             board.newGame(names.toArray(new String[0]));
+        }
+
+        if (requestCode == LAUNCH_PLAY_CARD_ACTIVITY) {
+            //TODO Handle card play.
         }
 
         redraw();
