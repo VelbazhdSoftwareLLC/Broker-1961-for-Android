@@ -110,6 +110,24 @@ public class Board {
     }
 
     /**
+     * Get name of the current playing player.
+     *
+     * @return The name of the player.
+     */
+    public String currentPlayerName() {
+        return playing.name();
+    }
+
+    /**
+     * Get report of the current playing player.
+     *
+     * @return The report of the player.
+     */
+    public String currentPlayerReport() {
+        return  playing.report();
+    }
+
+    /**
      * Start new game or restart current game.
      *
      * @param playersNames List with the names of the players.
