@@ -15,14 +15,21 @@ class Share {
     private int amount;
 
     /**
+     * The price of buy/sell.
+     */
+    private int price;
+
+    /**
      * Constructor with all parameters.
      *
      * @param company Reference to the particular company.
      * @param amount  The amount of initial shares.
+     * @param price The price of buy/sell.
      */
-    Share(Company company, int amount) {
+    Share(Company company, int amount, int price) {
         this.company = company;
         this.amount = amount;
+        this.price = price;
     }
 
     /**
@@ -31,7 +38,7 @@ class Share {
      * @param company Reference to the particular company.
      */
     Share(Company company) {
-        this(company, 0);
+        this(company, 0, 0);
     }
 
     /**
@@ -59,5 +66,14 @@ class Share {
      */
     int amount() {
         return amount;
+    }
+
+    /**
+     * Get the price of buy or sell.
+     *
+     * @return The value of a single share.
+     */
+    int price() {
+        return price;
     }
 }

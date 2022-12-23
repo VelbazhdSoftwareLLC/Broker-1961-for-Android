@@ -108,8 +108,14 @@ public class GameActivity extends AppCompatActivity {
             case R.id.new_game:
                 startActivityForResult(new Intent(GameActivity.this, NumberOfPlayersActivity.class), LAUNCH_PLAYERS_LIST_ACTIVITY);
                 break;
+            case R.id.buy_sell:
+                startActivity(new Intent(GameActivity.this, BuySellActivity.class));
+                break;
             case R.id.play_card:
                 startActivityForResult((new Intent(GameActivity.this, PlayerCardsActivity.class)).putExtra("keys", board.currentPlayerCardsKyes()), LAUNCH_PLAY_CARD_ACTIVITY);
+                break;
+            case R.id.player_report:
+                startActivity(new Intent(GameActivity.this, PlayerReportActivity.class).putExtra("report", board.currentPlayerReport()));
                 break;
             case R.id.played_cards:
                 startActivity((new Intent(GameActivity.this, PlayedCardsActivity.class)).putExtra("keys", board.playedCardsKyes()));
@@ -173,7 +179,7 @@ public class GameActivity extends AppCompatActivity {
      * After change in the object model the user interface should be updated.
      */
     void redraw() {
-        setTitle(board.playing().name() + " plays ...");
+        setTitle(board.currentPlayerName() + " plays ...");
 
         int prices[] = board.prices();
         for (int i = 0; i < prices.length && i < markers.length; i++) {

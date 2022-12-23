@@ -66,6 +66,15 @@ class Company {
     }
 
     /**
+     * Get the name of the company.
+     *
+     * @return Company's name.
+     */
+    String name() {
+        return name;
+    }
+
+    /**
      * Get current price.
      *
      * @return Current price value.
