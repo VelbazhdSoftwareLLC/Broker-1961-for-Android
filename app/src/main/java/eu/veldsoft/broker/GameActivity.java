@@ -114,6 +114,10 @@ public class GameActivity extends AppCompatActivity {
             case R.id.play_card:
                 startActivityForResult((new Intent(GameActivity.this, PlayerCardsActivity.class)).putExtra("keys", board.currentPlayerCardsKyes()), LAUNCH_PLAY_CARD_ACTIVITY);
                 break;
+            case R.id.end_turn:
+                board.endTurn();
+                redraw();
+                break;
             case R.id.player_report:
                 startActivity(new Intent(GameActivity.this, PlayerReportActivity.class).putExtra("report", board.currentPlayerReport()));
                 break;
@@ -169,7 +173,10 @@ public class GameActivity extends AppCompatActivity {
         }
 
         if (requestCode == LAUNCH_PLAY_CARD_ACTIVITY) {
-            //TODO Handle card play.
+            /*
+             * Try to play a card.
+             */
+            //board.play(int card index, int company index);
         }
 
         redraw();
