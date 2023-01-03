@@ -46,6 +46,15 @@ class Player {
     }
 
     /**
+     * Get player's active status.
+     *
+     * @return True if the player is still active, false otherwise.
+     */
+    public boolean active() {
+        return active;
+    }
+
+    /**
      * Get player's name.
      *
      * @return The name of the player.

@@ -8,6 +8,12 @@ import java.util.List;
  * Represents all objects available in the game.
  */
 public class Board {
+
+    /**
+     * Data structure for the state of the board.
+     */
+    enum State {NONE, PRE_ORDER, CARD_PLAY, POST_ORDER, GAME_END};
+
     /**
      * List of companies.
      */
@@ -27,6 +33,11 @@ public class Board {
      * The player who is playing at the moment.
      */
     Player playing = null;
+
+    /**
+     * The state of the board.
+     */
+    State state = State.NONE;
 
     /**
      * All transactions done in the game.
@@ -169,5 +180,50 @@ public class Board {
          * Clear cards played in previous games.
          */
         cards.clear();
+
+        /*
+         * The first playing player can buy or sell.
+         */
+        state = State.POST_ORDER;
+    }
+
+    /**
+     * Do things needed in the end of the turn.
+     */
+    public void endTurn() {
+        int next = -1;
+        int index = players.indexOf(playing);
+
+        /*
+         * Check the second half of the players.
+         */
+        for(int i=index+1; i<players.size(); i++) {
+            if(players.get(i).active() == true) {
+                next = i;
+                break;
+            }
+        }
+
+        /*
+         * Check the first half of the players.
+         */
+        if(next == -1) {
+            for(int i=0; i<index; i++) {
+                if(players.get(i).active() == true) {
+                    next = i;
+                    break;
+                }
+            }
+        }
+
+        /*
+         * There is no more active players.v The game should finish.
+         */
+        if(next == -1) {
+            //TODO Report the end of the game.
+            state = State.GAME_END;
+        } else {
+            playing = players.get(next);
+        }
     }
 }
