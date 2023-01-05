@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".CompanySelectionActivity">
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
     <RadioGroup
+        android:id="@+id/companies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -34,5 +39,12 @@
             android:layout_height="wrap_content"
             android:text="Company D" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/companySelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select This One" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

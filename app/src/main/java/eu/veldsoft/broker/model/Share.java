@@ -24,7 +24,7 @@ class Share {
      *
      * @param company Reference to the particular company.
      * @param amount  The amount of initial shares.
-     * @param price The price of buy/sell.
+     * @param price   The price of buy/sell.
      */
     Share(Company company, int amount, int price) {
         this.company = company;

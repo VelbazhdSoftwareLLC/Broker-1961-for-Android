@@ -44,4 +44,12 @@ class Card60 extends Card {
         down.clear();
         down.add(company);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean needCompanySelection() {
+        return true;
+    }
 }

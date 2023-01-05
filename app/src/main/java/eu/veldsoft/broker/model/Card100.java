@@ -55,4 +55,12 @@ class Card100 extends Card {
     public void select(Company company) {
         /* In this card player does not select. */
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean needCompanySelection() {
+        return false;
+    }
 }

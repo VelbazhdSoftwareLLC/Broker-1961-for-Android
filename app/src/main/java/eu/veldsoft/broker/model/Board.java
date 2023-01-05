@@ -8,11 +8,12 @@ import java.util.List;
  * Represents all objects available in the game.
  */
 public class Board {
-
     /**
      * Data structure for the state of the board.
      */
-    enum State {NONE, PRE_ORDER, CARD_PLAY, POST_ORDER, GAME_END};
+    enum State {NONE, PRE_ORDER, CARD_PLAY, POST_ORDER, GAME_END}
+
+    ;
 
     /**
      * List of companies.
@@ -135,7 +136,7 @@ public class Board {
      * @return The report of the player.
      */
     public String currentPlayerReport() {
-        return  playing.report();
+        return playing.report();
     }
 
     /**
@@ -197,8 +198,8 @@ public class Board {
         /*
          * Check the second half of the players.
          */
-        for(int i=index+1; i<players.size(); i++) {
-            if(players.get(i).active() == true) {
+        for (int i = index + 1; i < players.size(); i++) {
+            if (players.get(i).active() == true) {
                 next = i;
                 break;
             }
@@ -207,9 +208,9 @@ public class Board {
         /*
          * Check the first half of the players.
          */
-        if(next == -1) {
-            for(int i=0; i<index; i++) {
-                if(players.get(i).active() == true) {
+        if (next == -1) {
+            for (int i = 0; i < index; i++) {
+                if (players.get(i).active() == true) {
                     next = i;
                     break;
                 }
@@ -219,11 +220,21 @@ public class Board {
         /*
          * There is no more active players.v The game should finish.
          */
-        if(next == -1) {
+        if (next == -1) {
             //TODO Report the end of the game.
             state = State.GAME_END;
         } else {
             playing = players.get(next);
         }
+    }
+
+    /**
+     * Check selected by index card in the hand of the current player for company selection need.
+     *
+     * @param card Company index in the list of cards.
+     * @return True if company selection is needed, false otherwise.
+     */
+    public boolean needCompanySelection(int card) {
+        return playing.cards().get(card).needCompanySelection();
     }
 }

@@ -1,10 +1,9 @@
 package eu.veldsoft.broker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Player report screen.
@@ -27,6 +26,6 @@ public class PlayerReportActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        ((TextView)findViewById(R.id.playerReportText)).setText(getIntent().getStringExtra("report"));
+        ((TextView) findViewById(R.id.playerReportText)).setText(getIntent().getStringExtra("report"));
     }
 }
