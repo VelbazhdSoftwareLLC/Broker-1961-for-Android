@@ -37,14 +37,23 @@ public class GameActivity extends AppCompatActivity {
     static final Map<String, Integer> CARDS_IMAGES = new HashMap<String, Integer>();
 
     /**
+     * The link between view layer and object model is the instance of the Board class. It is static because it will be needed in other activities.
+     */
+    private static Board board = new Board();
+
+    /**
      * Array of references to markes views.
      */
     private ImageView markers[] = new ImageView[4];
 
     /**
-     * The link between view layer and object model is the instance of the Board class.
+     * Get board reference.
+     *
+     * @return The board reference.
      */
-    private Board board = new Board();
+    static Board board() {
+        return board;
+    }
 
     /**
      * {@inheritDoc}

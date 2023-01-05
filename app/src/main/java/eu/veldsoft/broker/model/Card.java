@@ -35,6 +35,13 @@ abstract class Card {
     public abstract void select(Company company);
 
     /**
+     * Need selection by the player for a particular company.
+     *
+     * @return True if the company selection is needed, false otherwise.
+     */
+    public abstract boolean needCompanySelection();
+
+    /**
      * Constructor with card key.
      *
      * @param key Key value used in some collections.

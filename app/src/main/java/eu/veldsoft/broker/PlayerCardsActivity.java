@@ -18,6 +18,11 @@ import java.util.Map;
  */
 public class PlayerCardsActivity extends AppCompatActivity {
     /**
+     * The identifier for launching activity.
+     */
+    private static int LAUNCH_COMPANY_SELECTION_ACTIVITY = 1;
+
+    /**
      * Map of the card key and card image reference.
      */
     private static Map<String, Integer> CARDS_IMAGES = new HashMap<String, Integer>();
@@ -71,8 +76,12 @@ public class PlayerCardsActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.playIt)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", bar.getProgress()));
-                PlayerCardsActivity.this.finish();
+                if (GameActivity.board().needCompanySelection(bar.getProgress()) == true) {
+                    startActivityForResult((new Intent(PlayerCardsActivity.this, CompanySelectionActivity.class)).putExtra("card", bar.getProgress()), LAUNCH_COMPANY_SELECTION_ACTIVITY);
+                } else {
+                    setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", bar.getProgress()));
+                    PlayerCardsActivity.this.finish();
+                }
             }
         });
     }

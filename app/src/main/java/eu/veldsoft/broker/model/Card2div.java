@@ -46,4 +46,12 @@ class Card2div extends Card {
         up.add(company);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean needCompanySelection() {
+        return true;
+    }
+
 }

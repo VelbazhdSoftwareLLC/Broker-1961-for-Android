@@ -95,20 +95,20 @@ class Player {
         text += "=== === ===";
         text += "\n";
 
-        if(shares.size() > 0) {
-            Map<String, Integer> portfolio = new HashMap<String,Integer>();
-            for(Share s : shares) {
+        if (shares.size() > 0) {
+            Map<String, Integer> portfolio = new HashMap<String, Integer>();
+            for (Share s : shares) {
                 String name = s.company().name();
                 int amount = s.amount();
 
-                if(portfolio.containsKey(name) == false) {
-                    portfolio.put(name,amount);
+                if (portfolio.containsKey(name) == false) {
+                    portfolio.put(name, amount);
                 } else {
-                    portfolio.put(name, portfolio.get(name)+amount);
+                    portfolio.put(name, portfolio.get(name) + amount);
                 }
             }
 
-            for(String name : portfolio.keySet()) {
+            for (String name : portfolio.keySet()) {
                 text += name;
                 text += ":";
                 text += "\t";
