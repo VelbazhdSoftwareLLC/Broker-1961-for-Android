@@ -50,10 +50,12 @@ class Card100 extends Card {
      * Card 100 does not give the user chance to select companies.
      *
      * @param company Company to be changed by user desire.
+     * @return True if the selection is valid, false otherwise.
      */
     @Override
-    public void select(Company company) {
+    public boolean select(Company company) {
         /* In this card player does not select. */
+        return true;
     }
 
     /**

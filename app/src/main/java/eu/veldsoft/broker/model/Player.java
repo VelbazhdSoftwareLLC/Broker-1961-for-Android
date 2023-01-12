@@ -121,4 +121,26 @@ class Player {
 
         return text;
     }
+
+    /**
+     * Try to play a selected card.
+     *
+     * @param cardIndex Index of the card in the player's list of cards.
+     * @param company   Reference of a selected company to change price.
+     * @return True if the card playing was successful, false otherwise.
+     */
+    public boolean play(int cardIndex, Company company) {
+        if (cardIndex < 0 && cards.size() <= cardIndex) {
+            return false;
+        }
+
+        if (cards.get(cardIndex).select(company) == false) {
+            return false;
+        }
+
+        //TODO Play the card.
+        cards.get(cardIndex).play();
+
+        return true;
+    }
 }

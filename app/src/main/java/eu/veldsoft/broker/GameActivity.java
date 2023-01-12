@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.AbsoluteLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -185,7 +186,11 @@ public class GameActivity extends AppCompatActivity {
             /*
              * Try to play a card.
              */
-            //board.play(int card index, int company index);
+            if (board.play(data.getIntExtra("cardIndex", -1), data.getIntExtra("companyIndex", -1)) == false) {
+                Toast.makeText(GameActivity.this, "Invalid card!", Toast.LENGTH_LONG).show();
+            } else {
+                redraw();
+            }
         }
 
         redraw();

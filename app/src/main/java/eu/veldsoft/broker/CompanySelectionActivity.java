@@ -48,7 +48,8 @@ public class CompanySelectionActivity extends AppCompatActivity {
                     if (false) {
                         //TODO Check is the company selection valid.
                     } else {
-                        setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("companyIndex", index));
+                        int card = CompanySelectionActivity.this.getIntent().getIntExtra("card", -1);
+                        setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", card).putExtra("companyIndex", index));
                         CompanySelectionActivity.this.finish();
                     }
                 }
