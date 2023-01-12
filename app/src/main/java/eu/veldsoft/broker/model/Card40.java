@@ -38,11 +38,17 @@ class Card40 extends Card {
      * Selection of a company to increase its price with 40.
      *
      * @param company Company to be changed by user desire.
+     * @return True if the selection is valid, false otherwise.
      */
     @Override
-    public void select(Company company) {
+    public boolean select(Company company) {
+        if (down.contains(company) == true) {
+            return false;
+        }
+
         up.clear();
         up.add(company);
+        return true;
     }
 
     /**

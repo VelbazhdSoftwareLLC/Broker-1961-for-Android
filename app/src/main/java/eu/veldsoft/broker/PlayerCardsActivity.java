@@ -79,7 +79,7 @@ public class PlayerCardsActivity extends AppCompatActivity {
                 if (GameActivity.board().needCompanySelection(bar.getProgress()) == true) {
                     startActivityForResult((new Intent(PlayerCardsActivity.this, CompanySelectionActivity.class)).putExtra("card", bar.getProgress()), LAUNCH_COMPANY_SELECTION_ACTIVITY);
                 } else {
-                    setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", bar.getProgress()));
+                    setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", bar.getProgress()).putExtra("companyIndex", -1));
                     PlayerCardsActivity.this.finish();
                 }
             }
@@ -122,5 +122,18 @@ public class PlayerCardsActivity extends AppCompatActivity {
             bar.setMin(0);
         }
         bar.setMax(0);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == LAUNCH_COMPANY_SELECTION_ACTIVITY) {
+            setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", data.getIntExtra("cardIndex", -1)).putExtra("companyIndex", data.getIntExtra("companyIndex", -1)));
+            PlayerCardsActivity.this.finish();
+        }
     }
 }

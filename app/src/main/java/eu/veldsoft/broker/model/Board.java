@@ -237,4 +237,15 @@ public class Board {
     public boolean needCompanySelection(int card) {
         return playing.cards().get(card).needCompanySelection();
     }
+
+    /**
+     * Try to play a selected card.
+     *
+     * @param cardIndex    Index of the card in the player's list of cards.
+     * @param companyIndex Index of a selected company to change price.
+     * @return True if the card playing was successful, false otherwise.
+     */
+    public boolean play(int cardIndex, int companyIndex) {
+        return playing.play(cardIndex, companies.get(companyIndex));
+    }
 }

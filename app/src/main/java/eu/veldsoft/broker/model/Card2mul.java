@@ -39,11 +39,17 @@ class Card2mul extends Card {
      * Selection of a company to half its price.
      *
      * @param company Company to be changed by user desire.
+     * @return True if the selection is valid, false otherwise.
      */
     @Override
-    public void select(Company company) {
+    public boolean select(Company company) {
+        if (up.contains(company) == true) {
+            return false;
+        }
+
         down.clear();
         down.add(company);
+        return true;
     }
 
     /**
