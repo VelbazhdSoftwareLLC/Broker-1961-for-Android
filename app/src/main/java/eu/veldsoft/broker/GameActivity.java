@@ -187,7 +187,7 @@ public class GameActivity extends AppCompatActivity {
              * Try to play a card.
              */
             if (board.play(data.getIntExtra("cardIndex", -1), data.getIntExtra("companyIndex", -1)) == false) {
-                Toast.makeText(GameActivity.this, "Invalid card!", Toast.LENGTH_LONG).show();
+                Toast.makeText(GameActivity.this, "Card is not played!", Toast.LENGTH_LONG).show();
             } else {
                 redraw();
             }
@@ -200,7 +200,7 @@ public class GameActivity extends AppCompatActivity {
      * After change in the object model the user interface should be updated.
      */
     void redraw() {
-        setTitle(board.currentPlayerName() + " plays ...");
+        setTitle(board.currentPlayerInfo() + " plays ...");
 
         int prices[] = board.prices();
         for (int i = 0; i < prices.length && i < markers.length; i++) {

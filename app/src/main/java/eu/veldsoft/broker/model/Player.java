@@ -127,20 +127,22 @@ class Player {
      *
      * @param cardIndex Index of the card in the player's list of cards.
      * @param company   Reference of a selected company to change price.
-     * @return True if the card playing was successful, false otherwise.
+     * @return Reference to the card if the card playing was successful, null otherwise.
      */
-    public boolean play(int cardIndex, Company company) {
+    public Card play(int cardIndex, Company company) {
         if (cardIndex < 0 && cards.size() <= cardIndex) {
-            return false;
+            return null;
         }
 
-        if (cards.get(cardIndex).select(company) == false) {
-            return false;
+        if (company != null && cards.get(cardIndex).select(company) == false) {
+            return null;
         }
 
         //TODO Play the card.
-        cards.get(cardIndex).play();
+        Card card = cards.get(cardIndex);
+        cards.remove(card);
+        card.play();
 
-        return true;
+        return card;
     }
 }

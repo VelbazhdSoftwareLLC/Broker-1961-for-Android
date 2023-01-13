@@ -25,7 +25,7 @@ class Company {
     private int dividend = 0;
 
     /**
-     * Constructor by compoany name only with default company value.
+     * Constructor by company name only with default company value.
      *
      * @param name The name of the company.
      */
@@ -59,7 +59,13 @@ class Company {
         this.price *= 10;
 
         //TODO Magic numbers should not be used.
+        if (this.price < 10) {
+            //TODO Take the penalty.
+            dividend = -20;
+            this.price = 10;
+        }
         if (this.price > 250) {
+            //TODO Give the dividend.
             dividend = this.price - 250;
             this.price = 250;
         }
