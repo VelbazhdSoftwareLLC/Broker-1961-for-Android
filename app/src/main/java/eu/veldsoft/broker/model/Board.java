@@ -11,9 +11,26 @@ public class Board {
     /**
      * Data structure for the state of the board.
      */
-    enum State {NONE, PRE_ORDER, CARD_PLAY, POST_ORDER, GAME_END}
+    enum State {
+        NONE(""), PRE_ORDER("pre order"), CARD_PLAY("play card"), POST_ORDER("post order"), TURN_END(""), GAME_END("");
+        /**
+         * Text of the state;
+         */
+        private String text;
 
-    ;
+        private State(String text) {
+            this.text = text;
+        }
+
+        /**
+         * Get the text of the state.
+         *
+         * @return Text of the state.
+         */
+        public String text() {
+            return text;
+        }
+    }
 
     /**
      * List of companies.
@@ -126,8 +143,8 @@ public class Board {
      *
      * @return The name of the player.
      */
-    public String currentPlayerName() {
-        return playing.name();
+    public String currentPlayerInfo() {
+        return playing.name() + " (" + state.text() + ")";
     }
 
     /**
@@ -185,13 +202,20 @@ public class Board {
         /*
          * The first playing player can buy or sell.
          */
-        state = State.POST_ORDER;
+        state = State.PRE_ORDER;
     }
 
     /**
      * Do things needed in the end of the turn.
      */
     public void endTurn() {
+        /*
+         * The card is played only if it is time to be played.
+         */
+        if (state != State.TURN_END && state != State.POST_ORDER) {
+            return;
+        }
+
         int next = -1;
         int index = players.indexOf(playing);
 
@@ -225,6 +249,7 @@ public class Board {
             state = State.GAME_END;
         } else {
             playing = players.get(next);
+            state = State.PRE_ORDER;
         }
     }
 
@@ -246,6 +271,27 @@ public class Board {
      * @return True if the card playing was successful, false otherwise.
      */
     public boolean play(int cardIndex, int companyIndex) {
-        return playing.play(cardIndex, companies.get(companyIndex));
+        /*
+         * The card is played only if it is time to be played.
+         */
+        if (state != State.CARD_PLAY && state != State.PRE_ORDER) {
+            return false;
+        }
+
+        Company company = null;
+        if (0 <= companyIndex && companyIndex < companies.size()) {
+            company = companies.get(companyIndex);
+        }
+
+        /*
+         * Keep the played card.
+         */
+        Card card = playing.play(cardIndex, company);
+        if (card != null) {
+            cards.add(card);
+            state = State.POST_ORDER;
+        }
+
+        return true;
     }
 }
