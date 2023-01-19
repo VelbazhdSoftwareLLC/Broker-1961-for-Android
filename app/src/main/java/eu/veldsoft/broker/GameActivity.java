@@ -33,6 +33,11 @@ public class GameActivity extends AppCompatActivity {
     private static int LAUNCH_PLAY_CARD_ACTIVITY = 2;
 
     /**
+     * The identifier for launching activity.
+     */
+    private static int LAUNCH_BUY_SELL_ACTIVITY = 3;
+
+    /**
      * Map of the card key and card image.
      */
     static final Map<String, Integer> CARDS_IMAGES = new HashMap<String, Integer>();
@@ -119,7 +124,7 @@ public class GameActivity extends AppCompatActivity {
                 startActivityForResult(new Intent(GameActivity.this, NumberOfPlayersActivity.class), LAUNCH_PLAYERS_LIST_ACTIVITY);
                 break;
             case R.id.buy_sell:
-                startActivity(new Intent(GameActivity.this, BuySellActivity.class));
+                startActivityForResult(new Intent(GameActivity.this, BuySellActivity.class), LAUNCH_BUY_SELL_ACTIVITY);
                 break;
             case R.id.play_card:
                 startActivityForResult((new Intent(GameActivity.this, PlayerCardsActivity.class)).putExtra("keys", board.currentPlayerCardsKyes()), LAUNCH_PLAY_CARD_ACTIVITY);
@@ -188,8 +193,17 @@ public class GameActivity extends AppCompatActivity {
              */
             if (board.play(data.getIntExtra("cardIndex", -1), data.getIntExtra("companyIndex", -1)) == false) {
                 Toast.makeText(GameActivity.this, "Card is not played!", Toast.LENGTH_LONG).show();
-            } else {
-                redraw();
+            }
+        }
+
+        if (requestCode == LAUNCH_BUY_SELL_ACTIVITY) {
+            int shares[] = data.getIntArrayExtra("buySellShares");
+
+            /*
+             * Try to trade shares.
+             */
+            if (board.trade(shares) == false) {
+                Toast.makeText(GameActivity.this, "Card is not played!", Toast.LENGTH_LONG).show();
             }
         }
 
@@ -200,7 +214,7 @@ public class GameActivity extends AppCompatActivity {
      * After change in the object model the user interface should be updated.
      */
     void redraw() {
-        setTitle(board.currentPlayerInfo() + " plays ...");
+        setTitle(board.currentPlayerInfo());
 
         int prices[] = board.prices();
         for (int i = 0; i < prices.length && i < markers.length; i++) {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,31 +20,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="A" />
+
             <RadioGroup
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <RadioButton
                     android:id="@+id/aBuyButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Buy" />
+
                 <RadioButton
                     android:id="@+id/aSellButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sell" />
             </RadioGroup>
+
             <EditText
                 android:id="@+id/aAmountNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="3"
-                android:text = "0"
+                android:text="0"
                 android:textAlignment="viewEnd"
                 android:inputType="number" />
         </LinearLayout>
@@ -54,31 +58,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="B" />
+
             <RadioGroup
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <RadioButton
                     android:id="@+id/bBuyButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Buy" />
+
                 <RadioButton
                     android:id="@+id/bSellButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sell" />
             </RadioGroup>
+
             <EditText
                 android:id="@+id/bAmountNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="3"
-                android:text = "0"
+                android:text="0"
                 android:textAlignment="viewEnd"
                 android:inputType="number" />
         </LinearLayout>
@@ -87,31 +96,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="C" />
+
             <RadioGroup
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <RadioButton
                     android:id="@+id/cBuyButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Buy" />
+
                 <RadioButton
                     android:id="@+id/cSellButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sell" />
             </RadioGroup>
+
             <EditText
                 android:id="@+id/cAmountNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="3"
-                android:text = "0"
+                android:text="0"
                 android:textAlignment="viewEnd"
                 android:inputType="number" />
         </LinearLayout>
@@ -120,31 +134,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="D" />
+
             <RadioGroup
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <RadioButton
                     android:id="@+id/dBuyButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Buy" />
+
                 <RadioButton
                     android:id="@+id/dSellButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sell" />
             </RadioGroup>
+
             <EditText
                 android:id="@+id/dAmountNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="3"
-                android:text = "0"
+                android:text="0"
                 android:textAlignment="viewEnd"
                 android:inputType="number" />
         </LinearLayout>

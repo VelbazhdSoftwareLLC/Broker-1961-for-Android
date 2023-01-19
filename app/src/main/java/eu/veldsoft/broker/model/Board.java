@@ -35,37 +35,42 @@ public class Board {
     /**
      * List of companies.
      */
-    List<Company> companies = new ArrayList<Company>();
+    private List<Company> companies = new ArrayList<Company>();
 
     /**
      * Deck with the cards.
      */
-    Deck deck = null;
+    private Deck deck = null;
 
     /**
      * List of players.
      */
-    List<Player> players = new ArrayList<Player>();
+    private List<Player> players = new ArrayList<Player>();
 
     /**
      * The player who is playing at the moment.
      */
-    Player playing = null;
+    private Player playing = null;
 
     /**
      * The state of the board.
      */
-    State state = State.NONE;
+    private State state = State.NONE;
+
+    /**
+     * The game goes in turns.
+     */
+    private int round = 0;
 
     /**
      * All transactions done in the game.
      */
-    List<Transaction> transactions = new ArrayList<Transaction>();
+    private List<Transaction> transactions = new ArrayList<Transaction>();
 
     /**
      * List of cards played during the gameplay.
      */
-    List<Card> cards = new ArrayList<Card>();
+    private List<Card> cards = new ArrayList<Card>();
 
     /**
      * Board constructor without parameters.
@@ -144,7 +149,7 @@ public class Board {
      * @return The name of the player.
      */
     public String currentPlayerInfo() {
-        return playing.name() + " (" + state.text() + ")";
+        return playing.name() + " (round " + round + " - " + state.text() + ")";
     }
 
     /**
@@ -203,6 +208,11 @@ public class Board {
          * The first playing player can buy or sell.
          */
         state = State.PRE_ORDER;
+
+        /*
+         * In the real life counting usually starts from one, not from zero.
+         */
+        round = 1;
     }
 
     /**
@@ -216,13 +226,20 @@ public class Board {
             return;
         }
 
+        /*
+         * The index of the current playing player.
+         */
+        int current = players.indexOf(playing);
+
+        /*
+         * The index of the next playing player.
+         */
         int next = -1;
-        int index = players.indexOf(playing);
 
         /*
          * Check the second half of the players.
          */
-        for (int i = index + 1; i < players.size(); i++) {
+        for (int i = current + 1; i < players.size(); i++) {
             if (players.get(i).active() == true) {
                 next = i;
                 break;
@@ -233,7 +250,7 @@ public class Board {
          * Check the first half of the players.
          */
         if (next == -1) {
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < current; i++) {
                 if (players.get(i).active() == true) {
                     next = i;
                     break;
@@ -250,6 +267,13 @@ public class Board {
         } else {
             playing = players.get(next);
             state = State.PRE_ORDER;
+
+            /*
+             * Next round in the game.
+             */
+            if (next < current) {
+                round++;
+            }
         }
     }
 
@@ -290,6 +314,27 @@ public class Board {
         if (card != null) {
             cards.add(card);
             state = State.POST_ORDER;
+        }
+
+        return true;
+    }
+
+    /**
+     * Try to trade shares.
+     *
+     * @param shares Shares to sell (negative numbers) or to buy (positive numbers).
+     * @return True if the trading was successful, false otherwise.
+     */
+    public boolean trade(int[] shares) {
+        //TODO Checking of valid trade.
+
+        /*
+         * Update game state after successful trading.
+         */
+        if (state == State.PRE_ORDER) {
+            state = State.CARD_PLAY;
+        } else if (state == State.POST_ORDER) {
+            state = State.TURN_END;
         }
 
         return true;

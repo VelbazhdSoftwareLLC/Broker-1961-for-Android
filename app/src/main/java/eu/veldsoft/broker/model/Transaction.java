@@ -9,14 +9,10 @@ class Transaction {
      */
     enum Type {BUY, SELL}
 
-    ;
-
     /**
      * The transaction can be done before card playing and after card playing.
      */
     enum Time {PREORDER, POSTORDER}
-
-    ;
 
     /**
      * The type of the transaction.
