@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,41 +9,42 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
-    <RadioGroup
-        android:id="@+id/companies"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/radioButtonA"
+        <RadioGroup
+            android:id="@+id/companies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioButtonA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Company A" />
+
+            <RadioButton
+                android:id="@+id/radioButtonB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Company B" />
+
+            <RadioButton
+                android:id="@+id/radioButtonC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Company C" />
+
+            <RadioButton
+                android:id="@+id/radioButtonD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Company D" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/companySelected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Company A" />
-
-        <RadioButton
-            android:id="@+id/radioButtonB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Company B" />
-
-        <RadioButton
-            android:id="@+id/radioButtonC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Company C" />
-
-        <RadioButton
-            android:id="@+id/radioButtonD"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Company D" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/companySelected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select This One" />
+            android:text="Select This One" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
