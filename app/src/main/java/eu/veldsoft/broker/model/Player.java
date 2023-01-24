@@ -40,7 +40,7 @@ class Player {
      *
      * @param name The name of the player.
      */
-    public Player(String name) {
+    Player(String name) {
         super();
         this.name = name;
     }
@@ -50,7 +50,7 @@ class Player {
      *
      * @return True if the player is still active, false otherwise.
      */
-    public boolean active() {
+    boolean active() {
         return active;
     }
 
@@ -59,7 +59,7 @@ class Player {
      *
      * @return The name of the player.
      */
-    public String name() {
+    String name() {
         return name;
     }
 
@@ -68,7 +68,7 @@ class Player {
      *
      * @return List of the cards reference.
      */
-    public List<Card> cards() {
+    List<Card> cards() {
         return cards;
     }
 
@@ -77,11 +77,16 @@ class Player {
      *
      * @param cards List of cards.
      */
-    public void getInitialCards(List<Card> cards) {
+    void getInitialCards(List<Card> cards) {
         this.cards = cards;
     }
 
-    public String report() {
+    /**
+     * Text report for the player state.
+     *
+     * @return Report text.
+     */
+    String report() {
         String text = "";
 
         text += name;
@@ -129,7 +134,7 @@ class Player {
      * @param company   Reference of a selected company to change price.
      * @return Reference to the card if the card playing was successful, null otherwise.
      */
-    public Card play(int cardIndex, Company company) {
+    Card play(int cardIndex, Company company) {
         if (cardIndex < 0 && cards.size() <= cardIndex) {
             return null;
         }
@@ -144,5 +149,29 @@ class Player {
         card.play();
 
         return card;
+    }
+
+    /**
+     * Try to buy shares.
+     *
+     * @param company Shares of the company to sell.
+     * @param amount  Amount of shares for sell.
+     * @return Reference to a shares object if it is successful, null otherwise.
+     */
+    Share buy(Company company, int amount) {
+        //TODO Try to do the buy.
+        return null;
+    }
+
+    /**
+     * Try to sell shares.
+     *
+     * @param company Shares of the company to sell.
+     * @param amount  Amount of shares for sell.
+     * @return Reference to a shares object if it is successful, null otherwise.
+     */
+    Share sell(Company company, int amount) {
+        //TODO Try to do the sell.
+        return null;
     }
 }

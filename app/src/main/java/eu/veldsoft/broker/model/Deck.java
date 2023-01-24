@@ -8,13 +8,34 @@ import java.util.List;
  * Represents the deck of cards, available in the game.
  */
 class Deck {
+    /**
+     *
+     */
     private static int index100 = 0;
+
+    /**
+     *
+     */
     private static final List<Card> cards100 = new ArrayList<Card>();
 
+    /**
+     *
+     */
     private static int index2x = 0;
+
+    /**
+     *
+     */
     private static final List<Card> cards2x = new ArrayList<Card>();
 
+    /**
+     *
+     */
     private static int index4060 = 0;
+
+    /**
+     *
+     */
     private static final List<Card> cards4060 = new ArrayList<Card>();
 
     /**
@@ -22,7 +43,7 @@ class Deck {
      *
      * @param companies List of the companies.
      */
-    public Deck(List<Company> companies) {
+    Deck(List<Company> companies) {
         /*
          * Each company should have 3 cards of type 100.
          */
@@ -116,6 +137,9 @@ class Deck {
         Collections.shuffle(cards4060);
     }
 
+    /**
+     * @return
+     */
     List<Card> deal() {
         List<Card> cards = new ArrayList<Card>();
 

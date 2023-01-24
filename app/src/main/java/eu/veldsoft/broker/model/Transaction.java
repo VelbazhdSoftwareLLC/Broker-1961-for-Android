@@ -42,7 +42,7 @@ class Transaction {
      * @param time   Before or after card playing.
      * @param player The player who did the transaction.
      */
-    public Transaction(Type type, Share share, Time time, Player player) {
+    Transaction(Type type, Share share, Time time, Player player) {
         super();
         this.type = type;
         this.share = share;
@@ -55,7 +55,7 @@ class Transaction {
      *
      * @return Type of the transaction.
      */
-    public Type type() {
+    Type type() {
         return type;
     }
 
@@ -64,7 +64,7 @@ class Transaction {
      *
      * @return Shares participating in the transaction.
      */
-    public Share share() {
+    Share share() {
         return share;
     }
 
@@ -73,7 +73,7 @@ class Transaction {
      *
      * @return Time of the transaction - before or after card playing.
      */
-    public Time time() {
+    Time time() {
         return time;
     }
 
@@ -82,7 +82,7 @@ class Transaction {
      *
      * @return Reference to the player instance.
      */
-    public Player player() {
+    Player player() {
         return player;
     }
 }

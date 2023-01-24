@@ -13,7 +13,7 @@ class Card100 extends Card {
      * @param company   Compnay reference.
      * @param companies List of all companies.
      */
-    public Card100(String key, Company company, List<Company> companies) {
+    Card100(String key, Company company, List<Company> companies) {
         super(key);
 
         up.clear();
@@ -36,7 +36,7 @@ class Card100 extends Card {
      * Selected company go up with 100 when all the others go down.
      */
     @Override
-    public void play() {
+    void play() {
         for (Company u : up) {
             u.price(u.price() + 100);
         }
@@ -53,7 +53,7 @@ class Card100 extends Card {
      * @return True if the selection is valid, false otherwise.
      */
     @Override
-    public boolean select(Company company) {
+    boolean select(Company company) {
         /* In this card player does not select. */
         return true;
     }
@@ -62,7 +62,7 @@ class Card100 extends Card {
      * {@inheritDoc}
      */
     @Override
-    public boolean needCompanySelection() {
+    boolean needCompanySelection() {
         return false;
     }
 }
