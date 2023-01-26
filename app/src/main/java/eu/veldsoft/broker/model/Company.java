@@ -29,7 +29,7 @@ class Company {
      *
      * @param name The name of the company.
      */
-    public Company(String name) {
+    Company(String name) {
         this(name, DEFAULT_VALUE);
     }
 
@@ -39,7 +39,7 @@ class Company {
      * @param name  The name of the company.
      * @param price The initial price of the company.
      */
-    public Company(String name, int price) {
+    Company(String name, int price) {
         this.price = price;
         this.name = name;
     }

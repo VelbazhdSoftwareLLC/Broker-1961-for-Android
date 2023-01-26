@@ -73,6 +73,47 @@ public class Board {
     private List<Card> cards = new ArrayList<Card>();
 
     /**
+     * Try to trade shares before card play.
+     *
+     * @param shares Shares to sell (negative numbers) or to buy (positive numbers).
+     * @return True if the trading was successful, false otherwise.
+     */
+    private boolean preTrade(int[] shares) {
+        boolean success = true;
+
+        for (int i = 0; i < shares.length; i++) {
+            if (shares[i] > 0) {
+                /*
+                 * Try to buy.
+                 */
+                if (playing.buy(companies.get(i), shares[i]) == null) {
+                    success = false;
+                }
+            }
+            if (shares[i] < 0) {
+                /*
+                 * Try to sell.
+                 */
+                if (playing.sell(companies.get(i), -shares[i]) == null) {
+                    success = false;
+                }
+            }
+        }
+
+        return success;
+    }
+
+    /**
+     * Try to trade shares after card play.
+     *
+     * @param shares Shares to sell (negative numbers) or to buy (positive numbers).
+     * @return True if the trading was successful, false otherwise.
+     */
+    private boolean postOrder(int[] shares) {
+        return false;
+    }
+
+    /**
      * Board constructor without parameters.
      */
     public Board() {
@@ -332,11 +373,17 @@ public class Board {
          * Update game state after successful trading.
          */
         if (state == State.PRE_ORDER) {
-            state = State.CARD_PLAY;
+            if (preTrade(shares) == true) {
+                state = State.CARD_PLAY;
+                return true;
+            }
         } else if (state == State.POST_ORDER) {
-            state = State.TURN_END;
+            if (postOrder(shares) == true) {
+                state = State.TURN_END;
+                return true;
+            }
         }
 
-        return true;
+        return false;
     }
 }

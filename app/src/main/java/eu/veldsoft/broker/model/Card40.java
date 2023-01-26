@@ -11,7 +11,7 @@ class Card40 extends Card {
      * @param key     Key value used in some collections.
      * @param company Company which should down its price with 50.
      */
-    public Card40(String key, Company company) {
+    Card40(String key, Company company) {
         super(key);
 
         up.clear();
@@ -24,7 +24,7 @@ class Card40 extends Card {
      * Selected company go down with 50 when selected company go up with 40.
      */
     @Override
-    public void play() {
+    void play() {
         for (Company u : up) {
             u.price(u.price() + 40);
         }
@@ -41,7 +41,7 @@ class Card40 extends Card {
      * @return True if the selection is valid, false otherwise.
      */
     @Override
-    public boolean select(Company company) {
+    boolean select(Company company) {
         if (down.contains(company) == true) {
             return false;
         }
@@ -55,7 +55,7 @@ class Card40 extends Card {
      * {@inheritDoc}
      */
     @Override
-    public boolean needCompanySelection() {
+    boolean needCompanySelection() {
         return true;
     }
 }

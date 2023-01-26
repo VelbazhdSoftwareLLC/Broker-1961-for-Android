@@ -25,7 +25,7 @@ abstract class Card {
     /**
      * When card is played the prize of the shares changes.
      */
-    public abstract void play();
+    abstract void play();
 
     /**
      * The player can select only one company.
@@ -33,21 +33,21 @@ abstract class Card {
      * @param company Company to be changed by user desire.
      * @return True if the selection is valid, false otherwise.
      */
-    public abstract boolean select(Company company);
+    abstract boolean select(Company company);
 
     /**
      * Need selection by the player for a particular company.
      *
      * @return True if the company selection is needed, false otherwise.
      */
-    public abstract boolean needCompanySelection();
+    abstract boolean needCompanySelection();
 
     /**
      * Constructor with card key.
      *
      * @param key Key value used in some collections.
      */
-    public Card(String key) {
+    Card(String key) {
         this.key = key;
     }
 
@@ -56,7 +56,7 @@ abstract class Card {
      *
      * @return Card key.
      */
-    public String key() {
+    String key() {
         return key;
     }
 }
