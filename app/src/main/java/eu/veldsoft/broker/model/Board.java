@@ -215,8 +215,16 @@ public class Board {
         /*
          * The maximum number of players is 6.
          */
+        players.clear();
         for (String name : playersNames) {
             players.add(new Player(name));
+        }
+
+        /*
+         * Reset initial price.
+         */
+        for (Company c : companies) {
+            c.reset();
         }
 
         /*
@@ -258,13 +266,15 @@ public class Board {
 
     /**
      * Do things needed in the end of the turn.
+     *
+     * @return True for successful turn end, false otherwise.
      */
-    public void endTurn() {
+    public boolean endTurn() {
         /*
          * The card is played only if it is time to be played.
          */
         if (state != State.TURN_END && state != State.POST_ORDER) {
-            return;
+            return false;
         }
 
         /*
@@ -316,6 +326,8 @@ public class Board {
                 round++;
             }
         }
+
+        return true;
     }
 
     /**

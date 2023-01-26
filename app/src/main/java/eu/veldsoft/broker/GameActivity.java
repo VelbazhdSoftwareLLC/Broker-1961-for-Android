@@ -130,7 +130,9 @@ public class GameActivity extends AppCompatActivity {
                 startActivityForResult((new Intent(GameActivity.this, PlayerCardsActivity.class)).putExtra("keys", board.currentPlayerCardsKyes()), LAUNCH_PLAY_CARD_ACTIVITY);
                 break;
             case R.id.end_turn:
-                board.endTurn();
+                if (board.endTurn() == false) {
+                    Toast.makeText(GameActivity.this, "Turn is not ending!", Toast.LENGTH_LONG).show();
+                }
                 redraw();
                 break;
             case R.id.player_report:

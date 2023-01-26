@@ -106,4 +106,11 @@ class Company {
     int dividend() {
         return dividend;
     }
+
+    /**
+     * Reset company state for each new game.
+     */
+    void reset() {
+        price = DEFAULT_VALUE;
+    }
 }
