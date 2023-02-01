@@ -20,14 +20,19 @@ class Transaction {
     private Type type = null;
 
     /**
-     * Reference to the shares object.
-     */
-    private Share share = null;
-
-    /**
      * When transaction is done - before or after card playing.
      */
     private Time time = null;
+
+    /**
+     * The round of the game when the transaction is done.
+     */
+    int round = 0;
+
+    /**
+     * Reference to the shares object.
+     */
+    private Share share = null;
 
     /**
      * Reference to the player who did the transaction.
@@ -38,15 +43,17 @@ class Transaction {
      * Constructor with all parameters.
      *
      * @param type   Is it a buy o sell transaction.
-     * @param share  Reference to shares object.
      * @param time   Before or after card playing.
+     * @param round  The round of the game.
+     * @param share  Reference to shares object.
      * @param player The player who did the transaction.
      */
-    Transaction(Type type, Share share, Time time, Player player) {
+    Transaction(Type type, Time time, int round, Share share, Player player) {
         super();
         this.type = type;
-        this.share = share;
         this.time = time;
+        this.round = round;
+        this.share = share;
         this.player = player;
     }
 
@@ -60,21 +67,30 @@ class Transaction {
     }
 
     /**
-     * Get share of the transaction.
-     *
-     * @return Shares participating in the transaction.
-     */
-    Share share() {
-        return share;
-    }
-
-    /**
      * Get time of transaction.
      *
      * @return Time of the transaction - before or after card playing.
      */
     Time time() {
         return time;
+    }
+
+    /**
+     * Get round of the game.
+     *
+     * @return The round of the game when the transaction happened.
+     */
+    int round() {
+        return round;
+    }
+
+    /**
+     * Get share of the transaction.
+     *
+     * @return Shares participating in the transaction.
+     */
+    Share share() {
+        return share;
     }
 
     /**

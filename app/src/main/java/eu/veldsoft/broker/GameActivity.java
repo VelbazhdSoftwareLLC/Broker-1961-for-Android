@@ -205,7 +205,7 @@ public class GameActivity extends AppCompatActivity {
              * Try to trade shares.
              */
             if (board.trade(shares) == false) {
-                Toast.makeText(GameActivity.this, "Card is not played!", Toast.LENGTH_LONG).show();
+                Toast.makeText(GameActivity.this, "Trading is not done!", Toast.LENGTH_LONG).show();
             }
         }
 
