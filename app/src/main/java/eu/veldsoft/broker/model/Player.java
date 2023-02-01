@@ -23,7 +23,7 @@ class Player {
     /**
      * The amount of money which the player has.
      */
-    private final int money = 300;
+    private int money = 300;
 
     /**
      * List of card for the player.
@@ -159,8 +159,15 @@ class Player {
      * @return Reference to a shares object if it is successful, null otherwise.
      */
     Share buy(Company company, int amount) {
-        //TODO Try to do the buy.
-        return null;
+        if (company.price() * amount > money) {
+            //TODO Better report with details should be implemented!
+            return null;
+        }
+
+        Share share = new Share(company, amount, company.price());
+        shares.add(share);
+
+        return share;
     }
 
     /**
@@ -171,7 +178,32 @@ class Player {
      * @return Reference to a shares object if it is successful, null otherwise.
      */
     Share sell(Company company, int amount) {
-        //TODO Try to do the sell.
-        return null;
+        int count = 0;
+        List<Share> available = new ArrayList<Share>();
+        for (Share share : shares) {
+            if (share.company() != company) {
+                continue;
+            }
+
+            count += share.amount();
+            available.add(share);
+        }
+
+        if (count < amount) {
+            //TODO Better report with details should be implemented!
+            return null;
+        }
+
+        shares.removeAll(available);
+
+        Share left = new Share(company, count - amount, company.price());
+        Share sold = new Share(company, amount, company.price());
+
+        money += amount * company.price();
+        if (left.amount() > 0) {
+            shares.add(left);
+        }
+
+        return sold;
     }
 }

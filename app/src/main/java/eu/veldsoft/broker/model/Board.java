@@ -86,16 +86,22 @@ public class Board {
                 /*
                  * Try to buy.
                  */
-                if (playing.buy(companies.get(i), shares[i]) == null) {
+                Share share = playing.buy(companies.get(i), shares[i]);
+                if (share == null) {
                     success = false;
+                } else {
+                    transactions.add(new Transaction(Transaction.Type.BUY, Transaction.Time.PREORDER, round, share, playing));
                 }
             }
             if (shares[i] < 0) {
                 /*
                  * Try to sell.
                  */
-                if (playing.sell(companies.get(i), -shares[i]) == null) {
+                Share share = playing.sell(companies.get(i), -shares[i]);
+                if (share == null) {
                     success = false;
+                } else {
+                    transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.PREORDER, round, share, playing));
                 }
             }
         }
@@ -379,8 +385,6 @@ public class Board {
      * @return True if the trading was successful, false otherwise.
      */
     public boolean trade(int[] shares) {
-        //TODO Checking of valid trade.
-
         /*
          * Update game state after successful trading.
          */
