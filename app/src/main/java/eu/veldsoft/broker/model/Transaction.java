@@ -27,7 +27,7 @@ class Transaction {
     /**
      * The round of the game when the transaction is done.
      */
-    int round = 0;
+    private int round = 0;
 
     /**
      * Reference to the shares object.
