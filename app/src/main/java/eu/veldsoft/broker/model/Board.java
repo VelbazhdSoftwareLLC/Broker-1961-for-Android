@@ -116,7 +116,65 @@ public class Board {
      * @return True if the trading was successful, false otherwise.
      */
     private boolean postOrder(int[] shares) {
-        return false;
+        boolean success = true;
+
+        /*
+         * Apply the key rule.
+         */
+        for (Transaction t : transactions) {
+            /*
+             * Only transactions in the current round are important.
+             */
+            if (t.round() != round) {
+                continue;
+            }
+
+            /*
+             * Only pre-order transactions are important.
+             */
+            if (t.time() != Transaction.Time.PREORDER) {
+                continue;
+            }
+
+            for (int i = 0; i < shares.length; i++) {
+                if (shares[i] < 0 && t.type() == Transaction.Type.BUY && companies.get(i).price() > t.share().price()) {
+                    //TODO Implement better reporting!
+                    shares[i] = 0;
+                }
+
+                if (shares[i] > 0 && t.type() == Transaction.Type.SELL && companies.get(i).price() < t.share().price()) {
+                    //TODO Implement better reporting!
+                    shares[i] = 0;
+                }
+            }
+        }
+
+        for (int i = 0; i < shares.length; i++) {
+            if (shares[i] > 0) {
+                /*
+                 * Try to buy.
+                 */
+                Share share = playing.buy(companies.get(i), shares[i]);
+                if (share == null) {
+                    success = false;
+                } else {
+                    transactions.add(new Transaction(Transaction.Type.BUY, Transaction.Time.POSTORDER, round, share, playing));
+                }
+            }
+            if (shares[i] < 0) {
+                /*
+                 * Try to sell.
+                 */
+                Share share = playing.sell(companies.get(i), -shares[i]);
+                if (share == null) {
+                    success = false;
+                } else {
+                    transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.POSTORDER, round, share, playing));
+                }
+            }
+        }
+
+        return success;
     }
 
     /**
