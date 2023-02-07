@@ -123,6 +123,13 @@ public class Board {
          */
         for (Transaction t : transactions) {
             /*
+             * Only transactions of the current player are important.
+             */
+            if (t.player() != playing) {
+                continue;
+            }
+
+            /*
              * Only transactions in the current round are important.
              */
             if (t.round() != round) {
@@ -372,6 +379,8 @@ public class Board {
                 }
             }
         }
+
+        playing.update();
 
         /*
          * There is no more active players.v The game should finish.
