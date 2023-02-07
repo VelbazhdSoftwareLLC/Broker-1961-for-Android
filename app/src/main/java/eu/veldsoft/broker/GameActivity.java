@@ -161,6 +161,13 @@ public class GameActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        /*
+         * Do not handle other results than OK.
+         */
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+
         if (requestCode == LAUNCH_PLAYERS_LIST_ACTIVITY) {
             List<String> names = new ArrayList<String>();
 

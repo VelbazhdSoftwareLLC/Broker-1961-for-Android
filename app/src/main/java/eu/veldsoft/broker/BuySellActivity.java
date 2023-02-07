@@ -27,34 +27,29 @@ public class BuySellActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int shares[] = {0, 0, 0, 0};
 
-                shares[0] = Integer.valueOf(((EditText) findViewById(R.id.aAmountNumber)).getText().toString());
-                shares[1] = Integer.valueOf(((EditText) findViewById(R.id.bAmountNumber)).getText().toString());
-                shares[2] = Integer.valueOf(((EditText) findViewById(R.id.cAmountNumber)).getText().toString());
-                shares[3] = Integer.valueOf(((EditText) findViewById(R.id.dAmountNumber)).getText().toString());
-
                 if (((RadioButton) findViewById(R.id.aBuyButton)).isChecked() == true) {
-                    shares[0] = Math.abs(shares[0]);
+                    shares[0] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.aAmountNumber)).getText().toString()));
                 }
                 if (((RadioButton) findViewById(R.id.aSellButton)).isChecked() == true) {
-                    shares[0] = -Math.abs(shares[0]);
+                    shares[0] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.aAmountNumber)).getText().toString()));
                 }
                 if (((RadioButton) findViewById(R.id.bBuyButton)).isChecked() == true) {
-                    shares[1] = Math.abs(shares[1]);
+                    shares[1] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.bAmountNumber)).getText().toString()));
                 }
                 if (((RadioButton) findViewById(R.id.bSellButton)).isChecked() == true) {
-                    shares[1] = -Math.abs(shares[1]);
+                    shares[1] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.bAmountNumber)).getText().toString()));
                 }
                 if (((RadioButton) findViewById(R.id.cBuyButton)).isChecked() == true) {
-                    shares[2] = Math.abs(shares[2]);
+                    shares[2] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.cAmountNumber)).getText().toString()));
                 }
                 if (((RadioButton) findViewById(R.id.cSellButton)).isChecked() == true) {
-                    shares[2] = -Math.abs(shares[2]);
+                    shares[2] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.cAmountNumber)).getText().toString()));
                 }
                 if (((RadioButton) findViewById(R.id.dBuyButton)).isChecked() == true) {
-                    shares[3] = Math.abs(shares[3]);
+                    shares[3] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.dAmountNumber)).getText().toString()));
                 }
                 if (((RadioButton) findViewById(R.id.dSellButton)).isChecked() == true) {
-                    shares[3] = -Math.abs(shares[3]);
+                    shares[3] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.dAmountNumber)).getText().toString()));
                 }
 
                 Intent intent = new Intent();

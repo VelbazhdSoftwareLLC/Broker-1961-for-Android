@@ -46,6 +46,15 @@ class Player {
     }
 
     /**
+     * Set player's active status.
+     *
+     * @param active True if the player is active, false otherwise.
+     */
+    public void active(boolean active) {
+        this.active = active;
+    }
+
+    /**
      * Get player's active status.
      *
      * @return True if the player is still active, false otherwise.
@@ -61,6 +70,15 @@ class Player {
      */
     String name() {
         return name;
+    }
+
+    /**
+     * Get player's money.
+     *
+     * @return The amount of monay.
+     */
+    int money() {
+        return money;
     }
 
     /**
@@ -167,6 +185,8 @@ class Player {
         Share share = new Share(company, amount, company.price());
         shares.add(share);
 
+        money -= amount * company.price();
+
         return share;
     }
 
@@ -205,5 +225,19 @@ class Player {
         }
 
         return sold;
+    }
+
+
+    /**
+     * Do check for player's activity status.
+     */
+    void update() {
+        if (cards.isEmpty() == true) {
+            active = false;
+        }
+
+        if (money <= 0 && shares.size() <= 0) {
+            active = false;
+        }
     }
 }
