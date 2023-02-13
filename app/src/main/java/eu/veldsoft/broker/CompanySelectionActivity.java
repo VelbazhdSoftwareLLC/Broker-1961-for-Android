@@ -55,6 +55,5 @@ public class CompanySelectionActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }

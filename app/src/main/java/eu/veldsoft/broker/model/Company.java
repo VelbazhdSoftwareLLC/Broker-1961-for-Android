@@ -5,7 +5,7 @@ package eu.veldsoft.broker.model;
  */
 class Company {
     /**
-     * Default inital company value.
+     * Default initial company value.
      */
     private static final int DEFAULT_VALUE = 100;
 
