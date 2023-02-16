@@ -43,7 +43,7 @@ class Card2div extends Card {
      */
     @Override
     boolean select(Company company) {
-        if (down.contains(company) == true) {
+        if (down.contains(company)) {
             return false;
         }
 

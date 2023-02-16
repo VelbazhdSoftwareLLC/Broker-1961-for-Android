@@ -90,7 +90,7 @@ class Company {
     }
 
     /**
-     * Set current divident;
+     * Set current dividend;
      *
      * @param dividend The value of the dividend.
      */

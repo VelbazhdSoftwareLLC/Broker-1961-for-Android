@@ -42,7 +42,7 @@ public class PlayedCardsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_played_cards);
 
-        PlayedCardsActivity.CARDS_IMAGES = GameActivity.CARDS_IMAGES;
+        CARDS_IMAGES = GameActivity.CARDS_IMAGES;
 
         image = ((ImageView) findViewById(R.id.playedCard));
         bar = findViewById(R.id.cardsScroller);

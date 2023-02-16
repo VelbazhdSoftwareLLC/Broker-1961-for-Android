@@ -20,7 +20,7 @@ public class PlayerCardsActivity extends AppCompatActivity {
     /**
      * The identifier for launching activity.
      */
-    private static int LAUNCH_COMPANY_SELECTION_ACTIVITY = 1;
+    private final static int LAUNCH_COMPANY_SELECTION_ACTIVITY = 1;
 
     /**
      * Map of the card key and card image reference.
@@ -50,7 +50,7 @@ public class PlayerCardsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_cards);
 
-        PlayerCardsActivity.CARDS_IMAGES = GameActivity.CARDS_IMAGES;
+        CARDS_IMAGES = GameActivity.CARDS_IMAGES;
 
         image = ((ImageView) findViewById(R.id.currentCard));
         bar = findViewById(R.id.cardSelector);
@@ -76,7 +76,7 @@ public class PlayerCardsActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.playIt)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (GameActivity.board().needCompanySelection(bar.getProgress()) == true) {
+                if (GameActivity.board().needCompanySelection(bar.getProgress())) {
                     startActivityForResult((new Intent(PlayerCardsActivity.this, CompanySelectionActivity.class)).putExtra("card", bar.getProgress()), LAUNCH_COMPANY_SELECTION_ACTIVITY);
                 } else {
                     setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", bar.getProgress()).putExtra("companyIndex", -1));
