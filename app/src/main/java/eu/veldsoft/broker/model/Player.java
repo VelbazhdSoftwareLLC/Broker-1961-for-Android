@@ -124,7 +124,7 @@ class Player {
                 String name = s.company().name();
                 int amount = s.amount();
 
-                if (portfolio.containsKey(name) == false) {
+                if (!portfolio.containsKey(name)) {
                     portfolio.put(name, amount);
                 } else {
                     portfolio.put(name, portfolio.get(name) + amount);
@@ -157,11 +157,13 @@ class Player {
             return null;
         }
 
-        if (company != null && cards.get(cardIndex).select(company) == false) {
+        if (company != null && !cards.get(cardIndex).select(company)) {
             return null;
         }
 
-        //TODO Play the card.
+        /*
+         * Play the card.
+         */
         Card card = cards.get(cardIndex);
         cards.remove(card);
         card.play();
@@ -232,12 +234,49 @@ class Player {
      * Do check for player's activity status.
      */
     void update() {
-        if (cards.isEmpty() == true) {
+        if (cards.isEmpty()) {
             active = false;
         }
 
         if (money <= 0 && shares.size() <= 0) {
             active = false;
         }
+    }
+
+    /**
+     * Give dividend.
+     *
+     * @param company Company reference for dividend.
+     */
+    void dividend(Company company) {
+        int count = 0;
+        for (Share s : shares) {
+            if (s.company() != company) {
+                continue;
+            }
+
+            count += s.amount();
+        }
+
+        money += company.dividend() * count;
+    }
+
+    /**
+     * Take penalty.
+     *
+     * @param company Company reference for dividend.
+     */
+    void penalty(Company company) {
+        int count = 0;
+        for (Share s : shares) {
+            if (s.company() != company) {
+                continue;
+            }
+
+            count += s.amount();
+        }
+
+        //TODO Handle money shortage.
+        money += company.dividend() * count;
     }
 }

@@ -42,7 +42,7 @@ class Card60 extends Card {
      */
     @Override
     boolean select(Company company) {
-        if (up.contains(company) == true) {
+        if (up.contains(company)) {
             return false;
         }
 

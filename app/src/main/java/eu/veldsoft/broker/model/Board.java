@@ -211,7 +211,7 @@ public class Board {
      * @return Array with companies' prices.
      */
     public int[] prices() {
-        int prices[] = new int[companies.size()];
+        int[] prices = new int[companies.size()];
 
         int i = 0;
         for (Company c : companies) {
@@ -277,8 +277,10 @@ public class Board {
      * Start new game or restart current game.
      *
      * @param playersNames List with the names of the players.
+     *
+     * @throws RuntimeException Error in number of players.
      */
-    public void newGame(String playersNames[]) {
+    public void newGame(String[] playersNames) throws RuntimeException {
         if (playersNames.length < 2 && 6 < playersNames.length) {
             throw new RuntimeException("Incorrect number of players!");
         }
@@ -362,7 +364,7 @@ public class Board {
          * Check the second half of the players.
          */
         for (int i = current + 1; i < players.size(); i++) {
-            if (players.get(i).active() == true) {
+            if (players.get(i).active()) {
                 next = i;
                 break;
             }
@@ -373,7 +375,7 @@ public class Board {
          */
         if (next == -1) {
             for (int i = 0; i < current; i++) {
-                if (players.get(i).active() == true) {
+                if (players.get(i).active()) {
                     next = i;
                     break;
                 }
@@ -438,7 +440,31 @@ public class Board {
          */
         Card card = playing.play(cardIndex, company);
         if (card != null) {
+            /*
+             * Adjust prices above 250 and below 10.
+             */
+            for (Company c : companies) {
+                for (Player p : players) {
+                    /*
+                     * Give dividend.
+                     */
+                    if (c.dividend() > 0) {
+                        p.dividend(c);
+                    }
+
+                    /*
+                     * Take penalty.
+                     */
+                    if (c.dividend() < 0) {
+                        p.penalty(c);
+                    }
+                }
+
+                c.dividend(0);
+            }
+
             cards.add(card);
+
             state = State.POST_ORDER;
         }
 
@@ -456,12 +482,12 @@ public class Board {
          * Update game state after successful trading.
          */
         if (state == State.PRE_ORDER) {
-            if (preTrade(shares) == true) {
+            if (preTrade(shares)) {
                 state = State.CARD_PLAY;
                 return true;
             }
         } else if (state == State.POST_ORDER) {
-            if (postOrder(shares) == true) {
+            if (postOrder(shares)) {
                 state = State.TURN_END;
                 return true;
             }

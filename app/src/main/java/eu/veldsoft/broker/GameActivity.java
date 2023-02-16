@@ -25,17 +25,22 @@ public class GameActivity extends AppCompatActivity {
     /**
      * The identifier for launching activity.
      */
-    private static int LAUNCH_PLAYERS_LIST_ACTIVITY = 1;
+    private static final int LAUNCH_PLAYERS_LIST_ACTIVITY = 1;
 
     /**
      * The identifier for launching activity.
      */
-    private static int LAUNCH_PLAY_CARD_ACTIVITY = 2;
+    private static final int LAUNCH_PLAY_CARD_ACTIVITY = 2;
 
     /**
      * The identifier for launching activity.
      */
-    private static int LAUNCH_BUY_SELL_ACTIVITY = 3;
+    private static final int LAUNCH_BUY_SELL_ACTIVITY = 3;
+
+    /**
+     * Array of references to markes views.
+     */
+    private static final ImageView[] MARKERS_IMAGES = new ImageView[4];
 
     /**
      * Map of the card key and card image.
@@ -46,11 +51,6 @@ public class GameActivity extends AppCompatActivity {
      * The link between view layer and object model is the instance of the Board class. It is static because it will be needed in other activities.
      */
     private static Board board = new Board();
-
-    /**
-     * Array of references to markes views.
-     */
-    private ImageView markers[] = new ImageView[4];
 
     /**
      * Get board reference.
@@ -98,10 +98,10 @@ public class GameActivity extends AppCompatActivity {
         /*
          * Get markers views references.
          */
-        markers[0] = findViewById(R.id.aPullImageView);
-        markers[1] = findViewById(R.id.bPullImageView);
-        markers[2] = findViewById(R.id.cPullImageView);
-        markers[3] = findViewById(R.id.dPullImageView);
+        MARKERS_IMAGES[0] = findViewById(R.id.aPullImageView);
+        MARKERS_IMAGES[1] = findViewById(R.id.bPullImageView);
+        MARKERS_IMAGES[2] = findViewById(R.id.cPullImageView);
+        MARKERS_IMAGES[3] = findViewById(R.id.dPullImageView);
     }
 
     /**
@@ -130,7 +130,7 @@ public class GameActivity extends AppCompatActivity {
                 startActivityForResult((new Intent(GameActivity.this, PlayerCardsActivity.class)).putExtra("keys", board.currentPlayerCardsKyes()), LAUNCH_PLAY_CARD_ACTIVITY);
                 break;
             case R.id.end_turn:
-                if (board.endTurn() == false) {
+                if (!board.endTurn()) {
                     Toast.makeText(GameActivity.this, "Turn is not ending!", Toast.LENGTH_LONG).show();
                 }
                 redraw();
@@ -200,18 +200,18 @@ public class GameActivity extends AppCompatActivity {
             /*
              * Try to play a card.
              */
-            if (board.play(data.getIntExtra("cardIndex", -1), data.getIntExtra("companyIndex", -1)) == false) {
+            if (!board.play(data.getIntExtra("cardIndex", -1), data.getIntExtra("companyIndex", -1))) {
                 Toast.makeText(GameActivity.this, "Card is not played!", Toast.LENGTH_LONG).show();
             }
         }
 
         if (requestCode == LAUNCH_BUY_SELL_ACTIVITY) {
-            int shares[] = data.getIntArrayExtra("buySellShares");
+            int[] shares = data.getIntArrayExtra("buySellShares");
 
             /*
              * Try to trade shares.
              */
-            if (board.trade(shares) == false) {
+            if (!board.trade(shares)) {
                 Toast.makeText(GameActivity.this, "Trading is not done!", Toast.LENGTH_LONG).show();
             }
         }
@@ -225,10 +225,10 @@ public class GameActivity extends AppCompatActivity {
     void redraw() {
         setTitle(board.currentPlayerInfo());
 
-        int prices[] = board.prices();
-        for (int i = 0; i < prices.length && i < markers.length; i++) {
+        int[] prices = board.prices();
+        for (int i = 0; i < prices.length && i < MARKERS_IMAGES.length; i++) {
             AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(170, 130, 200 + i * 170, -20 + (int) (prices[i] * 6.85));
-            markers[i].setLayoutParams(layoutParams);
+            MARKERS_IMAGES[i].setLayoutParams(layoutParams);
         }
     }
 }
