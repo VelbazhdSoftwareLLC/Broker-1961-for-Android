@@ -6,39 +6,36 @@
 
     <ImageView
         android:id="@+id/boardImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
         android:src="@drawable/board" />
 
     <ImageView
         android:id="@+id/aPullImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="69dp"
-        android:layout_y="271dp"
+        android:visibility="invisible"
         android:src="@drawable/marker" />
 
     <ImageView
         android:id="@+id/bPullImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="137dp"
-        android:layout_y="271dp"
+        android:visibility="invisible"
         android:src="@drawable/marker" />
 
     <ImageView
         android:id="@+id/cPullImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="203dp"
-        android:layout_y="271dp"
+        android:visibility="invisible"
         android:src="@drawable/marker" />
 
     <ImageView
         android:id="@+id/dPullImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="271dp"
-        android:layout_y="271dp"
+        android:visibility="invisible"
         android:src="@drawable/marker" />
 </AbsoluteLayout>

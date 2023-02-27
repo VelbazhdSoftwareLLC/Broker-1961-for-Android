@@ -1,10 +1,12 @@
 package eu.veldsoft.broker;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AbsoluteLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -46,6 +48,16 @@ public class GameActivity extends AppCompatActivity {
      * Map of the card key and card image.
      */
     static final Map<String, Integer> CARDS_IMAGES = new HashMap<String, Integer>();
+
+    /**
+     * Scaling in X.
+     */
+    private static float xScale = 1;
+
+    /**
+     * Scaling in Y.
+     */
+    private static float yScale = 1;
 
     /**
      * The link between view layer and object model is the instance of the Board class. It is static because it will be needed in other activities.
@@ -102,6 +114,20 @@ public class GameActivity extends AppCompatActivity {
         MARKERS_IMAGES[1] = findViewById(R.id.bPullImageView);
         MARKERS_IMAGES[2] = findViewById(R.id.cPullImageView);
         MARKERS_IMAGES[3] = findViewById(R.id.dPullImageView);
+
+        /*
+         * Estimating scaling factors.
+         */
+        xScale = ((ImageView)findViewById(R.id.boardImageView)).getScaleX();
+        yScale = ((ImageView)findViewById(R.id.boardImageView)).getScaleY();
+
+        /*
+         * Scale makers according to board size.
+         */
+        for(ImageView maker : MARKERS_IMAGES) {
+            maker.setScaleX(xScale);
+            maker.setScaleY(yScale);
+        }
     }
 
     /**
@@ -227,8 +253,9 @@ public class GameActivity extends AppCompatActivity {
 
         int[] prices = board.prices();
         for (int i = 0; i < prices.length && i < MARKERS_IMAGES.length; i++) {
-            AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(170, 130, 200 + i * 170, -20 + (int) (prices[i] * 6.85));
+            AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(MARKERS_IMAGES[i].getWidth(), MARKERS_IMAGES[i].getHeight(), 120 + i * 130, -20 + (int) (prices[i] * 4));
             MARKERS_IMAGES[i].setLayoutParams(layoutParams);
+            MARKERS_IMAGES[i].setVisibility(View.VISIBLE);
         }
     }
 }
