@@ -1,7 +1,6 @@
 package eu.veldsoft.broker;
 
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -118,13 +117,13 @@ public class GameActivity extends AppCompatActivity {
         /*
          * Estimating scaling factors.
          */
-        xScale = ((ImageView)findViewById(R.id.boardImageView)).getScaleX();
-        yScale = ((ImageView)findViewById(R.id.boardImageView)).getScaleY();
+        xScale = ((ImageView) findViewById(R.id.boardImageView)).getScaleX();
+        yScale = ((ImageView) findViewById(R.id.boardImageView)).getScaleY();
 
         /*
          * Scale makers according to board size.
          */
-        for(ImageView maker : MARKERS_IMAGES) {
+        for (ImageView maker : MARKERS_IMAGES) {
             maker.setScaleX(xScale);
             maker.setScaleY(yScale);
         }
@@ -252,8 +251,14 @@ public class GameActivity extends AppCompatActivity {
         setTitle(board.currentPlayerInfo());
 
         int[] prices = board.prices();
+        prices = new int[]{10,100,100,250};
         for (int i = 0; i < prices.length && i < MARKERS_IMAGES.length; i++) {
-            AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(MARKERS_IMAGES[i].getWidth(), MARKERS_IMAGES[i].getHeight(), 120 + i * 130, -20 + (int) (prices[i] * 4));
+            AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(
+                    MARKERS_IMAGES[i].getWidth(),
+                    MARKERS_IMAGES[i].getHeight(),
+                    Math.round((178 + i * 179) * xScale),
+                    Math.round((4 + prices[i] * 6.85F) * yScale)
+            );
             MARKERS_IMAGES[i].setLayoutParams(layoutParams);
             MARKERS_IMAGES[i].setVisibility(View.VISIBLE);
         }
