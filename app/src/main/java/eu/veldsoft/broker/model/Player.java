@@ -91,6 +91,15 @@ class Player {
     }
 
     /**
+     * Get list of shares hold by the player.
+     *
+     * @return List of the shares reference.
+     */
+    List<Share> shares() {
+        return shares;
+    }
+
+    /**
      * Get cards in the start of the game.
      *
      * @param cards List of cards.
@@ -228,7 +237,6 @@ class Player {
 
         return sold;
     }
-
 
     /**
      * Do check for player's activity status.

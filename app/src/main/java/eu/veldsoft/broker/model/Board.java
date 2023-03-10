@@ -274,10 +274,37 @@ public class Board {
     }
 
     /**
+     * Get report of the end of the game.
+     *
+     * @return The report of the end of the game.
+     */
+    public String endReport() {
+        if (state != State.GAME_END) {
+            return "The game is in progress ...";
+        }
+
+        if (state == State.GAME_END) {
+            String text = "";
+
+            text += "The End of the Game Report";
+            text += "\n";
+            text += "\n";
+
+            for (Player p : players) {
+                text += p.report();
+                text += "\n";
+            }
+
+            return text;
+        }
+
+        return "";
+    }
+
+    /**
      * Start new game or restart current game.
      *
      * @param playersNames List with the names of the players.
-     *
      * @throws RuntimeException Error in number of players.
      */
     public void newGame(String[] playersNames) throws RuntimeException {
@@ -494,5 +521,19 @@ public class Board {
         }
 
         return false;
+    }
+
+    /**
+     * All player sell all shares.
+     */
+    public void totalSale() {
+        for (Player p : players) {
+            for (Share s : p.shares()) {
+                Share share = p.sell(s.company(), -s.amount());
+                if (share != null) {
+                    transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.POSTORDER, round, share, p));
+                }
+            }
+        }
     }
 }

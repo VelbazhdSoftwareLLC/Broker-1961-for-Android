@@ -38,4 +38,5 @@ The 1983 (9th edition) by Ravensburger Spieleverlag GmbH changes the title sligh
     <string name="exit_menu">Exit</string>
     <string name="played_cards_menu">Played Cards</string>
     <string name="player_report_menu">Player Report</string>
+    <string name="end_report_menu">End Report</string>
 </resources>

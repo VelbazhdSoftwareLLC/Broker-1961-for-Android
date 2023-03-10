@@ -166,6 +166,10 @@ public class GameActivity extends AppCompatActivity {
             case R.id.played_cards:
                 startActivity((new Intent(GameActivity.this, PlayedCardsActivity.class)).putExtra("keys", board.playedCardsKyes()));
                 break;
+            case R.id.end_report:
+                board.totalSale();
+                startActivity(new Intent(GameActivity.this, EndReportActivity.class).putExtra("report", board.endReport()));
+                break;
             case R.id.help:
                 startActivity(new Intent(GameActivity.this, HelpActivity.class));
                 break;
@@ -251,7 +255,6 @@ public class GameActivity extends AppCompatActivity {
         setTitle(board.currentPlayerInfo());
 
         int[] prices = board.prices();
-        prices = new int[]{10,100,100,250};
         for (int i = 0; i < prices.length && i < MARKERS_IMAGES.length; i++) {
             AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(
                     MARKERS_IMAGES[i].getWidth(),
