@@ -2,6 +2,7 @@ package eu.veldsoft.broker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -117,8 +118,10 @@ public class GameActivity extends AppCompatActivity {
         /*
          * Estimating scaling factors.
          */
-        xScale = ((ImageView) findViewById(R.id.boardImageView)).getScaleX();
-        yScale = ((ImageView) findViewById(R.id.boardImageView)).getScaleY();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        xScale = (float) displayMetrics.widthPixels / ((ImageView) findViewById(R.id.boardImageView)).getDrawable().getIntrinsicWidth();
+        yScale = (float) displayMetrics.heightPixels / ((ImageView) findViewById(R.id.boardImageView)).getDrawable().getMinimumHeight();
 
         /*
          * Scale makers according to board size.
