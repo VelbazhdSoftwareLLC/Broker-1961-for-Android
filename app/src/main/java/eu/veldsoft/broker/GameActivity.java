@@ -161,6 +161,9 @@ public class GameActivity extends AppCompatActivity {
                 if (!board.endTurn()) {
                     Toast.makeText(GameActivity.this, "Turn is not ending!", Toast.LENGTH_LONG).show();
                 }
+                if (board.finished()) {
+                    Toast.makeText(GameActivity.this, "Game finished!", Toast.LENGTH_LONG).show();
+                }
                 redraw();
                 break;
             case R.id.player_report:
@@ -262,8 +265,8 @@ public class GameActivity extends AppCompatActivity {
             AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(
                     MARKERS_IMAGES[i].getWidth(),
                     MARKERS_IMAGES[i].getHeight(),
-                    Math.round((178 + i * 179) * xScale),
-                    Math.round((4 + prices[i] * 6.85F) * yScale)
+                    Math.round((130 + i * 138) * xScale),
+                    Math.round((2 + prices[i] * 4.65F) * yScale)
             );
             MARKERS_IMAGES[i].setLayoutParams(layoutParams);
             MARKERS_IMAGES[i].setVisibility(View.VISIBLE);

@@ -274,6 +274,15 @@ public class Board {
     }
 
     /**
+     * Get finished game flag.
+     *
+     * @return True if the game is over, false otherwise.
+     */
+    public boolean finished() {
+        return state == State.GAME_END;
+    }
+
+    /**
      * Get report of the end of the game.
      *
      * @return The report of the end of the game.
@@ -415,7 +424,6 @@ public class Board {
          * There is no more active players.v The game should finish.
          */
         if (next == -1) {
-            //TODO Report the end of the game.
             state = State.GAME_END;
         } else {
             playing = players.get(next);

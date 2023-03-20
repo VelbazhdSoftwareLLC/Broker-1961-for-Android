@@ -7,7 +7,22 @@ class Company {
     /**
      * Default initial company value.
      */
-    private static final int DEFAULT_VALUE = 100;
+    private static final int INITIAL_VALUE = 100;
+
+    /**
+     * The lowest company value.
+     */
+    private static final int LOWEST_VALUE = 10;
+
+    /**
+     * The highest company value.
+     */
+    private static final int HIGHEST_VALUE = 250;
+
+    /**
+     * Penalty value for price crash.
+     */
+    private static final int PENALTY_VALUE = -20;
 
     /**
      * Name of the company.
@@ -17,7 +32,7 @@ class Company {
     /**
      * The price is used also as marker information.
      */
-    private int price = DEFAULT_VALUE;
+    private int price = INITIAL_VALUE;
 
     /**
      * When the price goes above the upper limit, the dividend is given.
@@ -30,7 +45,7 @@ class Company {
      * @param name The name of the company.
      */
     Company(String name) {
-        this(name, DEFAULT_VALUE);
+        this(name, INITIAL_VALUE);
     }
 
     /**
@@ -58,16 +73,15 @@ class Company {
         this.price /= 10;
         this.price *= 10;
 
-        //TODO Magic numbers should not be used.
-        if (this.price < 10) {
+        if (this.price < LOWEST_VALUE) {
             //TODO Take the penalty.
-            dividend = -20;
-            this.price = 10;
+            dividend = PENALTY_VALUE;
+            this.price = LOWEST_VALUE;
         }
-        if (this.price > 250) {
+        if (this.price > HIGHEST_VALUE) {
             //TODO Give the dividend.
-            dividend = this.price - 250;
-            this.price = 250;
+            dividend = this.price - HIGHEST_VALUE;
+            this.price = HIGHEST_VALUE;
         }
     }
 
@@ -111,6 +125,6 @@ class Company {
      * Reset company state for each new game.
      */
     void reset() {
-        price = DEFAULT_VALUE;
+        price = INITIAL_VALUE;
     }
 }
