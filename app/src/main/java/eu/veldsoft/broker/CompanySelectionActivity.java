@@ -42,7 +42,7 @@ public class CompanySelectionActivity extends AppCompatActivity {
                 }
 
                 if (index == -1) {
-                    Toast.makeText(CompanySelectionActivity.this, "No selected company!",
+                    Toast.makeText(CompanySelectionActivity.this, R.string.no_selected_company_text,
                             Toast.LENGTH_LONG).show();
                 } else {
                     if (false) {

@@ -1,12 +1,13 @@
 package eu.veldsoft.broker;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.AbsoluteLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -118,10 +119,13 @@ public class GameActivity extends AppCompatActivity {
         /*
          * Estimating scaling factors.
          */
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        xScale = (float) displayMetrics.widthPixels / ((ImageView) findViewById(R.id.boardImageView)).getDrawable().getIntrinsicWidth();
-        yScale = (float) displayMetrics.heightPixels / ((ImageView) findViewById(R.id.boardImageView)).getDrawable().getMinimumHeight();
+        ((ImageView) findViewById(R.id.boardImageView)).getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                xScale = (float) ((ImageView) findViewById(R.id.boardImageView)).getWidth() / BitmapFactory.decodeResource(getResources(), R.drawable.board).getWidth();
+                yScale = (float) ((ImageView) findViewById(R.id.boardImageView)).getHeight() / BitmapFactory.decodeResource(getResources(), R.drawable.board).getHeight();
+            }
+        });
 
         /*
          * Scale makers according to board size.
@@ -159,10 +163,10 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case R.id.end_turn:
                 if (!board.endTurn()) {
-                    Toast.makeText(GameActivity.this, "Turn is not ending!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(GameActivity.this, R.string.turn_is_not_ending_text, Toast.LENGTH_LONG).show();
                 }
                 if (board.finished()) {
-                    Toast.makeText(GameActivity.this, "Game finished!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(GameActivity.this, R.string.game_finished_text, Toast.LENGTH_LONG).show();
                 }
                 redraw();
                 break;
@@ -236,7 +240,7 @@ public class GameActivity extends AppCompatActivity {
              * Try to play a card.
              */
             if (!board.play(data.getIntExtra("cardIndex", -1), data.getIntExtra("companyIndex", -1))) {
-                Toast.makeText(GameActivity.this, "Card is not played!", Toast.LENGTH_LONG).show();
+                Toast.makeText(GameActivity.this, R.string.card_is_not_played_text, Toast.LENGTH_LONG).show();
             }
         }
 
@@ -247,7 +251,7 @@ public class GameActivity extends AppCompatActivity {
              * Try to trade shares.
              */
             if (!board.trade(shares)) {
-                Toast.makeText(GameActivity.this, "Trading is not done!", Toast.LENGTH_LONG).show();
+                Toast.makeText(GameActivity.this, R.string.trading_is_not_done_text, Toast.LENGTH_LONG).show();
             }
         }
 
@@ -265,8 +269,8 @@ public class GameActivity extends AppCompatActivity {
             AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(
                     MARKERS_IMAGES[i].getWidth(),
                     MARKERS_IMAGES[i].getHeight(),
-                    Math.round((130 + i * 138) * xScale),
-                    Math.round((2 + prices[i] * 4.65F) * yScale)
+                    Math.round((176 + i * 190) * xScale),
+                    Math.round((2 + prices[i] * 7.47F) * yScale)
             );
             MARKERS_IMAGES[i].setLayoutParams(layoutParams);
             MARKERS_IMAGES[i].setVisibility(View.VISIBLE);
