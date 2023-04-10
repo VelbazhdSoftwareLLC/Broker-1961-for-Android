@@ -5,6 +5,12 @@
         android:id="@+id/new_game"
         android:title="@string/new_game_menu" />
     <item
+        android:id="@+id/save_game"
+        android:title="@string/save_game_menu" />
+    <item
+        android:id="@+id/load_game"
+        android:title="@string/load_game_menu" />
+    <item
         android:id="@+id/buy_sell"
         android:title="@string/buy_sell_menu" />
     <item

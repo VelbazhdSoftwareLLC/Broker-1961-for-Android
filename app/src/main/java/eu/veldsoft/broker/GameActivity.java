@@ -1,6 +1,7 @@
 package eu.veldsoft.broker;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.google.gson.Gson;
 
 import eu.veldsoft.broker.model.Board;
 
@@ -154,6 +157,15 @@ public class GameActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.new_game:
                 startActivityForResult(new Intent(GameActivity.this, NumberOfPlayersActivity.class), LAUNCH_PLAYERS_LIST_ACTIVITY);
+                break;
+            case R.id.save_game:
+                if(board != null) {
+                    getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).edit().putString("game_state", (new Gson()).toJson(board)).apply();
+                }
+                break;
+            case R.id.load_game:
+                board = (new Gson()).fromJson(getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).getString("game_state", ""), Board.class);
+                redraw();
                 break;
             case R.id.buy_sell:
                 startActivityForResult(new Intent(GameActivity.this, BuySellActivity.class), LAUNCH_BUY_SELL_ACTIVITY);
