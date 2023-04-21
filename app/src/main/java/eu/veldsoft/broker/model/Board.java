@@ -314,11 +314,11 @@ public class Board {
      * Start new game or restart current game.
      *
      * @param playersNames List with the names of the players.
-     * @throws RuntimeException Error in number of players.
+     * @return True if the game starts, false otherwise.
      */
-    public void newGame(String[] playersNames) throws RuntimeException {
-        if (playersNames.length < 2 && 6 < playersNames.length) {
-            throw new RuntimeException("Incorrect number of players!");
+    public boolean newGame(String[] playersNames) {
+        if (playersNames.length < 2 || 6 < playersNames.length) {
+            return false;
         }
 
         /*
@@ -371,6 +371,8 @@ public class Board {
          * In the real life counting usually starts from one, not from zero.
          */
         round = 1;
+
+        return true;
     }
 
     /**
@@ -543,5 +545,14 @@ public class Board {
                 }
             }
         }
+    }
+
+    /**
+     * Game progress checker.
+     *
+     * @return True if the game is in progress, false otherwise.
+     */
+    public boolean gameInProgress() {
+        return state != State.NONE;
     }
 }

@@ -1,7 +1,6 @@
 package eu.veldsoft.broker;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,12 +14,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.google.gson.Gson;
 
 import eu.veldsoft.broker.model.Board;
 
@@ -44,7 +43,12 @@ public class GameActivity extends AppCompatActivity {
     private static final int LAUNCH_BUY_SELL_ACTIVITY = 3;
 
     /**
-     * Array of references to markes views.
+     * Board view references.
+     */
+    private static ImageView BOARD_IMAGE = null;
+
+    /**
+     * Array of references to markers views.
      */
     private static final ImageView[] MARKERS_IMAGES = new ImageView[4];
 
@@ -112,6 +116,12 @@ public class GameActivity extends AppCompatActivity {
         }
 
         /*
+         * Get board view reference.
+         */
+        BOARD_IMAGE = findViewById(R.id.boardImageView);
+        BOARD_IMAGE.setVisibility(View.INVISIBLE);
+
+        /*
          * Get markers views references.
          */
         MARKERS_IMAGES[0] = findViewById(R.id.aPullImageView);
@@ -159,11 +169,12 @@ public class GameActivity extends AppCompatActivity {
                 startActivityForResult(new Intent(GameActivity.this, NumberOfPlayersActivity.class), LAUNCH_PLAYERS_LIST_ACTIVITY);
                 break;
             case R.id.save_game:
-                if(board != null) {
+                if (board != null) {
                     getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).edit().putString("game_state", (new Gson()).toJson(board)).apply();
                 }
                 break;
             case R.id.load_game:
+                //TODO Deserialization should be fixed and improved.
                 board = (new Gson()).fromJson(getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).getString("game_state", ""), Board.class);
                 redraw();
                 break;
@@ -244,7 +255,9 @@ public class GameActivity extends AppCompatActivity {
             /*
              * Convert the list of names to array of names.
              */
-            board.newGame(names.toArray(new String[0]));
+            if (board.newGame(names.toArray(new String[0])) == false) {
+                Toast.makeText(GameActivity.this, R.string.game_not_started_text, Toast.LENGTH_LONG).show();
+            }
         }
 
         if (requestCode == LAUNCH_PLAY_CARD_ACTIVITY) {
@@ -274,6 +287,13 @@ public class GameActivity extends AppCompatActivity {
      * After change in the object model the user interface should be updated.
      */
     void redraw() {
+        if (board.gameInProgress() == false) {
+            BOARD_IMAGE.setVisibility(View.INVISIBLE);
+            return;
+        } else {
+            BOARD_IMAGE.setVisibility(View.VISIBLE);
+        }
+
         setTitle(board.currentPlayerInfo());
 
         int[] prices = board.prices();

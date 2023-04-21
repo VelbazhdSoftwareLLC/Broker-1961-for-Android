@@ -43,4 +43,5 @@ In Broker, players have the power to manipulate the market and buy and sell stoc
     <string name="trading_is_not_done_text">Trading is not done!</string>
     <string name="save_game_menu">Save</string>
     <string name="load_game_menu">Load</string>
+    <string name="game_not_started_text">Game did not start!</string>
 </resources>
