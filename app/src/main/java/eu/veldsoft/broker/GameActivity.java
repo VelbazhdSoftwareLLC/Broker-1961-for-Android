@@ -8,7 +8,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.AbsoluteLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -56,6 +55,11 @@ public class GameActivity extends AppCompatActivity {
      * Map of the card key and card image.
      */
     static final Map<String, Integer> CARDS_IMAGES = new HashMap<String, Integer>();
+
+    /**
+     * Map of the company, price and image.
+     */
+    static final Map PRICES_IMAGES[] = {new HashMap<Integer, Integer>(), new HashMap<Integer, Integer>(), new HashMap<Integer, Integer>(), new HashMap<Integer, Integer>()};
 
     /**
      * Scaling in X.
@@ -116,6 +120,118 @@ public class GameActivity extends AppCompatActivity {
         }
 
         /*
+         * Map company index and company price to price image resource identifiers.
+         */
+        if (PRICES_IMAGES[0].size() == 0) {
+            PRICES_IMAGES[0].put(10, R.drawable.a010marker);
+            PRICES_IMAGES[0].put(20, R.drawable.a020marker);
+            PRICES_IMAGES[0].put(30, R.drawable.a030marker);
+            PRICES_IMAGES[0].put(40, R.drawable.a040marker);
+            PRICES_IMAGES[0].put(50, R.drawable.a050marker);
+            PRICES_IMAGES[0].put(60, R.drawable.a060marker);
+            PRICES_IMAGES[0].put(70, R.drawable.a070marker);
+            PRICES_IMAGES[0].put(80, R.drawable.a080marker);
+            PRICES_IMAGES[0].put(90, R.drawable.a090marker);
+            PRICES_IMAGES[0].put(100, R.drawable.a100marker);
+            PRICES_IMAGES[0].put(110, R.drawable.a110marker);
+            PRICES_IMAGES[0].put(120, R.drawable.a120marker);
+            PRICES_IMAGES[0].put(130, R.drawable.a130marker);
+            PRICES_IMAGES[0].put(140, R.drawable.a140marker);
+            PRICES_IMAGES[0].put(150, R.drawable.a150marker);
+            PRICES_IMAGES[0].put(160, R.drawable.a160marker);
+            PRICES_IMAGES[0].put(170, R.drawable.a170marker);
+            PRICES_IMAGES[0].put(180, R.drawable.a180marker);
+            PRICES_IMAGES[0].put(190, R.drawable.a190marker);
+            PRICES_IMAGES[0].put(200, R.drawable.a200marker);
+            PRICES_IMAGES[0].put(210, R.drawable.a210marker);
+            PRICES_IMAGES[0].put(220, R.drawable.a220marker);
+            PRICES_IMAGES[0].put(230, R.drawable.a230marker);
+            PRICES_IMAGES[0].put(240, R.drawable.a240marker);
+            PRICES_IMAGES[0].put(250, R.drawable.a250marker);
+        }
+        if (PRICES_IMAGES[1].size() == 0) {
+            PRICES_IMAGES[1].put(10, R.drawable.b010marker);
+            PRICES_IMAGES[1].put(20, R.drawable.b020marker);
+            PRICES_IMAGES[1].put(30, R.drawable.b030marker);
+            PRICES_IMAGES[1].put(40, R.drawable.b040marker);
+            PRICES_IMAGES[1].put(50, R.drawable.b050marker);
+            PRICES_IMAGES[1].put(60, R.drawable.b060marker);
+            PRICES_IMAGES[1].put(70, R.drawable.b070marker);
+            PRICES_IMAGES[1].put(80, R.drawable.b080marker);
+            PRICES_IMAGES[1].put(90, R.drawable.b090marker);
+            PRICES_IMAGES[1].put(100, R.drawable.b100marker);
+            PRICES_IMAGES[1].put(110, R.drawable.b110marker);
+            PRICES_IMAGES[1].put(120, R.drawable.b120marker);
+            PRICES_IMAGES[1].put(130, R.drawable.b130marker);
+            PRICES_IMAGES[1].put(140, R.drawable.b140marker);
+            PRICES_IMAGES[1].put(150, R.drawable.b150marker);
+            PRICES_IMAGES[1].put(160, R.drawable.b160marker);
+            PRICES_IMAGES[1].put(170, R.drawable.b170marker);
+            PRICES_IMAGES[1].put(180, R.drawable.b180marker);
+            PRICES_IMAGES[1].put(190, R.drawable.b190marker);
+            PRICES_IMAGES[1].put(200, R.drawable.b200marker);
+            PRICES_IMAGES[1].put(210, R.drawable.b210marker);
+            PRICES_IMAGES[1].put(220, R.drawable.b220marker);
+            PRICES_IMAGES[1].put(230, R.drawable.b230marker);
+            PRICES_IMAGES[1].put(240, R.drawable.b240marker);
+            PRICES_IMAGES[1].put(250, R.drawable.b250marker);
+        }
+        if (PRICES_IMAGES[2].size() == 0) {
+            PRICES_IMAGES[2].put(10, R.drawable.c010marker);
+            PRICES_IMAGES[2].put(20, R.drawable.c020marker);
+            PRICES_IMAGES[2].put(30, R.drawable.c030marker);
+            PRICES_IMAGES[2].put(40, R.drawable.c040marker);
+            PRICES_IMAGES[2].put(50, R.drawable.c050marker);
+            PRICES_IMAGES[2].put(60, R.drawable.c060marker);
+            PRICES_IMAGES[2].put(70, R.drawable.c070marker);
+            PRICES_IMAGES[2].put(80, R.drawable.c080marker);
+            PRICES_IMAGES[2].put(90, R.drawable.c090marker);
+            PRICES_IMAGES[2].put(100, R.drawable.c100marker);
+            PRICES_IMAGES[2].put(110, R.drawable.c110marker);
+            PRICES_IMAGES[2].put(120, R.drawable.c120marker);
+            PRICES_IMAGES[2].put(130, R.drawable.c130marker);
+            PRICES_IMAGES[2].put(140, R.drawable.c140marker);
+            PRICES_IMAGES[2].put(150, R.drawable.c150marker);
+            PRICES_IMAGES[2].put(160, R.drawable.c160marker);
+            PRICES_IMAGES[2].put(170, R.drawable.c170marker);
+            PRICES_IMAGES[2].put(180, R.drawable.c180marker);
+            PRICES_IMAGES[2].put(190, R.drawable.c190marker);
+            PRICES_IMAGES[2].put(200, R.drawable.c200marker);
+            PRICES_IMAGES[2].put(210, R.drawable.c210marker);
+            PRICES_IMAGES[2].put(220, R.drawable.c220marker);
+            PRICES_IMAGES[2].put(230, R.drawable.c230marker);
+            PRICES_IMAGES[2].put(240, R.drawable.c240marker);
+            PRICES_IMAGES[2].put(250, R.drawable.c250marker);
+        }
+        if (PRICES_IMAGES[3].size() == 0) {
+            PRICES_IMAGES[3].put(10, R.drawable.d010marker);
+            PRICES_IMAGES[3].put(20, R.drawable.d020marker);
+            PRICES_IMAGES[3].put(30, R.drawable.d030marker);
+            PRICES_IMAGES[3].put(40, R.drawable.d040marker);
+            PRICES_IMAGES[3].put(50, R.drawable.d050marker);
+            PRICES_IMAGES[3].put(60, R.drawable.d060marker);
+            PRICES_IMAGES[3].put(70, R.drawable.d070marker);
+            PRICES_IMAGES[3].put(80, R.drawable.d080marker);
+            PRICES_IMAGES[3].put(90, R.drawable.d090marker);
+            PRICES_IMAGES[3].put(100, R.drawable.d100marker);
+            PRICES_IMAGES[3].put(110, R.drawable.d110marker);
+            PRICES_IMAGES[3].put(120, R.drawable.d120marker);
+            PRICES_IMAGES[3].put(130, R.drawable.d130marker);
+            PRICES_IMAGES[3].put(140, R.drawable.d140marker);
+            PRICES_IMAGES[3].put(150, R.drawable.d150marker);
+            PRICES_IMAGES[3].put(160, R.drawable.d160marker);
+            PRICES_IMAGES[3].put(170, R.drawable.d170marker);
+            PRICES_IMAGES[3].put(180, R.drawable.d180marker);
+            PRICES_IMAGES[3].put(190, R.drawable.d190marker);
+            PRICES_IMAGES[3].put(200, R.drawable.d200marker);
+            PRICES_IMAGES[3].put(210, R.drawable.d210marker);
+            PRICES_IMAGES[3].put(220, R.drawable.d220marker);
+            PRICES_IMAGES[3].put(230, R.drawable.d230marker);
+            PRICES_IMAGES[3].put(240, R.drawable.d240marker);
+            PRICES_IMAGES[3].put(250, R.drawable.d250marker);
+        }
+
+        /*
          * Get board view reference.
          */
         BOARD_IMAGE = findViewById(R.id.boardImageView);
@@ -128,24 +244,8 @@ public class GameActivity extends AppCompatActivity {
         MARKERS_IMAGES[1] = findViewById(R.id.bPullImageView);
         MARKERS_IMAGES[2] = findViewById(R.id.cPullImageView);
         MARKERS_IMAGES[3] = findViewById(R.id.dPullImageView);
-
-        /*
-         * Estimating scaling factors.
-         */
-        ((ImageView) findViewById(R.id.boardImageView)).getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                xScale = (float) ((ImageView) findViewById(R.id.boardImageView)).getWidth() / BitmapFactory.decodeResource(getResources(), R.drawable.board).getWidth();
-                yScale = (float) ((ImageView) findViewById(R.id.boardImageView)).getHeight() / BitmapFactory.decodeResource(getResources(), R.drawable.board).getHeight();
-            }
-        });
-
-        /*
-         * Scale makers according to board size.
-         */
-        for (ImageView maker : MARKERS_IMAGES) {
-            maker.setScaleX(xScale);
-            maker.setScaleY(yScale);
+        for (View view : MARKERS_IMAGES) {
+            view.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -289,23 +389,22 @@ public class GameActivity extends AppCompatActivity {
     void redraw() {
         if (board.gameInProgress() == false) {
             BOARD_IMAGE.setVisibility(View.INVISIBLE);
+            for (View view : MARKERS_IMAGES) {
+                view.setVisibility(View.INVISIBLE);
+            }
             return;
         } else {
             BOARD_IMAGE.setVisibility(View.VISIBLE);
+            for (View view : MARKERS_IMAGES) {
+                view.setVisibility(View.VISIBLE);
+            }
         }
 
         setTitle(board.currentPlayerInfo());
 
         int[] prices = board.prices();
         for (int i = 0; i < prices.length && i < MARKERS_IMAGES.length; i++) {
-            AbsoluteLayout.LayoutParams layoutParams = new AbsoluteLayout.LayoutParams(
-                    MARKERS_IMAGES[i].getWidth(),
-                    MARKERS_IMAGES[i].getHeight(),
-                    Math.round((176 + i * 190) * xScale),
-                    Math.round((2 + prices[i] * 7.47F) * yScale)
-            );
-            MARKERS_IMAGES[i].setLayoutParams(layoutParams);
-            MARKERS_IMAGES[i].setVisibility(View.VISIBLE);
+            MARKERS_IMAGES[i].setImageResource((Integer) PRICES_IMAGES[i].get(prices[i]));
         }
     }
 }
