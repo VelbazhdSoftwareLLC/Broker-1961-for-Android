@@ -74,12 +74,10 @@ class Company {
         this.price *= 10;
 
         if (this.price < LOWEST_VALUE) {
-            //TODO Take the penalty.
             dividend = PENALTY_VALUE;
             this.price = LOWEST_VALUE;
         }
         if (this.price > HIGHEST_VALUE) {
-            //TODO Give the dividend.
             dividend = this.price - HIGHEST_VALUE;
             this.price = HIGHEST_VALUE;
         }
