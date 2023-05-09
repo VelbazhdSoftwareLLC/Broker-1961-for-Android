@@ -59,4 +59,19 @@ abstract class Card {
     String key() {
         return key;
     }
+
+    /**
+     * Get reference to the company which is forbidden for selection.
+     *
+     * @return Reference to the company, null if it is not applicable.
+     */
+    Company unselectable() {
+        if (up.size() == 1 && down.size() != 1) {
+            return up.get(0);
+        } else if (up.size() != 1 && down.size() == 1) {
+            return down.get(0);
+        }
+
+        return null;
+    }
 }

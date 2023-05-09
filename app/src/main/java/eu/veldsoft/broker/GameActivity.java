@@ -364,6 +364,21 @@ public class GameActivity extends AppCompatActivity {
              */
             if (!board.play(data.getIntExtra("cardIndex", -1), data.getIntExtra("companyIndex", -1))) {
                 Toast.makeText(GameActivity.this, R.string.card_is_not_played_text, Toast.LENGTH_LONG).show();
+            } else {
+                /*
+                 * Calculate money shortage of the player for paying penalties.
+                 */
+                int shortages[] = board.playersPenaltiesShortages();
+                for (int i = 0; i < shortages.length; i++) {
+                    /*
+                     * The shortage is a positive number.
+                     */
+                    if (shortages[i] <= 0) {
+                        continue;
+                    }
+
+                    //TODO Show activity for shares sell for each targeted player.
+                }
             }
         }
 

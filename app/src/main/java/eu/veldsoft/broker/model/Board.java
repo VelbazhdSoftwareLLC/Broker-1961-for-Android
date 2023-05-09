@@ -555,4 +555,44 @@ public class Board {
     public boolean gameInProgress() {
         return state != State.NONE;
     }
+
+    /**
+     * Calculate shortages of the players to pay penalties.
+     *
+     * @return Array with amount of money to pay for all players who have penalty to pay.
+     */
+    public int[] playersPenaltiesShortages() {
+        int totalPenalty = 0;
+        for (Company c : companies) {
+            if (c.dividend() >= 0) {
+                continue;
+            }
+
+            totalPenalty += (-c.dividend());
+        }
+
+        int shortages[] = new int[players.size()];
+        for (int i = 0; i < shortages.length; i++) {
+            shortages[i] = 0;
+
+            /*
+             * Inactive player are not calculated.
+             */
+            if (players.get(i).active() == false) {
+                continue;
+            }
+
+            /*
+             * Player with money are not interesting.
+             */
+            if (players.get(i).money() >= totalPenalty) {
+                continue;
+            }
+
+            shortages[i] = totalPenalty - players.get(i).money();
+        }
+
+        return shortages;
+    }
+
 }
