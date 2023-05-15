@@ -378,6 +378,7 @@ public class GameActivity extends AppCompatActivity {
                     }
 
                     //TODO Show activity for shares sell for each targeted player.
+                    startActivity(new Intent(GameActivity.this, UrgentSaleActivity.class));
                 }
             }
         }

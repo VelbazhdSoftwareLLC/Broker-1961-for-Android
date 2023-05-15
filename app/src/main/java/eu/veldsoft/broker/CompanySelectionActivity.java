@@ -45,15 +45,42 @@ public class CompanySelectionActivity extends AppCompatActivity {
                     Toast.makeText(CompanySelectionActivity.this, R.string.no_selected_company_text,
                             Toast.LENGTH_LONG).show();
                 } else {
-                    if (false) {
-                        //TODO Check is the company selection valid.
-                    } else {
-                        int card = CompanySelectionActivity.this.getIntent().getIntExtra("card", -1);
-                        setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", card).putExtra("companyIndex", index));
-                        CompanySelectionActivity.this.finish();
-                    }
+                    int cardIndex = CompanySelectionActivity.this.getIntent().getIntExtra("cardIndex", -1);
+                    setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", cardIndex).putExtra("companyIndex", index));
+                    CompanySelectionActivity.this.finish();
                 }
             }
         });
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        findViewById(R.id.radioButtonA).setEnabled(true);
+        findViewById(R.id.radioButtonB).setEnabled(true);
+        findViewById(R.id.radioButtonC).setEnabled(true);
+        findViewById(R.id.radioButtonD).setEnabled(true);
+
+        String key = CompanySelectionActivity.this.getIntent().getStringExtra("cardKey");
+        if (key == null) {
+            return;
+        }
+
+        if (key.contains("A")) {
+            findViewById(R.id.radioButtonA).setEnabled(false);
+        }
+        if (key.contains("B")) {
+            findViewById(R.id.radioButtonB).setEnabled(false);
+        }
+        if (key.contains("C")) {
+            findViewById(R.id.radioButtonC).setEnabled(false);
+        }
+        if (key.contains("D")) {
+            findViewById(R.id.radioButtonD).setEnabled(false);
+        }
     }
 }
