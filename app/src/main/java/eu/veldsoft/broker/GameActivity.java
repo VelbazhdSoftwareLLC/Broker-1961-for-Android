@@ -40,6 +40,11 @@ public class GameActivity extends AppCompatActivity {
     private static final int LAUNCH_BUY_SELL_ACTIVITY = 3;
 
     /**
+     * The identifier for launching activity.
+     */
+    private static final int LAUNCH_URGENT_SALE_ACTIVITY = 4;
+
+    /**
      * Board view references.
      */
     private static ImageView BOARD_IMAGE = null;
@@ -377,8 +382,21 @@ public class GameActivity extends AppCompatActivity {
                         continue;
                     }
 
+                    int prices[] = {0, 0, 0, 0};
+                    int quantities[] = {0, 0, 0, 0};
+                    Object portfolio[] = board.portfolio(i);
+                    String name = (String) portfolio[0];
+                    quantities[0] = (Integer) portfolio[1];
+                    quantities[1] = (Integer) portfolio[2];
+                    quantities[2] = (Integer) portfolio[3];
+                    quantities[3] = (Integer) portfolio[4];
+                    prices[0] = (Integer) portfolio[5];
+                    prices[1] = (Integer) portfolio[6];
+                    prices[2] = (Integer) portfolio[7];
+                    prices[3] = (Integer) portfolio[8];
+
                     //TODO Show activity for shares sell for each targeted player.
-                    startActivity(new Intent(GameActivity.this, UrgentSaleActivity.class));
+                    startActivityForResult(new Intent(GameActivity.this, UrgentSaleActivity.class).putExtra("playerIndex", i).putExtra("name", name).putExtra("shortage", shortages[i]).putExtra("quantities", quantities).putExtra("prices", prices), LAUNCH_URGENT_SALE_ACTIVITY);
                 }
             }
         }

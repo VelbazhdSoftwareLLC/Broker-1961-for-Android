@@ -595,4 +595,27 @@ public class Board {
         return shortages;
     }
 
+    /**
+     * Player's portfolio.
+     *
+     * @param playerIndex Player's index.
+     *
+     * @return Object array with first element the name of the player, player's shares and companies' prices.
+     */
+    public Object[] portfolio(int playerIndex) {
+        Object result[] = {"", 0, 0, 0, 0, 0, 0, 0, 0};
+
+        result[0] = players.get(playerIndex).name();
+
+        for (Share s : players.get(playerIndex).shares()) {
+            result[companies.indexOf(s.company()) + 1] = (Integer) result[companies.indexOf(s.company()) + 1] + s.amount();
+        }
+
+        result[5] = companies.get(0).price();
+        result[6] = companies.get(1).price();
+        result[7] = companies.get(2).price();
+        result[8] = companies.get(3).price();
+
+        return result;
+    }
 }
