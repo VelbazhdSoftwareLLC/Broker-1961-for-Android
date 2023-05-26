@@ -172,9 +172,8 @@
             android:id="@+id/tradeFinish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Finish Trading" />
+            android:text="@string/finish_trading_text" />
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

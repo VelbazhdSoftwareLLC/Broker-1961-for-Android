@@ -3,32 +3,29 @@
     <string name="single_player_game_label">Single Player Game</string>
     <string name="exit_game_label">Exit</string>
     <string name="redirect_activity_is_missing_message">Redirect activity is missing!</string>
-    <string name="about_text">Buy and sell stock shares. By play of Market Action cards, strategically manipulate prices to your advantage and to the downfall of your opponents. Win by having the most money in cash and stocks after the last card has been played. But be careful: if all of your remaining stock holdings crash, it is possible to be eliminated before the game is even over.
-
+    <string name="about_text">
+Buy and sell stock shares. By play of Market Action cards, strategically manipulate prices to your advantage and to the downfall of your opponents. Win by having the most money in cash and stocks after the last card has been played. But be careful: if all of your remaining stock holdings crash, it is possible to be eliminated before the game is even over.
+\n\n
 Originally published in 1961 as Broker by the Spencer-Murray Corporation of Swarthmore, Pennsylvania.
-
+\n\n
 The original box is white, with lettering and logo in black, very basic, drab, and uninspiring. Yet this obscure title was quite a gem considering the limitation of games to choose from during its day.
-
+\n\n
 In 1967 it was re-published by the German firm Otto Maier Verlag, which is the ancestor of Ravensburger Spieleverlag GmbH Verlag. Numerous re-publications followed (1972, 1977 and others) including at least one which gave the rules in German, English and Italian. It was also published in the Ravensburger Casino Series.
 Components list for these editions are as follows: 160 stock certificates, 68 Market Action cards, 4 price markers, play money, stock price board.
-
+\n\n
 The 1983 (9th edition) by Ravensburger Spieleverlag GmbH changes the title slightly to Börsenspiel instead of Das Börsenspiel and the original rules heavily. Although this set is well-designed and much nicer on the eyes, the bland original version featured larger (regular card deck) size action cards. An extra set of 18 "risk" cards replacing 18 market cards had been added and they act as event cards that immediately effect changes in the market. They cause the unfortunate player who draws one to play it instead of a market card, a chaotic effect that some players will not like. Android version was implemented by Martin Kostadinov. It is school project for finish 12 grade.</string>
-    <string name="help_text">Tokens are placed on the board to indicate that each share is priced at $100 per share. Players are given a starting bank of $300.
-        The action cards in the market are divided into three piles: $100 cards, "Double" cards, and $40 and $60 piles.
-        Players are dealt a hand of 2 $100 cards, 3 double cards and 5 mixed $40 and $60 cards. But what sets the Broker apart from the rest of the pack is the innovative approach to using these Action Cards
-        in the market - each Action Card has MANY OPPOSITE values that are triggered SIMULTANEOUSLY!
-            \n\n
-        <!-- As the dealer first. On a player's turn, a player MAY first buy or sell shares on the board at their current price.
-     That player MUST then play a market action card and change stock prices accordingly. Then that player MAY buy or sell shares again.
-     This completes a move and game shifted left. One key consideration: while you can buy a company's stock and play a card to increase its value OR sell a company's stock and play a
-     card to decrease its value, you can NOT buy or sell shares of that stock to the NEXT line .
-     \n\n
-     -->
-
-        Play continues until all the market action cards dealt to the players have been played. Players then sell their remaining shares to the bank at the final price shown on the board. The player with the most money wins!
-            \n\n
-        In Broker, players have the power to manipulate the market and buy and sell stocks at favorable prices before playing a card and reaping benefits afterwards.
-    </string>
+    <string name="help_text">
+Tokens are placed on the board to indicate that each share is priced at $100 per share. Players are given a starting bank of $300.
+\n\n
+The action cards in the market are divided into three piles: $100 cards, "Double" cards, and $40 and $60 piles.
+\n\n
+Players are dealt a hand of 2 $100 cards, 3 double cards and 5 mixed $40 and $60 cards. But what sets the Broker apart from the rest of the pack is the innovative approach to using these Action Cards in the market - each Action Card has MANY OPPOSITE values that are triggered SIMULTANEOUSLY!
+\n\n
+As the dealer first. On a player\'s turn, a player MAY first buy or sell shares on the board at their current price. That player MUST then play a market action card and change stock prices accordingly. Then that player MAY buy or sell shares again. This completes a move and game shifted left. One key consideration: while you can buy a company\'s stock and play a card to increase its value OR sell a company\'s stock and play a card to decrease its value, you can NOT buy or sell shares of that stock to the NEXT line .
+\n\n
+Play continues until all the market action cards dealt to the players have been played. Players then sell their remaining shares to the bank at the final price shown on the board. The player with the most money wins!
+\n\n
+In Broker, players have the power to manipulate the market and buy and sell stocks at favorable prices before playing a card and reaping benefits afterwards.</string>
     <string name="new_game_menu">New Game</string>
     <string name="help_menu">Help</string>
     <string name="about_menu">About</string>
@@ -38,4 +35,18 @@ The 1983 (9th edition) by Ravensburger Spieleverlag GmbH changes the title sligh
     <string name="exit_menu">Exit</string>
     <string name="played_cards_menu">Played Cards</string>
     <string name="player_report_menu">Player Report</string>
+    <string name="end_report_menu">End Report</string>
+    <string name="no_selected_company_text">No selected company!</string>
+    <string name="turn_is_not_ending_text">Turn is not ending!</string>
+    <string name="game_finished_text">Game finished!</string>
+    <string name="card_is_not_played_text">Card is not played!</string>
+    <string name="trading_is_not_done_text">Trading is not done!</string>
+    <string name="save_game_menu">Save</string>
+    <string name="load_game_menu">Load</string>
+    <string name="game_not_started_text">Game did not start!</string>
+    <string name="finish_trading_text">Finish Trading</string>
+    <string name="urgent_sell_text">Urgent Sell</string>
+    <string name="amount_needed_text">Amount Needed: </string>
+    <string name="amount_risen_text">Amount Risen: </string>
+    <string name="sell_more_text">You have to sell more shares!</string>
 </resources>

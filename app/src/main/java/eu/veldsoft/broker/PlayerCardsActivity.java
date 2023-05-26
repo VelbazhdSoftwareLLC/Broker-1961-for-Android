@@ -77,7 +77,7 @@ public class PlayerCardsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (GameActivity.board().needCompanySelection(bar.getProgress())) {
-                    startActivityForResult((new Intent(PlayerCardsActivity.this, CompanySelectionActivity.class)).putExtra("card", bar.getProgress()), LAUNCH_COMPANY_SELECTION_ACTIVITY);
+                    startActivityForResult((new Intent(PlayerCardsActivity.this, CompanySelectionActivity.class)).putExtra("cardIndex", bar.getProgress()).putExtra("cardKey", keys[bar.getProgress()]), LAUNCH_COMPANY_SELECTION_ACTIVITY);
                 } else {
                     setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", bar.getProgress()).putExtra("companyIndex", -1));
                     PlayerCardsActivity.this.finish();

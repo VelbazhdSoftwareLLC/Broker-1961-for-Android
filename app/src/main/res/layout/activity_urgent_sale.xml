@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UrgentSaleActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/amount_risen_text" />
+
+            <TextView
+                android:id="@+id/risenMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/amount_needed_text" />
+
+            <TextView
+                android:id="@+id/urgentMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A" />
+
+            <EditText
+                android:id="@+id/aAmountAvailable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:editable="false"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/aAmountPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:editable="false"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/aAmountUrgent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="B" />
+
+            <EditText
+                android:id="@+id/bAmountAvailable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:editable="false"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/bAmountPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:editable="false"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/bAmountUrgent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="C" />
+
+            <EditText
+                android:id="@+id/cAmountAvailable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:editable="false"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/cAmountPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:editable="false"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/cAmountUrgent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="D" />
+
+            <EditText
+                android:id="@+id/dAmountAvailable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:editable="false"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/dAmountPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:editable="false"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/dAmountUrgent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="0"
+                android:textAlignment="viewEnd"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/urgentSell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/urgent_sell_text" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

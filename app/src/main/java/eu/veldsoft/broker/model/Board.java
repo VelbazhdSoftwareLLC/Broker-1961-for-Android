@@ -274,15 +274,51 @@ public class Board {
     }
 
     /**
+     * Get finished game flag.
+     *
+     * @return True if the game is over, false otherwise.
+     */
+    public boolean finished() {
+        return state == State.GAME_END;
+    }
+
+    /**
+     * Get report of the end of the game.
+     *
+     * @return The report of the end of the game.
+     */
+    public String endReport() {
+        if (state != State.GAME_END) {
+            return "The game is in progress ...";
+        }
+
+        if (state == State.GAME_END) {
+            String text = "";
+
+            text += "The End of the Game Report";
+            text += "\n";
+            text += "\n";
+
+            for (Player p : players) {
+                text += p.report();
+                text += "\n";
+            }
+
+            return text;
+        }
+
+        return "";
+    }
+
+    /**
      * Start new game or restart current game.
      *
      * @param playersNames List with the names of the players.
-     *
-     * @throws RuntimeException Error in number of players.
+     * @return True if the game starts, false otherwise.
      */
-    public void newGame(String[] playersNames) throws RuntimeException {
-        if (playersNames.length < 2 && 6 < playersNames.length) {
-            throw new RuntimeException("Incorrect number of players!");
+    public boolean newGame(String[] playersNames) {
+        if (playersNames.length < 2 || 6 < playersNames.length) {
+            return false;
         }
 
         /*
@@ -335,6 +371,8 @@ public class Board {
          * In the real life counting usually starts from one, not from zero.
          */
         round = 1;
+
+        return true;
     }
 
     /**
@@ -388,7 +426,6 @@ public class Board {
          * There is no more active players.v The game should finish.
          */
         if (next == -1) {
-            //TODO Report the end of the game.
             state = State.GAME_END;
         } else {
             playing = players.get(next);
@@ -494,5 +531,90 @@ public class Board {
         }
 
         return false;
+    }
+
+    /**
+     * All player sell all shares.
+     */
+    public void totalSale() {
+        for (Player p : players) {
+            for (Share s : p.shares()) {
+                Share share = p.sell(s.company(), -s.amount());
+                if (share != null) {
+                    transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.POSTORDER, round, share, p));
+                }
+            }
+        }
+    }
+
+    /**
+     * Game progress checker.
+     *
+     * @return True if the game is in progress, false otherwise.
+     */
+    public boolean gameInProgress() {
+        return state != State.NONE;
+    }
+
+    /**
+     * Calculate shortages of the players to pay penalties.
+     *
+     * @return Array with amount of money to pay for all players who have penalty to pay.
+     */
+    public int[] playersPenaltiesShortages() {
+        int totalPenalty = 0;
+        for (Company c : companies) {
+            if (c.dividend() >= 0) {
+                continue;
+            }
+
+            totalPenalty += (-c.dividend());
+        }
+
+        int shortages[] = new int[players.size()];
+        for (int i = 0; i < shortages.length; i++) {
+            shortages[i] = 0;
+
+            /*
+             * Inactive player are not calculated.
+             */
+            if (players.get(i).active() == false) {
+                continue;
+            }
+
+            /*
+             * Player with money are not interesting.
+             */
+            if (players.get(i).money() >= totalPenalty) {
+                continue;
+            }
+
+            shortages[i] = totalPenalty - players.get(i).money();
+        }
+
+        return shortages;
+    }
+
+    /**
+     * Player's portfolio.
+     *
+     * @param playerIndex Player's index.
+     * @return Object array with first element the name of the player, player's shares and companies' prices.
+     */
+    public Object[] portfolio(int playerIndex) {
+        Object result[] = {"", 0, 0, 0, 0, 0, 0, 0, 0};
+
+        result[0] = players.get(playerIndex).name();
+
+        for (Share s : players.get(playerIndex).shares()) {
+            result[companies.indexOf(s.company()) + 1] = (Integer) result[companies.indexOf(s.company()) + 1] + s.amount();
+        }
+
+        result[5] = companies.get(0).price();
+        result[6] = companies.get(1).price();
+        result[7] = companies.get(2).price();
+        result[8] = companies.get(3).price();
+
+        return result;
     }
 }
