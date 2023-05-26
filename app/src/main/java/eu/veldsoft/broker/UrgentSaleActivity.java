@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,9 +51,12 @@ public class UrgentSaleActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.urgentSell)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Integer.valueOf(((TextView) findViewById(R.id.risenMoney)).getText().toString()) < Integer.valueOf(((TextView) findViewById(R.id.urgentMoney)).getText().toString())) {
-                    return;
-                }
+                int prices[] = {
+                        Integer.valueOf(((EditText) findViewById(R.id.aAmountPrice)).getText().toString()),
+                        Integer.valueOf(((EditText) findViewById(R.id.bAmountPrice)).getText().toString()),
+                        Integer.valueOf(((EditText) findViewById(R.id.cAmountPrice)).getText().toString()),
+                        Integer.valueOf(((EditText) findViewById(R.id.dAmountPrice)).getText().toString()),
+                };
 
                 int sold[] = {
                         Integer.valueOf(((EditText) findViewById(R.id.aAmountUrgent)).getText().toString()),
@@ -60,6 +64,32 @@ public class UrgentSaleActivity extends AppCompatActivity {
                         Integer.valueOf(((EditText) findViewById(R.id.cAmountUrgent)).getText().toString()),
                         Integer.valueOf(((EditText) findViewById(R.id.dAmountUrgent)).getText().toString()),
                 };
+
+                int held[] = {
+                        Integer.valueOf(((EditText) findViewById(R.id.aAmountAvailable)).getText().toString()),
+                        Integer.valueOf(((EditText) findViewById(R.id.bAmountAvailable)).getText().toString()),
+                        Integer.valueOf(((EditText) findViewById(R.id.cAmountAvailable)).getText().toString()),
+                        Integer.valueOf(((EditText) findViewById(R.id.dAmountAvailable)).getText().toString()),
+                };
+
+                int risen = 0;
+                int difference = 0;
+                for (int i = 0; i < sold.length && i < prices.length && i < held.length; i++) {
+                    risen += prices[i] * prices[i];
+
+                    if (held[i] > sold[i]) {
+                        sold[i] = held[i];
+                    }
+
+                    difference += held[i] - sold[i];
+                }
+
+                ((TextView) findViewById(R.id.risenMoney)).setText("" + risen);
+
+                if (Integer.valueOf(((TextView) findViewById(R.id.risenMoney)).getText().toString()) < Integer.valueOf(((TextView) findViewById(R.id.urgentMoney)).getText().toString()) && difference > 0) {
+                    Toast.makeText(UrgentSaleActivity.this, R.string.sell_more_text, Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 Intent intent = new Intent();
                 intent.putExtra("soldShares", sold);
@@ -82,15 +112,10 @@ public class UrgentSaleActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.urgentMoney)).setText("" + getIntent().getIntExtra("shortage", 0));
 
-        int prices[] = getIntent().getIntArrayExtra("prices");
-        if (prices != null) {
-            ((EditText) findViewById(R.id.aAmountPrice)).setText("" + prices[0]);
-            ((EditText) findViewById(R.id.bAmountPrice)).setText("" + prices[1]);
-            ((EditText) findViewById(R.id.cAmountPrice)).setText("" + prices[2]);
-            ((EditText) findViewById(R.id.dAmountPrice)).setText("" + prices[3]);
-        }
-
-        int quantities[] = getIntent().getIntArrayExtra("prices");
+        /*
+         * First text is about quantity available.
+         */
+        int quantities[] = getIntent().getIntArrayExtra("quantities");
         if (quantities != null) {
             ((EditText) findViewById(R.id.aAmountAvailable)).setText("" + quantities[0]);
             ((EditText) findViewById(R.id.bAmountAvailable)).setText("" + quantities[1]);
@@ -98,5 +123,15 @@ public class UrgentSaleActivity extends AppCompatActivity {
             ((EditText) findViewById(R.id.dAmountAvailable)).setText("" + quantities[3]);
         }
 
+        /*
+         * Second text is about prices for the companies.
+         */
+        int prices[] = getIntent().getIntArrayExtra("prices");
+        if (prices != null) {
+            ((EditText) findViewById(R.id.aAmountPrice)).setText("" + prices[0]);
+            ((EditText) findViewById(R.id.bAmountPrice)).setText("" + prices[1]);
+            ((EditText) findViewById(R.id.cAmountPrice)).setText("" + prices[2]);
+            ((EditText) findViewById(R.id.dAmountPrice)).setText("" + prices[3]);
+        }
     }
 }

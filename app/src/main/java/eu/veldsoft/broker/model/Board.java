@@ -599,7 +599,6 @@ public class Board {
      * Player's portfolio.
      *
      * @param playerIndex Player's index.
-     *
      * @return Object array with first element the name of the player, player's shares and companies' prices.
      */
     public Object[] portfolio(int playerIndex) {

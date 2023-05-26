@@ -48,4 +48,5 @@ In Broker, players have the power to manipulate the market and buy and sell stoc
     <string name="urgent_sell_text">Urgent Sell</string>
     <string name="amount_needed_text">Amount Needed: </string>
     <string name="amount_risen_text">Amount Risen: </string>
+    <string name="sell_more_text">You have to sell more shares!</string>
 </resources>
