@@ -1,5 +1,6 @@
 package eu.veldsoft.broker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,12 +8,10 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 /**
  * Company selection screen.
  */
-public class CompanySelectionActivity extends AppCompatActivity {
+public class CompanySelectionActivity extends Activity {
 
     /**
      * {@inheritDoc}
@@ -46,7 +45,7 @@ public class CompanySelectionActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 } else {
                     int cardIndex = CompanySelectionActivity.this.getIntent().getIntExtra("cardIndex", -1);
-                    setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", cardIndex).putExtra("companyIndex", index));
+                    setResult(Activity.RESULT_OK, (new Intent()).putExtra("cardIndex", cardIndex).putExtra("companyIndex", index));
                     CompanySelectionActivity.this.finish();
                 }
             }

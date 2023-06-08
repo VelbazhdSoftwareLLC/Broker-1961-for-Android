@@ -1,15 +1,14 @@
 package eu.veldsoft.broker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 /**
  * Lobby menu screen.
  */
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends Activity {
 
     /**
      * {@inheritDoc}

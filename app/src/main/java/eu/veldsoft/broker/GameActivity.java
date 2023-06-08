@@ -1,5 +1,6 @@
 package eu.veldsoft.broker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,8 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
@@ -23,7 +22,7 @@ import eu.veldsoft.broker.model.Board;
 /**
  * Main game screen.
  */
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends Activity {
     /**
      * The identifier for launching activity.
      */

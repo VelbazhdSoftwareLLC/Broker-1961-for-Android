@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MenuActivity"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/single_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="157dp"
-        android:text="@string/single_player_game_label"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-16dp" />
+        android:text="@string/single_player_game_label" />
 
     <Button
         android:id="@+id/exit_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="205dp"
-        android:text="@string/exit_game_label"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        android:text="@string/exit_game_label" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

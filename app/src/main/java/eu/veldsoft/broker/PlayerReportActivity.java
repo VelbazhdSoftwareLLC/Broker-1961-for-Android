@@ -1,14 +1,13 @@
 package eu.veldsoft.broker;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Player report screen.
  */
-public class PlayerReportActivity extends AppCompatActivity {
+public class PlayerReportActivity extends Activity {
 
     /**
      * {@inheritDoc}

@@ -1,11 +1,10 @@
 package eu.veldsoft.broker;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.SeekBar;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +12,7 @@ import java.util.Map;
 /**
  * Visualization of the cards played during the gameplay.
  */
-public class PlayedCardsActivity extends AppCompatActivity {
+public class PlayedCardsActivity extends Activity {
     /**
      * Map of the card key and card image reference.
      */
