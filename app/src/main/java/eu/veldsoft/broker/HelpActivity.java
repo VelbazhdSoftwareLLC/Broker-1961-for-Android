@@ -1,13 +1,12 @@
 package eu.veldsoft.broker;
 
+import android.app.Activity;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Game help screen.
  */
-public class HelpActivity extends AppCompatActivity {
+public class HelpActivity extends Activity {
 
     /**
      * {@inheritDoc}

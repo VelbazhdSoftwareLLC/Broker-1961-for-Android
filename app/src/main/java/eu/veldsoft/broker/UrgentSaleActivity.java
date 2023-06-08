@@ -1,5 +1,6 @@
 package eu.veldsoft.broker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -9,12 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 /**
  * Urgent sale window.
  */
-public class UrgentSaleActivity extends AppCompatActivity {
+public class UrgentSaleActivity extends Activity {
 
     /**
      * {@inheritDoc}
@@ -94,7 +93,7 @@ public class UrgentSaleActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("soldShares", sold);
                 intent.putExtra("playerIndex", getIntent().getIntExtra("playerIndex", -1));
-                setResult(AppCompatActivity.RESULT_OK, intent);
+                setResult(Activity.RESULT_OK, intent);
 
                 UrgentSaleActivity.this.finish();
             }

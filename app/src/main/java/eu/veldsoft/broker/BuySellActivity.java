@@ -1,5 +1,6 @@
 package eu.veldsoft.broker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,12 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 /**
  * Buy or sell shares of the companies.
  */
-public class BuySellActivity extends AppCompatActivity {
+public class BuySellActivity extends Activity {
 
     /**
      * {@inheritDoc}
@@ -54,7 +53,7 @@ public class BuySellActivity extends AppCompatActivity {
 
                 Intent intent = new Intent();
                 intent.putExtra("buySellShares", shares);
-                setResult(AppCompatActivity.RESULT_OK, intent);
+                setResult(Activity.RESULT_OK, intent);
 
                 BuySellActivity.this.finish();
             }

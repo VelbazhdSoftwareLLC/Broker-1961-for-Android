@@ -1,13 +1,12 @@
 package eu.veldsoft.broker;
 
+import android.app.Activity;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * About the product screen.
  */
-public class AboutActivity extends AppCompatActivity {
+public class AboutActivity extends Activity {
 
     /**
      * {@inheritDoc}

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".NumberOfPlayersActivity">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".NumberOfPlayersActivity"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="1dp"
+        android:layout_weight="16"
         android:orientation="horizontal">
 
         <CheckBox
@@ -33,7 +34,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="51dp"
+        android:layout_weight="16"
         android:orientation="horizontal">
 
         <CheckBox
@@ -57,7 +58,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="101dp"
+        android:layout_weight="16"
         android:orientation="horizontal">
 
         <CheckBox
@@ -80,7 +81,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="151dp"
+        android:layout_weight="16"
         android:orientation="horizontal">
 
         <CheckBox
@@ -103,7 +104,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="201dp"
+        android:layout_weight="16"
         android:orientation="horizontal">
 
         <CheckBox
@@ -126,7 +127,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="251dp"
+        android:layout_weight="16"
         android:orientation="horizontal">
 
         <CheckBox
@@ -149,7 +150,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="351dp"
+        android:layout_weight="10"
         android:orientation="horizontal">
 
         <Button
@@ -159,4 +160,4 @@
             android:text="Done"></Button>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

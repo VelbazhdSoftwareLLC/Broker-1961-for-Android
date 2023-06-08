@@ -1,5 +1,6 @@
 package eu.veldsoft.broker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,15 +9,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Visualization of the cards hold by a particular player.
  */
-public class PlayerCardsActivity extends AppCompatActivity {
+public class PlayerCardsActivity extends Activity {
     /**
      * The identifier for launching activity.
      */
@@ -79,7 +78,7 @@ public class PlayerCardsActivity extends AppCompatActivity {
                 if (GameActivity.board().needCompanySelection(bar.getProgress())) {
                     startActivityForResult((new Intent(PlayerCardsActivity.this, CompanySelectionActivity.class)).putExtra("cardIndex", bar.getProgress()).putExtra("cardKey", keys[bar.getProgress()]), LAUNCH_COMPANY_SELECTION_ACTIVITY);
                 } else {
-                    setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", bar.getProgress()).putExtra("companyIndex", -1));
+                    setResult(Activity.RESULT_OK, (new Intent()).putExtra("cardIndex", bar.getProgress()).putExtra("companyIndex", -1));
                     PlayerCardsActivity.this.finish();
                 }
             }
@@ -132,7 +131,7 @@ public class PlayerCardsActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == LAUNCH_COMPANY_SELECTION_ACTIVITY) {
-            setResult(AppCompatActivity.RESULT_OK, (new Intent()).putExtra("cardIndex", data.getIntExtra("cardIndex", -1)).putExtra("companyIndex", data.getIntExtra("companyIndex", -1)));
+            setResult(Activity.RESULT_OK, (new Intent()).putExtra("cardIndex", data.getIntExtra("cardIndex", -1)).putExtra("companyIndex", data.getIntExtra("companyIndex", -1)));
             PlayerCardsActivity.this.finish();
         }
     }

@@ -1,14 +1,13 @@
 package eu.veldsoft.broker;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * End game report screen.
  */
-public class EndReportActivity extends AppCompatActivity {
+public class EndReportActivity extends Activity {
 
     /**
      * {@inheritDoc}
