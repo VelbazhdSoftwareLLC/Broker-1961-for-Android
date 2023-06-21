@@ -14,17 +14,24 @@
         android:text="@string/single_player_game_label" />
 
     <Button
-        android:id="@+id/multiplayer_game"
+        android:id="@+id/join_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/multiplayer_game_label" />
+        android:text="@string/join_game_label"/>
+
+    <Button
+        android:id="@+id/host_game"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/host_game_label"/>
 
     <Button
         android:id="@+id/exit_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/exit_game_label" />
 
 </LinearLayout>
