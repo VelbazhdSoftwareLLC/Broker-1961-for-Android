@@ -20,9 +20,25 @@ import androidx.core.app.ActivityCompat;
  * Host game screen.
  */
 public class HostActivity extends Activity {
+    /**
+     *
+     */
     private WifiP2pManager manager = null;
+
+    //TODO Many be channel object should be global.
+    /**
+     *
+     */
     private WifiP2pManager.Channel channel = null;
+
+    /**
+     *
+     */
     private WifiP2pManager.ActionListener listener = null;
+
+    /**
+     *
+     */
     private BroadcastReceiver receiver = null;
 
     /**
