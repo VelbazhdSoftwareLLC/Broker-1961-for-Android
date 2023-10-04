@@ -52,4 +52,6 @@ In Broker, players have the power to manipulate the market and buy and sell stoc
     <string name="multiplayer_game_label">Multiplayer Game</string>
     <string name="join_game_label">Join Game</string>
     <string name="host_game_label">Host Game</string>
+    <string name="playersDoneText">Done</string>
+    <string name="startMultiplayerText">Start</string>
 </resources>
