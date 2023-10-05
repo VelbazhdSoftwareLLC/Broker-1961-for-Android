@@ -157,7 +157,7 @@
             android:id="@+id/playersDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Done"></Button>
+            android:text="@string/playersDoneText"></Button>
     </LinearLayout>
 
 </LinearLayout>
