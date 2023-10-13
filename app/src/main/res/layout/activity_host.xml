@@ -26,7 +26,13 @@
             android:layout_weight="1"
             android:ems="10"
             android:minHeight="48dp"
-            android:text="" />
+            android:text=""
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:longClickable="false"
+            android:linksClickable="false"
+            android:autoLink="none" />
     </LinearLayout>
 
     <LinearLayout
@@ -48,7 +54,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:text="" />
+            android:inputType="none"
+            android:text=""
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:longClickable="false"
+            android:linksClickable="false"
+            android:autoLink="none" />
     </LinearLayout>
 
     <LinearLayout
@@ -69,7 +82,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:text="" />
+            android:text=""
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:longClickable="false"
+            android:linksClickable="false"
+            android:autoLink="none" />
     </LinearLayout>
 
     <LinearLayout
@@ -90,7 +109,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:text="" />
+            android:text=""
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:longClickable="false"
+            android:linksClickable="false"
+            android:autoLink="none" />
     </LinearLayout>
 
     <LinearLayout
@@ -111,7 +136,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:text="" />
+            android:text=""
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:longClickable="false"
+            android:linksClickable="false"
+            android:autoLink="none" />
     </LinearLayout>
 
     <LinearLayout
@@ -132,7 +163,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:text="" />
+            android:text=""
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:longClickable="false"
+            android:linksClickable="false"
+            android:autoLink="none" />
     </LinearLayout>
 
     <LinearLayout
@@ -147,6 +184,5 @@
             android:layout_height="wrap_content"
             android:text="@string/startMultiplayerText"></Button>
     </LinearLayout>
-
 
 </LinearLayout>
