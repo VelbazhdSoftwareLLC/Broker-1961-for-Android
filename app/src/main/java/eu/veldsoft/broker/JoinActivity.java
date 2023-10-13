@@ -11,6 +11,7 @@ import android.net.wifi.p2p.WifiP2pDeviceList;
 import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
@@ -48,6 +49,7 @@ public class JoinActivity extends Activity {
         setContentView(R.layout.activity_join);
 
         manager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
+
         channel = manager.initialize(this, getMainLooper(), new WifiP2pManager.ChannelListener() {
             @Override
             public void onChannelDisconnected() {
@@ -59,16 +61,16 @@ public class JoinActivity extends Activity {
             public void onFailure(int reason) {
                 switch (reason) {
                     case WifiP2pManager.BUSY:
-                        //TODO Wi-Fi is busy.
+                        Toast.makeText(JoinActivity.this, R.string.wi_fi_is_busy_text, Toast.LENGTH_LONG).show();
                         break;
                     case WifiP2pManager.ERROR:
-                        //TODO Wi-Fi internal error.
+                        Toast.makeText(JoinActivity.this, R.string.wi_fi_internal_error_text, Toast.LENGTH_LONG).show();
                         break;
                     case WifiP2pManager.P2P_UNSUPPORTED:
-                        //TODO Wi-Fi peer-to-peer is not supported.
+                        Toast.makeText(JoinActivity.this, R.string.wi_fi_peer_to_peer_is_not_supported_text, Toast.LENGTH_LONG).show();
                         break;
                     default:
-                        //TODO Wi-Fi unknown error.
+                        Toast.makeText(JoinActivity.this, R.string.wi_fi_unknown_error_text, Toast.LENGTH_LONG).show();
                         break;
                 }
             }
@@ -83,24 +85,13 @@ public class JoinActivity extends Activity {
                 String action = intent.getAction();
 
                 if (WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION.equals(action)) {
-                    int state = intent.getIntExtra(WifiP2pManager.EXTRA_WIFI_STATE, -1);
-                    if (state == WifiP2pManager.WIFI_P2P_STATE_ENABLED) {
-                        /*
-                         * Wi-Fi Direct is enabled.
-                         */
-                    } else {
-                        // Wi-Fi Direct is not enabled
+                    if (intent.getIntExtra(WifiP2pManager.EXTRA_WIFI_STATE, -1) != WifiP2pManager.WIFI_P2P_STATE_ENABLED) {
+                        Toast.makeText(JoinActivity.this, R.string.wi_fi_is_not_enabled_text, Toast.LENGTH_LONG).show();
                     }
                 } else if (WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION.equals(action)) {
                     if (manager != null) {
                         if (ActivityCompat.checkSelfPermission(JoinActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                            // TODO: Consider calling
-                            //    ActivityCompat#requestPermissions
-                            // here to request the missing permissions, and then overriding
-                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                            //                                          int[] grantResults)
-                            // to handle the case where the user grants the permission. See the documentation
-                            // for ActivityCompat#requestPermissions for more details.
+                            //TODO Ask for permissions.
                             return;
                         }
                         manager.requestPeers(channel, JoinActivity.this::onPeersAvailable);
@@ -110,13 +101,14 @@ public class JoinActivity extends Activity {
                         return;
                     }
 
-                    WifiP2pInfo wifiP2pInfo = intent.getParcelableExtra(WifiP2pManager.EXTRA_WIFI_P2P_INFO);
+                    intent.getParcelableExtra(WifiP2pManager.EXTRA_WIFI_P2P_INFO);
                     manager.requestConnectionInfo(channel, JoinActivity.this::onConnectionInfoAvailable);
                 } else if (WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION.equals(action)) {
-                    // Code to handle changes in this device's details
                 }
             }
         };
+
+        manager.discoverPeers(channel, listener);
     }
 
     @Override
@@ -127,24 +119,25 @@ public class JoinActivity extends Activity {
          * Monitor Wi-Fi peer-to-peer status.
          */
         IntentFilter filter = new IntentFilter();
+
         filter.addAction(WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION);
         filter.addAction(WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION);
         filter.addAction(WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION);
         filter.addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION);
+
         registerReceiver(receiver, filter);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+
         unregisterReceiver(receiver);
     }
 
-    public void onPeersAvailable(WifiP2pDeviceList peerList) {
-        // Code to handle available peers
+    public void onPeersAvailable(WifiP2pDeviceList list) {
     }
 
     public void onConnectionInfoAvailable(WifiP2pInfo info) {
-        // Code to handle connection information (group owner, IP address, etc.)
     }
 }
