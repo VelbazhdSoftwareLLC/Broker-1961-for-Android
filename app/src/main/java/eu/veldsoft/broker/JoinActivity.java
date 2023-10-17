@@ -7,10 +7,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.net.wifi.p2p.WifiP2pConfig;
+import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pDeviceList;
 import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -108,6 +111,9 @@ public class JoinActivity extends Activity {
             }
         };
 
+        /*
+         * Peers discovery.
+         */
         manager.discoverPeers(channel, listener);
     }
 
@@ -136,6 +142,27 @@ public class JoinActivity extends Activity {
     }
 
     public void onPeersAvailable(WifiP2pDeviceList list) {
+        //TODO Select device to connect to.
+        for (WifiP2pDevice device : list.getDeviceList()) {
+            Log.d("TAG01", "" + device.toString());
+            //TODO Use external information for host device.
+            if (true) {
+                WifiP2pConfig config = new WifiP2pConfig();
+                config.deviceAddress = device.deviceAddress;
+                manager.connect(channel, config, new WifiP2pManager.ActionListener() {
+                    @Override
+                    public void onSuccess() {
+                    }
+
+                    @Override
+                    public void onFailure(int reason) {
+                        Toast.makeText(JoinActivity.this, R.string.host_connection_is_not_possible_text, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                break;
+            }
+        }
     }
 
     public void onConnectionInfoAvailable(WifiP2pInfo info) {
