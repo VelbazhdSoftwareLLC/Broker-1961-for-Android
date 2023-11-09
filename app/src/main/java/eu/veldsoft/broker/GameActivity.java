@@ -281,7 +281,7 @@ public class GameActivity extends Activity {
                 redraw();
                 break;
             case R.id.buy_sell:
-                startActivityForResult(new Intent(GameActivity.this, BuySellActivity.class), LAUNCH_BUY_SELL_ACTIVITY);
+                startActivityForResult((new Intent(GameActivity.this, BuySellActivity.class)).putExtra("possibilities", board.currentPlayerTradingPossibilities()), LAUNCH_BUY_SELL_ACTIVITY);
                 break;
             case R.id.play_card:
                 startActivityForResult((new Intent(GameActivity.this, PlayerCardsActivity.class)).putExtra("keys", board.currentPlayerCardsKyes()), LAUNCH_PLAY_CARD_ACTIVITY);

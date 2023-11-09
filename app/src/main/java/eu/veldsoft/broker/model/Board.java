@@ -617,4 +617,26 @@ public class Board {
 
         return result;
     }
+
+    /**
+     * Return trading possibilities of the current player.
+     *
+     * @return Array of integer values money, shares, prices.
+     */
+    public int[] currentPlayerTradingPossibilities() {
+        int possibilities[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+        possibilities[0] = playing.money();
+
+        for (Share s : playing.shares()) {
+            possibilities[companies.indexOf(s.company()) + 1] = (Integer) possibilities[companies.indexOf(s.company()) + 1] + s.amount();
+        }
+
+        possibilities[5] = companies.get(0).price();
+        possibilities[6] = companies.get(1).price();
+        possibilities[7] = companies.get(2).price();
+        possibilities[8] = companies.get(3).price();
+
+        return possibilities;
+    }
 }

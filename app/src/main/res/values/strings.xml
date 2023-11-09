@@ -61,4 +61,6 @@ In Broker, players have the power to manipulate the market and buy and sell stoc
     <string name="wi_fi_peer_to_peer_is_not_supported_text">Wi-Fi peer-to-peer is not supported!</string>
     <string name="wi_fi_unknown_error_text">Wi-Fi unknown error!</string>
     <string name="host_connection_is_not_possible_text">Host connection is not possible!</string>
+    <string name="cash_label">Cash:</string>
+    <string name="incorrect_trading_information_text">Incorrect trading information!</string>
 </resources>
