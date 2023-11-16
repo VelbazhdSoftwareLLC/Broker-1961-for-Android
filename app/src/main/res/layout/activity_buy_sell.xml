@@ -26,11 +26,20 @@
                 android:layout_height="wrap_content"
                 android:text="@string/cash_label" />
 
-            <TextView
+            <EditText
                 android:id="@+id/availableCash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0" />
+                android:ems="3"
+                android:text="0"
+                android:textAlignment="viewEnd"
+                android:inputType="number"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:longClickable="false"
+                android:linksClickable="false"
+                android:autoLink="none"/>
         </LinearLayout>
 
         <LinearLayout
@@ -42,24 +51,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="A" />
-
-            <RadioGroup
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/aBuyButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Buy" />
-
-                <RadioButton
-                    android:id="@+id/aSellButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sell" />
-            </RadioGroup>
 
             <Button
                 android:id="@+id/aMinus"
@@ -80,16 +71,28 @@
                 android:ems="3"
                 android:text="0"
                 android:textAlignment="viewEnd"
-                android:inputType="number" />
+                android:inputType="number"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:longClickable="false"
+                android:linksClickable="false"
+                android:autoLink="none"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/aCurrentPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="3"
                 android:text="0"
                 android:textAlignment="viewEnd"
-                android:inputType="number" />
+                android:inputType="number"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:longClickable="false"
+                android:linksClickable="false"
+                android:autoLink="none"/>
         </LinearLayout>
 
         <LinearLayout
@@ -101,24 +104,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="B" />
-
-            <RadioGroup
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/bBuyButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Buy" />
-
-                <RadioButton
-                    android:id="@+id/bSellButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sell" />
-            </RadioGroup>
 
             <Button
                 android:id="@+id/bMinus"
@@ -139,16 +124,28 @@
                 android:ems="3"
                 android:text="0"
                 android:textAlignment="viewEnd"
-                android:inputType="number" />
+                android:inputType="number"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:longClickable="false"
+                android:linksClickable="false"
+                android:autoLink="none"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/bCurrentPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="3"
                 android:text="0"
                 android:textAlignment="viewEnd"
-                android:inputType="number" />
+                android:inputType="number"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:longClickable="false"
+                android:linksClickable="false"
+                android:autoLink="none"/>
         </LinearLayout>
 
         <LinearLayout
@@ -160,24 +157,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="C" />
-
-            <RadioGroup
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/cBuyButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Buy" />
-
-                <RadioButton
-                    android:id="@+id/cSellButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sell" />
-            </RadioGroup>
 
             <Button
                 android:id="@+id/cMinus"
@@ -198,16 +177,28 @@
                 android:ems="3"
                 android:text="0"
                 android:textAlignment="viewEnd"
-                android:inputType="number" />
+                android:inputType="number"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:longClickable="false"
+                android:linksClickable="false"
+                android:autoLink="none"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/cCurrentPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="3"
                 android:text="0"
                 android:textAlignment="viewEnd"
-                android:inputType="number" />
+                android:inputType="number"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:longClickable="false"
+                android:linksClickable="false"
+                android:autoLink="none"/>
         </LinearLayout>
 
         <LinearLayout
@@ -219,24 +210,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="D" />
-
-            <RadioGroup
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/dBuyButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Buy" />
-
-                <RadioButton
-                    android:id="@+id/dSellButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sell" />
-            </RadioGroup>
 
             <Button
                 android:id="@+id/dMinus"
@@ -257,16 +230,28 @@
                 android:ems="3"
                 android:text="0"
                 android:textAlignment="viewEnd"
-                android:inputType="number" />
+                android:inputType="number"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:longClickable="false"
+                android:linksClickable="false"
+                android:autoLink="none"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/dCurrentPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="3"
                 android:text="0"
                 android:textAlignment="viewEnd"
-                android:inputType="number" />
+                android:inputType="number"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:longClickable="false"
+                android:linksClickable="false"
+                android:autoLink="none"/>
         </LinearLayout>
 
         <Button

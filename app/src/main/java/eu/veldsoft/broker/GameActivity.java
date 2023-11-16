@@ -249,6 +249,8 @@ public class GameActivity extends Activity {
         for (View view : MARKERS_IMAGES) {
             view.setVisibility(View.INVISIBLE);
         }
+
+        redraw();
     }
 
     /**
@@ -423,6 +425,7 @@ public class GameActivity extends Activity {
             for (View view : MARKERS_IMAGES) {
                 view.setVisibility(View.INVISIBLE);
             }
+            this.setTitle(getString(R.string.start_new_game_text));
             return;
         } else {
             BOARD_IMAGE.setVisibility(View.VISIBLE);

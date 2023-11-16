@@ -3,10 +3,10 @@ package eu.veldsoft.broker;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +21,62 @@ public class BuySellActivity extends Activity {
     private int possibilities[] = {};
 
     /**
+     * Reference to the UI which shows the current cash, current shares, current price.
+     */
+    private EditText changes[] = new EditText[9];
+
+    /**
+     * Try to sell according to available shares.
+     *
+     * @param index The index of the company.
+     */
+    private void tryToSell(int index) {
+        int money = Integer.valueOf(changes[0].getText().toString());
+        int shares = Integer.valueOf(changes[index].getText().toString());
+        int price = Integer.valueOf(changes[index + 4].getText().toString());
+
+        /*
+         * Not enough shares to sell.
+         */
+        if (shares <= 0) {
+            return;
+        }
+
+        money += price;
+        shares--;
+
+        changes[0].setText("" + money);
+        changes[index].setText("" + shares);
+    }
+
+    /**
+     * Try to buy according to available money.
+     *
+     * @param index The index of the company.
+     */
+    private void tryToBuy(int index) {
+        int money = Integer.valueOf(changes[0].getText().toString());
+        int shares = Integer.valueOf(changes[index].getText().toString());
+        int price = Integer.valueOf(changes[index + 4].getText().toString());
+        Log.i("TAG01", "" + money);
+        Log.i("TAG01", "" + shares);
+        Log.i("TAG01", "" + price);
+
+        /*
+         * Not enough money to buy.
+         */
+        if (money < price) {
+            return;
+        }
+
+        shares++;
+        money -= price;
+
+        changes[0].setText("" + money);
+        changes[index].setText("" + shares);
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -28,35 +84,105 @@ public class BuySellActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_sell);
 
+        /*
+         * Reference to the current money UI.
+         */
+        changes[0] = (EditText) findViewById(R.id.availableCash);
+
+        /*
+         * References to the current shares UI.
+         */
+        changes[1] = (EditText) findViewById(R.id.aAmountNumber);
+        changes[2] = (EditText) findViewById(R.id.bAmountNumber);
+        changes[3] = (EditText) findViewById(R.id.cAmountNumber);
+        changes[4] = (EditText) findViewById(R.id.dAmountNumber);
+
+        /*
+         * References to the current prices UI.
+         */
+        changes[5] = (EditText) findViewById(R.id.aCurrentPrice);
+        changes[6] = (EditText) findViewById(R.id.bCurrentPrice);
+        changes[7] = (EditText) findViewById(R.id.cCurrentPrice);
+        changes[8] = (EditText) findViewById(R.id.dCurrentPrice);
+
+        findViewById(R.id.aMinus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tryToSell(1);
+            }
+        });
+        findViewById(R.id.bMinus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tryToSell(2);
+            }
+        });
+        findViewById(R.id.cMinus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tryToSell(3);
+            }
+        });
+        findViewById(R.id.dMinus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tryToSell(4);
+            }
+        });
+        findViewById(R.id.aPlus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tryToBuy(1);
+            }
+        });
+        findViewById(R.id.bPlus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tryToBuy(2);
+            }
+        });
+        findViewById(R.id.cPlus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tryToBuy(3);
+            }
+        });
+        findViewById(R.id.dPlus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tryToBuy(4);
+            }
+        });
+
         ((Button) findViewById(R.id.tradeFinish)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int[] shares = {0, 0, 0, 0};
 
-                if (((RadioButton) findViewById(R.id.aBuyButton)).isChecked()) {
-                    shares[0] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.aAmountNumber)).getText().toString()));
-                }
-                if (((RadioButton) findViewById(R.id.aSellButton)).isChecked()) {
-                    shares[0] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.aAmountNumber)).getText().toString()));
-                }
-                if (((RadioButton) findViewById(R.id.bBuyButton)).isChecked()) {
-                    shares[1] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.bAmountNumber)).getText().toString()));
-                }
-                if (((RadioButton) findViewById(R.id.bSellButton)).isChecked()) {
-                    shares[1] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.bAmountNumber)).getText().toString()));
-                }
-                if (((RadioButton) findViewById(R.id.cBuyButton)).isChecked()) {
-                    shares[2] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.cAmountNumber)).getText().toString()));
-                }
-                if (((RadioButton) findViewById(R.id.cSellButton)).isChecked()) {
-                    shares[2] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.cAmountNumber)).getText().toString()));
-                }
-                if (((RadioButton) findViewById(R.id.dBuyButton)).isChecked()) {
-                    shares[3] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.dAmountNumber)).getText().toString()));
-                }
-                if (((RadioButton) findViewById(R.id.dSellButton)).isChecked()) {
-                    shares[3] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.dAmountNumber)).getText().toString()));
-                }
+//                if (((RadioButton) findViewById(R.id.aBuyButton)).isChecked()) {
+//                    shares[0] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.aAmountNumber)).getText().toString()));
+//                }
+//                if (((RadioButton) findViewById(R.id.aSellButton)).isChecked()) {
+//                    shares[0] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.aAmountNumber)).getText().toString()));
+//                }
+//                if (((RadioButton) findViewById(R.id.bBuyButton)).isChecked()) {
+//                    shares[1] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.bAmountNumber)).getText().toString()));
+//                }
+//                if (((RadioButton) findViewById(R.id.bSellButton)).isChecked()) {
+//                    shares[1] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.bAmountNumber)).getText().toString()));
+//                }
+//                if (((RadioButton) findViewById(R.id.cBuyButton)).isChecked()) {
+//                    shares[2] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.cAmountNumber)).getText().toString()));
+//                }
+//                if (((RadioButton) findViewById(R.id.cSellButton)).isChecked()) {
+//                    shares[2] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.cAmountNumber)).getText().toString()));
+//                }
+//                if (((RadioButton) findViewById(R.id.dBuyButton)).isChecked()) {
+//                    shares[3] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.dAmountNumber)).getText().toString()));
+//                }
+//                if (((RadioButton) findViewById(R.id.dSellButton)).isChecked()) {
+//                    shares[3] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.dAmountNumber)).getText().toString()));
+//                }
 
                 Intent intent = new Intent();
                 intent.putExtra("buySellShares", shares);
@@ -66,7 +192,6 @@ public class BuySellActivity extends Activity {
             }
         });
     }
-
 
     /**
      * {@inheritDoc}
