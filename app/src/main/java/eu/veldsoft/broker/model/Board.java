@@ -81,28 +81,41 @@ public class Board {
     private boolean preTrade(int[] shares) {
         boolean success = true;
 
+        /*
+         * Selling is done first to rise money.
+         */
         for (int i = 0; i < shares.length; i++) {
             if (shares[i] > 0) {
-                /*
-                 * Try to buy.
-                 */
-                Share share = playing.buy(companies.get(i), shares[i]);
-                if (share == null) {
-                    success = false;
-                } else {
-                    transactions.add(new Transaction(Transaction.Type.BUY, Transaction.Time.PREORDER, round, share, playing));
-                }
+                continue;
             }
+
+            /*
+             * Try to sell.
+             */
+            Share share = playing.sell(companies.get(i), -shares[i]);
+            if (share == null) {
+                success = false;
+            } else {
+                transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.POSTORDER, round, share, playing));
+            }
+        }
+
+        /*
+         * Buying is done second with enough money.
+         */
+        for (int i = 0; i < shares.length; i++) {
             if (shares[i] < 0) {
-                /*
-                 * Try to sell.
-                 */
-                Share share = playing.sell(companies.get(i), -shares[i]);
-                if (share == null) {
-                    success = false;
-                } else {
-                    transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.PREORDER, round, share, playing));
-                }
+                continue;
+            }
+
+            /*
+             * Try to buy.
+             */
+            Share share = playing.buy(companies.get(i), shares[i]);
+            if (share == null) {
+                success = false;
+            } else {
+                transactions.add(new Transaction(Transaction.Type.BUY, Transaction.Time.POSTORDER, round, share, playing));
             }
         }
 
@@ -116,8 +129,6 @@ public class Board {
      * @return True if the trading was successful, false otherwise.
      */
     private boolean postOrder(int[] shares) {
-        boolean success = true;
-
         /*
          * Apply the key rule.
          */
@@ -156,32 +167,7 @@ public class Board {
             }
         }
 
-        for (int i = 0; i < shares.length; i++) {
-            if (shares[i] > 0) {
-                /*
-                 * Try to buy.
-                 */
-                Share share = playing.buy(companies.get(i), shares[i]);
-                if (share == null) {
-                    success = false;
-                } else {
-                    transactions.add(new Transaction(Transaction.Type.BUY, Transaction.Time.POSTORDER, round, share, playing));
-                }
-            }
-            if (shares[i] < 0) {
-                /*
-                 * Try to sell.
-                 */
-                Share share = playing.sell(companies.get(i), -shares[i]);
-                if (share == null) {
-                    success = false;
-                } else {
-                    transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.POSTORDER, round, share, playing));
-                }
-            }
-        }
-
-        return success;
+        return preTrade(shares);
     }
 
     /**
