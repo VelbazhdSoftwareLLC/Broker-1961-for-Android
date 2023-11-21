@@ -3,7 +3,6 @@ package eu.veldsoft.broker;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,9 +57,6 @@ public class BuySellActivity extends Activity {
         int money = Integer.valueOf(changes[0].getText().toString());
         int shares = Integer.valueOf(changes[index].getText().toString());
         int price = Integer.valueOf(changes[index + 4].getText().toString());
-        Log.i("TAG01", "" + money);
-        Log.i("TAG01", "" + shares);
-        Log.i("TAG01", "" + price);
 
         /*
          * Not enough money to buy.
@@ -159,34 +155,14 @@ public class BuySellActivity extends Activity {
             public void onClick(View view) {
                 int[] shares = {0, 0, 0, 0};
 
-//                if (((RadioButton) findViewById(R.id.aBuyButton)).isChecked()) {
-//                    shares[0] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.aAmountNumber)).getText().toString()));
-//                }
-//                if (((RadioButton) findViewById(R.id.aSellButton)).isChecked()) {
-//                    shares[0] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.aAmountNumber)).getText().toString()));
-//                }
-//                if (((RadioButton) findViewById(R.id.bBuyButton)).isChecked()) {
-//                    shares[1] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.bAmountNumber)).getText().toString()));
-//                }
-//                if (((RadioButton) findViewById(R.id.bSellButton)).isChecked()) {
-//                    shares[1] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.bAmountNumber)).getText().toString()));
-//                }
-//                if (((RadioButton) findViewById(R.id.cBuyButton)).isChecked()) {
-//                    shares[2] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.cAmountNumber)).getText().toString()));
-//                }
-//                if (((RadioButton) findViewById(R.id.cSellButton)).isChecked()) {
-//                    shares[2] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.cAmountNumber)).getText().toString()));
-//                }
-//                if (((RadioButton) findViewById(R.id.dBuyButton)).isChecked()) {
-//                    shares[3] = Math.abs(Integer.valueOf(((EditText) findViewById(R.id.dAmountNumber)).getText().toString()));
-//                }
-//                if (((RadioButton) findViewById(R.id.dSellButton)).isChecked()) {
-//                    shares[3] = -Math.abs(Integer.valueOf(((EditText) findViewById(R.id.dAmountNumber)).getText().toString()));
-//                }
+                /*
+                 * Calculate shares differences.
+                 */
+                for (int i = 0; i < shares.length; i++) {
+                    shares[i] = Integer.valueOf(changes[i + 1].getText().toString()) - possibilities[i + 1];
+                }
 
-                Intent intent = new Intent();
-                intent.putExtra("buySellShares", shares);
-                setResult(Activity.RESULT_OK, intent);
+                setResult(Activity.RESULT_OK, (new Intent()).putExtra("buySellShares", shares));
 
                 BuySellActivity.this.finish();
             }
@@ -207,13 +183,22 @@ public class BuySellActivity extends Activity {
             return;
         }
 
+        /*
+         * Player's money.
+         */
         ((TextView) findViewById(R.id.availableCash)).setText("" + possibilities[0]);
 
+        /*
+         * Player's shares.
+         */
         ((EditText) findViewById(R.id.aAmountNumber)).setText("" + possibilities[1]);
         ((EditText) findViewById(R.id.bAmountNumber)).setText("" + possibilities[2]);
         ((EditText) findViewById(R.id.cAmountNumber)).setText("" + possibilities[3]);
         ((EditText) findViewById(R.id.dAmountNumber)).setText("" + possibilities[4]);
 
+        /*
+         * Companies' prices.
+         */
         ((TextView) findViewById(R.id.aCurrentPrice)).setText("" + possibilities[5]);
         ((TextView) findViewById(R.id.bCurrentPrice)).setText("" + possibilities[6]);
         ((TextView) findViewById(R.id.cCurrentPrice)).setText("" + possibilities[7]);
