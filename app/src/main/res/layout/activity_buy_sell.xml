@@ -39,7 +39,7 @@
                 android:focusableInTouchMode="false"
                 android:longClickable="false"
                 android:linksClickable="false"
-                android:autoLink="none"/>
+                android:autoLink="none" />
         </LinearLayout>
 
         <LinearLayout
@@ -77,7 +77,7 @@
                 android:focusableInTouchMode="false"
                 android:longClickable="false"
                 android:linksClickable="false"
-                android:autoLink="none"/>
+                android:autoLink="none" />
 
             <EditText
                 android:id="@+id/aCurrentPrice"
@@ -92,7 +92,7 @@
                 android:focusableInTouchMode="false"
                 android:longClickable="false"
                 android:linksClickable="false"
-                android:autoLink="none"/>
+                android:autoLink="none" />
         </LinearLayout>
 
         <LinearLayout
@@ -130,7 +130,7 @@
                 android:focusableInTouchMode="false"
                 android:longClickable="false"
                 android:linksClickable="false"
-                android:autoLink="none"/>
+                android:autoLink="none" />
 
             <EditText
                 android:id="@+id/bCurrentPrice"
@@ -145,7 +145,7 @@
                 android:focusableInTouchMode="false"
                 android:longClickable="false"
                 android:linksClickable="false"
-                android:autoLink="none"/>
+                android:autoLink="none" />
         </LinearLayout>
 
         <LinearLayout
@@ -183,7 +183,7 @@
                 android:focusableInTouchMode="false"
                 android:longClickable="false"
                 android:linksClickable="false"
-                android:autoLink="none"/>
+                android:autoLink="none" />
 
             <EditText
                 android:id="@+id/cCurrentPrice"
@@ -198,7 +198,7 @@
                 android:focusableInTouchMode="false"
                 android:longClickable="false"
                 android:linksClickable="false"
-                android:autoLink="none"/>
+                android:autoLink="none" />
         </LinearLayout>
 
         <LinearLayout
@@ -236,7 +236,7 @@
                 android:focusableInTouchMode="false"
                 android:longClickable="false"
                 android:linksClickable="false"
-                android:autoLink="none"/>
+                android:autoLink="none" />
 
             <EditText
                 android:id="@+id/dCurrentPrice"
@@ -251,7 +251,7 @@
                 android:focusableInTouchMode="false"
                 android:longClickable="false"
                 android:linksClickable="false"
-                android:autoLink="none"/>
+                android:autoLink="none" />
         </LinearLayout>
 
         <Button
