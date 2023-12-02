@@ -69,7 +69,7 @@ class Player {
      * @return The name of the player.
      */
     String name() {
-        return name;
+        return (name==null) ? "" : name;
     }
 
     /**
@@ -116,13 +116,13 @@ class Player {
     String report() {
         String text = "";
 
-        text += name;
+        text += name();
         text += "\n";
         text += "=== === ===";
         text += "\n";
         text += "Money:";
         text += "\t";
-        text += money;
+        text += money();
         text += "\n";
         text += "=== === ===";
         text += "\n";
@@ -133,7 +133,7 @@ class Player {
                 String name = s.company().name();
                 int amount = s.amount();
 
-                if (!portfolio.containsKey(name)) {
+                if (!portfolio.containsKey(name())) {
                     portfolio.put(name, amount);
                 } else {
                     portfolio.put(name, portfolio.get(name) + amount);
@@ -141,10 +141,10 @@ class Player {
             }
 
             for (String name : portfolio.keySet()) {
-                text += name;
+                text += name();
                 text += ":";
                 text += "\t";
-                text += portfolio.get(name);
+                text += portfolio.get(name());
                 text += "\n";
             }
             text += "=== === ===";

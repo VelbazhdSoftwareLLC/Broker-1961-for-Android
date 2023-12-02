@@ -539,7 +539,7 @@ public class Board {
      * @return True if the game is in progress, false otherwise.
      */
     public boolean gameInProgress() {
-        return state != State.NONE;
+        return (state == null) ? (false) : (state != State.NONE);
     }
 
     /**
