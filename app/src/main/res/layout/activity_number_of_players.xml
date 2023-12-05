@@ -17,7 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:checked="true"
             android:text="" />
 
         <EditText
@@ -28,7 +27,14 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="Player 1" />
+            android:text="" />
+
+        <CheckBox
+            android:id="@+id/computerPlayer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/computer_label" />
     </LinearLayout>
 
     <LinearLayout
@@ -42,7 +48,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:checked="true"
             android:text="" />
 
         <EditText
@@ -52,7 +57,14 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Player 2" />
+            android:text="" />
+
+        <CheckBox
+            android:id="@+id/computerPlayer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/computer_label" />
     </LinearLayout>
 
     <LinearLayout
@@ -75,7 +87,14 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Player 3" />
+            android:text="" />
+
+        <CheckBox
+            android:id="@+id/computerPlayer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/computer_label" />
     </LinearLayout>
 
     <LinearLayout
@@ -98,7 +117,14 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Player 4" />
+            android:text="" />
+
+        <CheckBox
+            android:id="@+id/computerPlayer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/computer_label" />
     </LinearLayout>
 
     <LinearLayout
@@ -121,7 +147,14 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Player 5" />
+            android:text="" />
+
+        <CheckBox
+            android:id="@+id/computerPlayer5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/computer_label" />
     </LinearLayout>
 
     <LinearLayout
@@ -144,7 +177,14 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Player 6" />
+            android:text="" />
+
+        <CheckBox
+            android:id="@+id/computerPlayer6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/computer_label" />
     </LinearLayout>
 
     <LinearLayout
