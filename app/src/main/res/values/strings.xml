@@ -64,4 +64,5 @@ In Broker, players have the power to manipulate the market and buy and sell stoc
     <string name="cash_label">Cash:</string>
     <string name="incorrect_trading_information_text">Incorrect trading information!</string>
     <string name="start_new_game_text">Start new game!</string>
+    <string name="computer_label">Computer</string>
 </resources>
