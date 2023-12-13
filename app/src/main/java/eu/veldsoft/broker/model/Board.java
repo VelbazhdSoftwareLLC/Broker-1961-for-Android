@@ -12,12 +12,18 @@ public class Board {
      * Data structure for the state of the board.
      */
     enum State {
-        NONE(""), PRE_ORDER("pre order"), CARD_PLAY("play card"), POST_ORDER("post order"), TURN_END(""), GAME_END("");
+        NONE(""), PRE_ORDER("pre order"), CARD_PLAY("play card"), POST_ORDER("post order"), TURN_END("end turn"), GAME_END("end game");
+
         /**
          * Text of the state;
          */
         private String text;
 
+        /**
+         * Constructor with parameters.
+         *
+         * @param text Tekst of the state.
+         */
         private State(String text) {
             this.text = text;
         }
@@ -85,7 +91,10 @@ public class Board {
          * Selling is done first to rise money.
          */
         for (int i = 0; i < shares.length; i++) {
-            if (shares[i] > 0) {
+            /*
+             * Do not sell if the amount is zero or positive.
+             */
+            if (shares[i] >= 0) {
                 continue;
             }
 
@@ -104,7 +113,10 @@ public class Board {
          * Buying is done second with enough money.
          */
         for (int i = 0; i < shares.length; i++) {
-            if (shares[i] < 0) {
+            /*
+             * Do not buy if the amount is zero or negative.
+             */
+            if (shares[i] <= 0) {
                 continue;
             }
 
@@ -156,12 +168,10 @@ public class Board {
 
             for (int i = 0; i < shares.length; i++) {
                 if (shares[i] < 0 && t.type() == Transaction.Type.BUY && companies.get(i).price() > t.share().price()) {
-                    //TODO Implement better reporting!
                     shares[i] = 0;
                 }
 
                 if (shares[i] > 0 && t.type() == Transaction.Type.SELL && companies.get(i).price() < t.share().price()) {
-                    //TODO Implement better reporting!
                     shares[i] = 0;
                 }
             }
@@ -510,6 +520,7 @@ public class Board {
                 return true;
             }
         } else if (state == State.POST_ORDER) {
+            //TODO Post order check is not working!
             if (postOrder(shares)) {
                 state = State.TURN_END;
                 return true;
@@ -625,4 +636,26 @@ public class Board {
 
         return possibilities;
     }
+
+    /**
+     * List of companies with canceled orders.
+     *
+     * @param shares   Traded shares.
+     * @param original Original order for trading.
+     * @return Text with the name3s of the companies.
+     */
+    public String canceled(int[] shares, int[] original) {
+        String text = "";
+
+        for (int i = 0; i < Math.min(shares.length, original.length); i++) {
+            if (shares[i] == original[i]) {
+                continue;
+            }
+
+            text += "" + companies.get(i).name() + " ";
+        }
+
+        return text.trim();
+    }
+
 }
