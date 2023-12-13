@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -404,12 +405,16 @@ public class GameActivity extends Activity {
 
         if (requestCode == LAUNCH_BUY_SELL_ACTIVITY) {
             int[] shares = data.getIntArrayExtra("buySellShares");
+            int[] original = Arrays.copyOf(shares, shares.length);
 
             /*
              * Try to trade shares.
              */
-            if (!board.trade(shares)) {
+            if (board.trade(shares) == false) {
                 Toast.makeText(GameActivity.this, R.string.trading_is_not_done_text, Toast.LENGTH_LONG).show();
+            } else if (Arrays.equals(shares, original) == false) {
+                String message = getString(R.string.trading_is_not_done_for_the_following_companies_message) + board.canceled(shares, original);
+                Toast.makeText(GameActivity.this, message, Toast.LENGTH_LONG).show();
             }
         }
 
