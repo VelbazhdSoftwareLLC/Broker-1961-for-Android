@@ -82,9 +82,10 @@ public class Board {
      * Try to trade shares before card play.
      *
      * @param shares Shares to sell (negative numbers) or to buy (positive numbers).
+     * @param time   Pre or post order time.
      * @return True if the trading was successful, false otherwise.
      */
-    private boolean preTrade(int[] shares) {
+    private boolean trade(int[] shares, Transaction.Time time) {
         boolean success = true;
 
         /*
@@ -105,7 +106,7 @@ public class Board {
             if (share == null) {
                 success = false;
             } else {
-                transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.POSTORDER, round, share, playing));
+                transactions.add(new Transaction(Transaction.Type.SELL, time, round, share, playing));
             }
         }
 
@@ -127,7 +128,7 @@ public class Board {
             if (share == null) {
                 success = false;
             } else {
-                transactions.add(new Transaction(Transaction.Type.BUY, Transaction.Time.POSTORDER, round, share, playing));
+                transactions.add(new Transaction(Transaction.Type.BUY, time, round, share, playing));
             }
         }
 
@@ -135,12 +136,12 @@ public class Board {
     }
 
     /**
-     * Try to trade shares after card play.
+     * Try to trade shares after card play according to the key rule.
      *
      * @param shares Shares to sell (negative numbers) or to buy (positive numbers).
      * @return True if the trading was successful, false otherwise.
      */
-    private boolean postOrder(int[] shares) {
+    private boolean keyRule(int[] shares) {
         /*
          * Apply the key rule.
          */
@@ -177,7 +178,7 @@ public class Board {
             }
         }
 
-        return preTrade(shares);
+        return true;
     }
 
     /**
@@ -515,13 +516,12 @@ public class Board {
          * Update game state after successful trading.
          */
         if (state == State.PRE_ORDER) {
-            if (preTrade(shares)) {
+            if (trade(shares, Transaction.Time.PREORDER)) {
                 state = State.CARD_PLAY;
                 return true;
             }
         } else if (state == State.POST_ORDER) {
-            //TODO Post order check is not working!
-            if (postOrder(shares)) {
+            if (keyRule(shares) == trade(shares, Transaction.Time.POSTORDER)) {
                 state = State.TURN_END;
                 return true;
             }
