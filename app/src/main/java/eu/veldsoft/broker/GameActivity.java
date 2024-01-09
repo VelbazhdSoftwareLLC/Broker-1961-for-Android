@@ -397,7 +397,7 @@ public class GameActivity extends Activity {
                     prices[2] = (Integer) portfolio[7];
                     prices[3] = (Integer) portfolio[8];
 
-                    //TODO Show activity for shares sell for each targeted player.
+                    //TODO Show activity for shares sell for each targeted player. The activity should work as regula buy/sell activity.
                     startActivityForResult(new Intent(GameActivity.this, UrgentSaleActivity.class).putExtra("playerIndex", i).putExtra("name", name).putExtra("shortage", shortages[i]).putExtra("quantities", quantities).putExtra("prices", prices), LAUNCH_URGENT_SALE_ACTIVITY);
                 }
             }
