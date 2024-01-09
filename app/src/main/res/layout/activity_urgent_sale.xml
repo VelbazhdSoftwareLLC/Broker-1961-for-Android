@@ -80,8 +80,22 @@
                 android:layout_height="wrap_content"
                 android:ems="3"
                 android:text="0"
+                android:editable="false"
                 android:textAlignment="viewEnd"
                 android:inputType="number" />
+
+            <Button
+                android:id="@+id/aUrgentMinus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+
+            <Button
+                android:id="@+id/aUrgentPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -120,8 +134,21 @@
                 android:layout_height="wrap_content"
                 android:ems="3"
                 android:text="0"
+                android:editable="false"
                 android:textAlignment="viewEnd"
                 android:inputType="number" />
+
+            <Button
+                android:id="@+id/bUrgentMinus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+
+            <Button
+                android:id="@+id/bUrgentPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+" />
         </LinearLayout>
 
         <LinearLayout
@@ -160,8 +187,22 @@
                 android:layout_height="wrap_content"
                 android:ems="3"
                 android:text="0"
+                android:editable="false"
                 android:textAlignment="viewEnd"
                 android:inputType="number" />
+
+            <Button
+                android:id="@+id/cUrgentMinus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+
+            <Button
+                android:id="@+id/cUrgentPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -200,8 +241,22 @@
                 android:layout_height="wrap_content"
                 android:ems="3"
                 android:text="0"
+                android:editable="false"
                 android:textAlignment="viewEnd"
                 android:inputType="number" />
+
+            <Button
+                android:id="@+id/dUrgentMinus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+
+            <Button
+                android:id="@+id/dUrgentPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+" />
+
         </LinearLayout>
 
         <Button
