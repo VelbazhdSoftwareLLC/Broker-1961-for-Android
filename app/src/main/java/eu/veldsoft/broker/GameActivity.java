@@ -397,7 +397,6 @@ public class GameActivity extends Activity {
                     prices[2] = (Integer) portfolio[7];
                     prices[3] = (Integer) portfolio[8];
 
-                    //TODO Show activity for shares sell for each targeted player. The activity should work as regula buy/sell activity.
                     startActivityForResult(new Intent(GameActivity.this, UrgentSaleActivity.class).putExtra("playerIndex", i).putExtra("name", name).putExtra("shortage", shortages[i]).putExtra("quantities", quantities).putExtra("prices", prices), LAUNCH_URGENT_SALE_ACTIVITY);
                 }
             }
@@ -416,6 +415,10 @@ public class GameActivity extends Activity {
                 String message = getString(R.string.trading_is_not_done_for_the_following_companies_message) + board.canceled(shares, original);
                 Toast.makeText(GameActivity.this, message, Toast.LENGTH_LONG).show();
             }
+        }
+
+        if (requestCode == LAUNCH_URGENT_SALE_ACTIVITY) {
+            //TODO Update object model.
         }
 
         redraw();
