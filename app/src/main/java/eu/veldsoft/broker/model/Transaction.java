@@ -12,7 +12,7 @@ class Transaction {
     /**
      * The transaction can be done before card playing and after card playing.
      */
-    enum Time {PREORDER, POSTORDER}
+    enum Time {PREORDER, POSTORDER, URGENT, FINAL}
 
     /**
      * The type of the transaction.
