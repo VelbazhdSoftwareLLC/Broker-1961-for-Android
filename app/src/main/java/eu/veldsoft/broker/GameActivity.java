@@ -418,7 +418,9 @@ public class GameActivity extends Activity {
         }
 
         if (requestCode == LAUNCH_URGENT_SALE_ACTIVITY) {
-            //TODO Update object model.
+            int player = data.getIntExtra("playerIndex", -1);
+            int[] shares = data.getIntArrayExtra("soldShares");
+            board.urgentSell(player, shares);
         }
 
         redraw();

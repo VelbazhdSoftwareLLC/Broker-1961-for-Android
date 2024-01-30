@@ -172,6 +172,11 @@ public class UrgentSaleActivity extends Activity {
                     }
 
                     difference += held[i] - sold[i];
+
+                    /*
+                     * In the object model sales are marked with negative numbers.
+                     */
+                    sold[i] = -sold[i];
                 }
 
                 ((TextView) findViewById(R.id.risenMoney)).setText("" + risen);

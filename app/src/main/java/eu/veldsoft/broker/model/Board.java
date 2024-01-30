@@ -531,6 +531,25 @@ public class Board {
     }
 
     /**
+     * Urgent sell.
+     *
+     * @param index  Index of the player in the players list.
+     * @param shares Array with shares to sell.
+     * @throws RuntimeException Incorrect index or incorrect array with shares.
+     */
+    public void urgentSell(int index, int[] shares) throws RuntimeException {
+        if (index < 0 || players.size() <= index) {
+            throw (new RuntimeException("Incorrect player index " + index + " !"));
+        }
+
+        if (shares == null) {
+            throw (new RuntimeException("Incorrect array of shares !"));
+        }
+
+        trade(shares, Transaction.Time.URGENT);
+    }
+
+    /**
      * All player sell all shares.
      */
     public void totalSale() {
@@ -538,7 +557,7 @@ public class Board {
             for (Share s : p.shares()) {
                 Share share = p.sell(s.company(), -s.amount());
                 if (share != null) {
-                    transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.POSTORDER, round, share, p));
+                    transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.FINAL, round, share, p));
                 }
             }
         }
