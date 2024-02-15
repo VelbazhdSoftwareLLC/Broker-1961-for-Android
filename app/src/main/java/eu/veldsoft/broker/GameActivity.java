@@ -305,7 +305,6 @@ public class GameActivity extends Activity {
                 startActivity((new Intent(GameActivity.this, PlayedCardsActivity.class)).putExtra("keys", board.playedCardsKyes()));
                 break;
             case R.id.end_report:
-                board.totalSale();
                 startActivity(new Intent(GameActivity.this, EndReportActivity.class).putExtra("report", board.endReport()));
                 break;
             case R.id.help:

@@ -4,38 +4,65 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <ImageView
-        android:id="@+id/boardImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/board" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/aPullImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/a100marker" />
+        <AbsoluteLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-    <ImageView
-        android:id="@+id/bPullImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/b100marker" />
+            <ImageView
+                android:id="@+id/boardImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/board" />
 
-    <ImageView
-        android:id="@+id/cPullImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/c100marker" />
+            <ImageView
+                android:id="@+id/aPullImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/a100marker" />
 
-    <ImageView
-        android:id="@+id/dPullImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/d100marker" />
+            <ImageView
+                android:id="@+id/bPullImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/b100marker" />
+
+            <ImageView
+                android:id="@+id/cPullImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/c100marker" />
+
+            <ImageView
+                android:id="@+id/dPullImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/d100marker" />
+        </AbsoluteLayout>
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical">-->
+
+        <!--            <ImageButton-->
+        <!--                android:id="@+id/new_game_image_button"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:background="@null"-->
+        <!--                android:src="@null" />-->
+
+        <!--        </LinearLayout>-->
+
+    </LinearLayout>
+
 </AbsoluteLayout>

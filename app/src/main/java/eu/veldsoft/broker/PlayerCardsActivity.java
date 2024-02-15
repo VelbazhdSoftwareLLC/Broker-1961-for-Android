@@ -130,6 +130,11 @@ public class PlayerCardsActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        /* Do not handle other results than OK. */
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+
         if (requestCode == LAUNCH_COMPANY_SELECTION_ACTIVITY) {
             setResult(Activity.RESULT_OK, (new Intent()).putExtra("cardIndex", data.getIntExtra("cardIndex", -1)).putExtra("companyIndex", data.getIntExtra("companyIndex", -1)));
             PlayerCardsActivity.this.finish();

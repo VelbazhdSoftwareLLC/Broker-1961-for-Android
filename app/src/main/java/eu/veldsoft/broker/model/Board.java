@@ -289,6 +289,9 @@ public class Board {
             return "The game is in progress ...";
         }
 
+        /* Total sale for the end report. */
+        totalSale();
+
         if (state == State.GAME_END) {
             String text = "";
 
@@ -512,9 +515,18 @@ public class Board {
      * @return True if the trading was successful, false otherwise.
      */
     public boolean trade(int[] shares) {
-        /*
-         * Update game state after successful trading.
-         */
+        /* If there is no trade do nothing. */
+        boolean trade = false;
+        for (int value : shares) {
+            if (value != 0) {
+                trade = true;
+            }
+        }
+        if (trade == false) {
+            return false;
+        }
+
+        /* Update game state after successful trading. */
         if (state == State.PRE_ORDER) {
             if (trade(shares, Transaction.Time.PREORDER)) {
                 state = State.CARD_PLAY;
