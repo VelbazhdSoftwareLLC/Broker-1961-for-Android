@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -275,12 +273,12 @@ public class GameActivity extends Activity {
                 break;
             case R.id.save_game:
                 if (board != null) {
-                    getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).edit().putString("game_state", (new Gson()).toJson(board)).apply();
+                    //getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).edit().putString("game_state", (new Gson()).toJson(board)).apply();
                 }
                 break;
             case R.id.load_game:
                 //TODO Deserialization should be fixed and improved.
-                board = (new Gson()).fromJson(getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).getString("game_state", ""), Board.class);
+                //board = (new Gson()).fromJson(getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).getString("game_state", ""), Board.class);
                 redraw();
                 break;
             case R.id.buy_sell:

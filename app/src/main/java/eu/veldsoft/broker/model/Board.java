@@ -86,6 +86,11 @@ public class Board {
      * @return True if the trading was successful, false otherwise.
      */
     private boolean trade(int[] shares, Transaction.Time time) {
+        /* If there is no current player the trade in not successful. */
+        if (playing == null) {
+            return false;
+        }
+
         boolean success = true;
 
         /*
@@ -258,7 +263,7 @@ public class Board {
      * @return The name of the player.
      */
     public String currentPlayerInfo() {
-        return playing.name() + " (round " + round + " - " + state.text() + ")";
+        return ((playing != null) ? playing.name() : "") + " (round " + round + " - " + state.text() + ")";
     }
 
     /**
@@ -267,7 +272,7 @@ public class Board {
      * @return The report of the player.
      */
     public String currentPlayerReport() {
-        return playing.report();
+        return ((playing != null) ? playing.report() : "");
     }
 
     /**
@@ -350,7 +355,7 @@ public class Board {
         /*
          * The first player plays after start of the game.
          */
-        playing = players.get(0);
+        playing = ((players.size() <= 0) ? null : players.get(0));
 
         /*
          * Clear transactions of previous games.
@@ -391,7 +396,7 @@ public class Board {
         /*
          * The index of the current playing player.
          */
-        int current = players.indexOf(playing);
+        int current = ((playing != null) ? players.indexOf(playing) : -1);
 
         /*
          * The index of the next playing player.
@@ -449,7 +454,7 @@ public class Board {
      * @return True if company selection is needed, false otherwise.
      */
     public boolean needCompanySelection(int card) {
-        return playing.cards().get(card).needCompanySelection();
+        return ((playing != null) ? playing.cards().get(card).needCompanySelection() : false);
     }
 
     /**
@@ -581,7 +586,7 @@ public class Board {
      * @return True if the game is in progress, false otherwise.
      */
     public boolean gameInProgress() {
-        return (state == null) ? (false) : (state != State.NONE);
+        return ((state == null) ? false : (state != State.NONE));
     }
 
     /**
@@ -653,6 +658,10 @@ public class Board {
      */
     public int[] currentPlayerTradingPossibilities() {
         int possibilities[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+        if (playing == null) {
+            return possibilities;
+        }
 
         possibilities[0] = playing.money();
 
