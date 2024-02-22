@@ -1,5 +1,7 @@
 package eu.veldsoft.broker.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -294,25 +296,18 @@ public class Board {
             return "The game is in progress ...";
         }
 
-        /* Total sale for the end report. */
-        totalSale();
+        String text = "";
 
-        if (state == State.GAME_END) {
-            String text = "";
+        text += "The End of the Game Report";
+        text += "\n";
+        text += "\n";
 
-            text += "The End of the Game Report";
+        for (Player p : players) {
+            text += p.report();
             text += "\n";
-            text += "\n";
-
-            for (Player p : players) {
-                text += p.report();
-                text += "\n";
-            }
-
-            return text;
         }
 
-        return "";
+        return text;
     }
 
     /**
@@ -432,6 +427,9 @@ public class Board {
          */
         if (next == -1) {
             state = State.GAME_END;
+
+            /* Total sale for the end report. */
+            totalSale();
         } else {
             playing = players.get(next);
             state = State.PRE_ORDER;
@@ -454,6 +452,11 @@ public class Board {
      * @return True if company selection is needed, false otherwise.
      */
     public boolean needCompanySelection(int card) {
+        /* The card index should be valid. */
+        if (playing == null || card < 0 || playing.cards().size() <= card) {
+            return false;
+        }
+
         return ((playing != null) ? playing.cards().get(card).needCompanySelection() : false);
     }
 
@@ -571,7 +574,7 @@ public class Board {
      */
     public void totalSale() {
         for (Player p : players) {
-            for (Share s : p.shares()) {
+            for (Share s : new ArrayList<>(p.shares())) {
                 Share share = p.sell(s.company(), -s.amount());
                 if (share != null) {
                     transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.FINAL, round, share, p));
