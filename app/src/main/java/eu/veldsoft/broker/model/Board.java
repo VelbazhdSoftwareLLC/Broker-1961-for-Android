@@ -1,7 +1,5 @@
 package eu.veldsoft.broker.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -575,7 +573,7 @@ public class Board {
     public void totalSale() {
         for (Player p : players) {
             for (Share s : new ArrayList<>(p.shares())) {
-                Share share = p.sell(s.company(), -s.amount());
+                Share share = p.sell(s.company(), s.amount());
                 if (share != null) {
                     transactions.add(new Transaction(Transaction.Type.SELL, Transaction.Time.FINAL, round, share, p));
                 }
