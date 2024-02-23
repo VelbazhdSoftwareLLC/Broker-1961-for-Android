@@ -41,8 +41,19 @@ class Player {
      * @param name The name of the player.
      */
     Player(String name) {
+        this(name, 300);
+    }
+
+    /**
+     * Constructor with name and money of the player.
+     *
+     * @param name  The name of the player.
+     * @param money The amount of money.
+     */
+    Player(String name, int money) {
         super();
         this.name = name;
+        this.money = money;
     }
 
     /**

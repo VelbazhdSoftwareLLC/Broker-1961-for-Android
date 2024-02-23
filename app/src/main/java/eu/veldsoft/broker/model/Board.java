@@ -39,6 +39,11 @@ public class Board {
     }
 
     /**
+     * Dummy player for escaping null pointer exception problems.
+     */
+    private static final Player DUMMY_PLAYER = new Player("Dummy Player", 0);
+
+    /**
      * List of companies.
      */
     private List<Company> companies = new ArrayList<Company>();
@@ -87,7 +92,7 @@ public class Board {
      */
     private boolean trade(int[] shares, Transaction.Time time) {
         /* If there is no current player the trade in not successful. */
-        if (playing == null) {
+        if (playing() == null) {
             return false;
         }
 
@@ -107,11 +112,11 @@ public class Board {
             /*
              * Try to sell.
              */
-            Share share = playing.sell(companies.get(i), -shares[i]);
+            Share share = playing().sell(companies.get(i), -shares[i]);
             if (share == null) {
                 success = false;
             } else {
-                transactions.add(new Transaction(Transaction.Type.SELL, time, round, share, playing));
+                transactions.add(new Transaction(Transaction.Type.SELL, time, round, share, playing()));
             }
         }
 
@@ -129,11 +134,11 @@ public class Board {
             /*
              * Try to buy.
              */
-            Share share = playing.buy(companies.get(i), shares[i]);
+            Share share = playing().buy(companies.get(i), shares[i]);
             if (share == null) {
                 success = false;
             } else {
-                transactions.add(new Transaction(Transaction.Type.BUY, time, round, share, playing));
+                transactions.add(new Transaction(Transaction.Type.BUY, time, round, share, playing()));
             }
         }
 
@@ -154,7 +159,7 @@ public class Board {
             /*
              * Only transactions of the current player are important.
              */
-            if (t.player() != playing) {
+            if (t.player() != playing()) {
                 continue;
             }
 
@@ -201,9 +206,13 @@ public class Board {
     /**
      * Get the player on turn.
      *
-     * @return Currently playing player.
+     * @return Currently playing player or dummy player if current player is null.
      */
     public Player playing() {
+        if (playing == null) {
+            return DUMMY_PLAYER;
+        }
+
         return playing;
     }
 
@@ -244,13 +253,13 @@ public class Board {
      * @return Array with cards keys.
      */
     public String[] currentPlayerCardsKyes() {
-        if (playing == null) {
+        if (playing() == null) {
             return new String[0];
         }
 
         List<String> keys = new ArrayList<String>();
 
-        for (Card c : playing.cards()) {
+        for (Card c : playing().cards()) {
             keys.add(c.key());
         }
 
@@ -263,7 +272,7 @@ public class Board {
      * @return The name of the player.
      */
     public String currentPlayerInfo() {
-        return ((playing != null) ? playing.name() : "") + " (round " + round + " - " + state.text() + ")";
+        return ((playing() != null) ? playing().name() : "") + " (round " + round + " - " + state.text() + ")";
     }
 
     /**
@@ -272,7 +281,7 @@ public class Board {
      * @return The report of the player.
      */
     public String currentPlayerReport() {
-        return ((playing != null) ? playing.report() : "");
+        return ((playing() != null) ? playing().report() : "");
     }
 
     /**
@@ -389,7 +398,7 @@ public class Board {
         /*
          * The index of the current playing player.
          */
-        int current = ((playing != null) ? players.indexOf(playing) : -1);
+        int current = ((playing() != null) ? players.indexOf(playing()) : -1);
 
         /*
          * The index of the next playing player.
@@ -418,7 +427,7 @@ public class Board {
             }
         }
 
-        playing.update();
+        playing().update();
 
         /*
          * There is no more active players.v The game should finish.
@@ -451,11 +460,11 @@ public class Board {
      */
     public boolean needCompanySelection(int card) {
         /* The card index should be valid. */
-        if (playing == null || card < 0 || playing.cards().size() <= card) {
+        if (playing() == null || card < 0 || playing().cards().size() <= card) {
             return false;
         }
 
-        return ((playing != null) ? playing.cards().get(card).needCompanySelection() : false);
+        return ((playing() != null) ? playing().cards().get(card).needCompanySelection() : false);
     }
 
     /**
@@ -481,7 +490,7 @@ public class Board {
         /*
          * Keep the played card.
          */
-        Card card = playing.play(cardIndex, company);
+        Card card = playing().play(cardIndex, company);
         if (card != null) {
             /*
              * Adjust prices above 250 and below 10.
@@ -660,13 +669,13 @@ public class Board {
     public int[] currentPlayerTradingPossibilities() {
         int possibilities[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-        if (playing == null) {
+        if (playing() == null) {
             return possibilities;
         }
 
-        possibilities[0] = playing.money();
+        possibilities[0] = playing().money();
 
-        for (Share s : playing.shares()) {
+        for (Share s : playing().shares()) {
             possibilities[companies.indexOf(s.company()) + 1] = (Integer) possibilities[companies.indexOf(s.company()) + 1] + s.amount();
         }
 
