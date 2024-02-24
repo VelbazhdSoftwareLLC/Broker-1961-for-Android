@@ -91,11 +91,6 @@ public class Board {
      * @return True if the trading was successful, false otherwise.
      */
     private boolean trade(int[] shares, Transaction.Time time) {
-        /* If there is no current player the trade in not successful. */
-        if (playing() == null) {
-            return false;
-        }
-
         boolean success = true;
 
         /*
@@ -253,10 +248,6 @@ public class Board {
      * @return Array with cards keys.
      */
     public String[] currentPlayerCardsKyes() {
-        if (playing() == null) {
-            return new String[0];
-        }
-
         List<String> keys = new ArrayList<String>();
 
         for (Card c : playing().cards()) {
@@ -272,7 +263,7 @@ public class Board {
      * @return The name of the player.
      */
     public String currentPlayerInfo() {
-        return ((playing() != null) ? playing().name() : "") + " (round " + round + " - " + state.text() + ")";
+        return playing().name() + " (round " + round + " - " + state.text() + ")";
     }
 
     /**
@@ -281,7 +272,7 @@ public class Board {
      * @return The report of the player.
      */
     public String currentPlayerReport() {
-        return ((playing() != null) ? playing().report() : "");
+        return playing().report();
     }
 
     /**
@@ -398,7 +389,7 @@ public class Board {
         /*
          * The index of the current playing player.
          */
-        int current = ((playing() != null) ? players.indexOf(playing()) : -1);
+        int current = players.indexOf(playing());
 
         /*
          * The index of the next playing player.
@@ -460,11 +451,11 @@ public class Board {
      */
     public boolean needCompanySelection(int card) {
         /* The card index should be valid. */
-        if (playing() == null || card < 0 || playing().cards().size() <= card) {
+        if (card < 0 || playing().cards().size() <= card) {
             return false;
         }
 
-        return ((playing() != null) ? playing().cards().get(card).needCompanySelection() : false);
+        return playing().cards().get(card).needCompanySelection();
     }
 
     /**
@@ -668,10 +659,6 @@ public class Board {
      */
     public int[] currentPlayerTradingPossibilities() {
         int possibilities[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-        if (playing() == null) {
-            return possibilities;
-        }
 
         possibilities[0] = playing().money();
 
