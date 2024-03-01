@@ -66,4 +66,5 @@ In Broker, players have the power to manipulate the market and buy and sell stoc
     <string name="start_new_game_text">Start new game!</string>
     <string name="computer_label">Computer</string>
     <string name="trading_is_not_done_for_the_following_companies_message">"Trading is not done for the following companies: "</string>
+    <string name="you_have_to_do_sales_and_to_use_the_finish_button_text">You have to do sales and to use the finish button!</string>
 </resources>
