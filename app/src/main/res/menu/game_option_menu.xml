@@ -35,7 +35,7 @@
         android:id="@+id/about"
         android:title="@string/about_menu" />
     <item
-        android:id="@+id/exitt"
+        android:id="@+id/exit"
         android:title="@string/exit_menu" />
 
 </menu>
