@@ -77,6 +77,13 @@
                 android:src="@drawable/end_turn_icon" />
 
             <ImageButton
+                android:id="@+id/player_report_image_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/player_report_icon" />
+
+            <ImageButton
                 android:id="@+id/play_card_image_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,6 +96,13 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:src="@drawable/played_cards_icon" />
+
+            <ImageButton
+                android:id="@+id/end_report_image_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/end_report_icon" />
 
             <ImageButton
                 android:id="@+id/help_image_button"
