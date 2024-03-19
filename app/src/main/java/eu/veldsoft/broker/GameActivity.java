@@ -249,6 +249,82 @@ public class GameActivity extends Activity {
             view.setVisibility(View.INVISIBLE);
         }
 
+        findViewById(R.id.new_game_image_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(GameActivity.this, NumberOfPlayersActivity.class), LAUNCH_PLAYERS_LIST_ACTIVITY);
+            }
+        });
+
+        findViewById(R.id.buy_sell_image_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult((new Intent(GameActivity.this, BuySellActivity.class)).putExtra("possibilities", board.currentPlayerTradingPossibilities()), LAUNCH_BUY_SELL_ACTIVITY);
+            }
+        });
+
+        findViewById(R.id.play_card_image_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult((new Intent(GameActivity.this, PlayerCardsActivity.class)).putExtra("keys", board.currentPlayerCardsKyes()), LAUNCH_PLAY_CARD_ACTIVITY);
+            }
+        });
+
+        findViewById(R.id.end_turn_image_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!board.endTurn()) {
+                    Toast.makeText(GameActivity.this, R.string.turn_is_not_ending_text, Toast.LENGTH_LONG).show();
+                }
+                if (board.finished()) {
+                    Toast.makeText(GameActivity.this, R.string.game_finished_text, Toast.LENGTH_LONG).show();
+                }
+                redraw();
+            }
+        });
+
+        findViewById(R.id.player_report_image_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GameActivity.this, PlayerReportActivity.class).putExtra("report", board.currentPlayerReport()));
+            }
+        });
+
+        findViewById(R.id.played_cards_image_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity((new Intent(GameActivity.this, PlayedCardsActivity.class)).putExtra("keys", board.playedCardsKyes()));
+            }
+        });
+
+        findViewById(R.id.end_report_image_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GameActivity.this, EndReportActivity.class).putExtra("report", board.endReport()));
+            }
+        });
+
+        findViewById(R.id.help_image_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GameActivity.this, HelpActivity.class));
+            }
+        });
+
+        findViewById(R.id.about_image_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GameActivity.this, AboutActivity.class));
+            }
+        });
+
+        findViewById(R.id.exit_image_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameActivity.this.finish();
+            }
+        });
+
         redraw();
     }
 
@@ -311,7 +387,7 @@ public class GameActivity extends Activity {
             case R.id.about:
                 startActivity(new Intent(GameActivity.this, AboutActivity.class));
                 break;
-            case R.id.exitt:
+            case R.id.exit:
                 GameActivity.this.finish();
                 break;
         }
