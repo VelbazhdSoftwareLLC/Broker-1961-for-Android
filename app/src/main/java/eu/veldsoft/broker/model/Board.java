@@ -9,79 +9,53 @@ import java.util.List;
  */
 public class Board {
     /**
-     * Data structure for the state of the board.
-     */
-    enum State {
-        NONE(""), PRE_ORDER("pre order"), CARD_PLAY("play card"), POST_ORDER("post order"), TURN_END("end turn"), GAME_END("end game");
-
-        /**
-         * Text of the state;
-         */
-        private String text;
-
-        /**
-         * Constructor with parameters.
-         *
-         * @param text Tekst of the state.
-         */
-        private State(String text) {
-            this.text = text;
-        }
-
-        /**
-         * Get the text of the state.
-         *
-         * @return Text of the state.
-         */
-        public String text() {
-            return text;
-        }
-    }
-
-    /**
      * Dummy player for escaping null pointer exception problems.
      */
     private static final Player DUMMY_PLAYER = new Player("Dummy Player", 0);
-
     /**
      * List of companies.
      */
     private List<Company> companies = new ArrayList<Company>();
-
     /**
      * Deck with the cards.
      */
     private Deck deck = null;
-
     /**
      * List of players.
      */
     private List<Player> players = new ArrayList<Player>();
-
     /**
      * The player who is playing at the moment.
      */
     private Player playing = null;
-
     /**
      * The state of the board.
      */
     private State state = State.NONE;
-
     /**
      * The game goes in turns.
      */
     private int round = 0;
-
     /**
      * All transactions done in the game.
      */
     private List<Transaction> transactions = new ArrayList<Transaction>();
-
     /**
      * List of cards played during the gameplay.
      */
     private List<Card> cards = new ArrayList<Card>();
+
+    /**
+     * Board constructor without parameters.
+     */
+    public Board() {
+        companies.add(new Company("A"));
+        companies.add(new Company("B"));
+        companies.add(new Company("C"));
+        companies.add(new Company("D"));
+
+        deck = new Deck(companies);
+    }
 
     /**
      * Try to trade shares before card play.
@@ -184,18 +158,6 @@ public class Board {
         }
 
         return true;
-    }
-
-    /**
-     * Board constructor without parameters.
-     */
-    public Board() {
-        companies.add(new Company("A"));
-        companies.add(new Company("B"));
-        companies.add(new Company("C"));
-        companies.add(new Company("D"));
-
-        deck = new Deck(companies);
     }
 
     /**
@@ -555,7 +517,7 @@ public class Board {
      * @param shares Array with shares to sell.
      * @throws RuntimeException Incorrect index or incorrect array with shares.
      */
-    public void urgentSell(int index, int[] shares) throws RuntimeException {
+    public void urgentSell(int index, int[] shares) {
         if (index < 0 || players.size() <= index) {
             throw (new RuntimeException("Incorrect player index " + index + " !"));
         }
@@ -693,6 +655,36 @@ public class Board {
         }
 
         return text.trim();
+    }
+
+    /**
+     * Data structure for the state of the board.
+     */
+    enum State {
+        NONE(""), PRE_ORDER("pre order"), CARD_PLAY("play card"), POST_ORDER("post order"), TURN_END("end turn"), GAME_END("end game");
+
+        /**
+         * Text of the state;
+         */
+        private String text;
+
+        /**
+         * Constructor with parameters.
+         *
+         * @param text Tekst of the state.
+         */
+        private State(String text) {
+            this.text = text;
+        }
+
+        /**
+         * Get the text of the state.
+         *
+         * @return Text of the state.
+         */
+        public String text() {
+            return text;
+        }
     }
 
 }

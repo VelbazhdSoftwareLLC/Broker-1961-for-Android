@@ -23,45 +23,37 @@ import eu.veldsoft.broker.model.Board;
  */
 public class GameActivity extends Activity {
     /**
-     * The identifier for launching activity.
-     */
-    private static final int LAUNCH_PLAYERS_LIST_ACTIVITY = 1;
-
-    /**
-     * The identifier for launching activity.
-     */
-    private static final int LAUNCH_PLAY_CARD_ACTIVITY = 2;
-
-    /**
-     * The identifier for launching activity.
-     */
-    private static final int LAUNCH_BUY_SELL_ACTIVITY = 3;
-
-    /**
-     * The identifier for launching activity.
-     */
-    private static final int LAUNCH_URGENT_SALE_ACTIVITY = 4;
-
-    /**
-     * Board view references.
-     */
-    private static ImageView BOARD_IMAGE = null;
-
-    /**
-     * Array of references to markers views.
-     */
-    private static final ImageView[] MARKERS_IMAGES = new ImageView[4];
-
-    /**
      * Map of the card key and card image.
      */
     static final Map<String, Integer> CARDS_IMAGES = new HashMap<String, Integer>();
-
     /**
      * Map of the company, price and image.
      */
     static final Map PRICES_IMAGES[] = {new HashMap<Integer, Integer>(), new HashMap<Integer, Integer>(), new HashMap<Integer, Integer>(), new HashMap<Integer, Integer>()};
-
+    /**
+     * The identifier for launching activity.
+     */
+    private static final int LAUNCH_PLAYERS_LIST_ACTIVITY = 1;
+    /**
+     * The identifier for launching activity.
+     */
+    private static final int LAUNCH_PLAY_CARD_ACTIVITY = 2;
+    /**
+     * The identifier for launching activity.
+     */
+    private static final int LAUNCH_BUY_SELL_ACTIVITY = 3;
+    /**
+     * The identifier for launching activity.
+     */
+    private static final int LAUNCH_URGENT_SALE_ACTIVITY = 4;
+    /**
+     * Array of references to markers views.
+     */
+    private static final ImageView[] MARKERS_IMAGES = new ImageView[4];
+    /**
+     * Board view references.
+     */
+    private static ImageView BOARD_IMAGE = null;
     /**
      * Scaling in X.
      */

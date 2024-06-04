@@ -8,19 +8,26 @@ import java.util.List;
  */
 abstract class Card {
     /**
+     * List of all companies which will go up.
+     */
+    protected List<Company> up = new ArrayList<Company>();
+    /**
+     * List of all companies which will go down.
+     */
+    protected List<Company> down = new ArrayList<Company>();
+    /**
      * Key value of the card used in some collections.
      */
     private String key = "";
 
     /**
-     * List of all companies which will go up.
+     * Constructor with card key.
+     *
+     * @param key Key value used in some collections.
      */
-    protected List<Company> up = new ArrayList<Company>();
-
-    /**
-     * List of all companies which will go down.
-     */
-    protected List<Company> down = new ArrayList<Company>();
+    Card(String key) {
+        this.key = key;
+    }
 
     /**
      * When card is played the prize of the shares changes.
@@ -41,15 +48,6 @@ abstract class Card {
      * @return True if the company selection is needed, false otherwise.
      */
     abstract boolean needCompanySelection();
-
-    /**
-     * Constructor with card key.
-     *
-     * @param key Key value used in some collections.
-     */
-    Card(String key) {
-        this.key = key;
-    }
 
     /**
      * Get card key.

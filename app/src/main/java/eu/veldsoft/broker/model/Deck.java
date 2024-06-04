@@ -9,34 +9,29 @@ import java.util.List;
  */
 class Deck {
     /**
-     * Index of the 100 cards.
-     */
-    private static int index100 = 0;
-
-    /**
      * List of the 100 cards.
      */
     private static final List<Card> cards100 = new ArrayList<Card>();
-
-    /**
-     * Index of the x2 cards.
-     */
-    private static int index2x = 0;
-
     /**
      * List of the x2 cards.
      */
     private static final List<Card> cards2x = new ArrayList<Card>();
-
-    /**
-     * Index of the 40/60 cards.
-     */
-    private static int index4060 = 0;
-
     /**
      * List of the 40/60 cards.
      */
     private static final List<Card> cards4060 = new ArrayList<Card>();
+    /**
+     * Index of the 100 cards.
+     */
+    private static int index100 = 0;
+    /**
+     * Index of the x2 cards.
+     */
+    private static int index2x = 0;
+    /**
+     * Index of the 40/60 cards.
+     */
+    private static int index4060 = 0;
 
     /**
      * Constructor of the deck with information for the companies.

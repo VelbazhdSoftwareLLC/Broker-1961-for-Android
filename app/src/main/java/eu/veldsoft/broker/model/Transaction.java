@@ -5,35 +5,21 @@ package eu.veldsoft.broker.model;
  */
 class Transaction {
     /**
-     * Each transaction can be buy or sell.
-     */
-    enum Type {BUY, SELL}
-
-    /**
-     * The transaction can be done before card playing and after card playing.
-     */
-    enum Time {PREORDER, POSTORDER, URGENT, FINAL}
-
-    /**
      * The type of the transaction.
      */
     private Type type = null;
-
     /**
      * When transaction is done - before or after card playing.
      */
     private Time time = null;
-
     /**
      * The round of the game when the transaction is done.
      */
     private int round = 0;
-
     /**
      * Reference to the shares object.
      */
     private Share share = null;
-
     /**
      * Reference to the player who did the transaction.
      */
@@ -101,4 +87,14 @@ class Transaction {
     Player player() {
         return player;
     }
+
+    /**
+     * Each transaction can be buy or sell.
+     */
+    enum Type {BUY, SELL}
+
+    /**
+     * The transaction can be done before card playing and after card playing.
+     */
+    enum Time {PREORDER, POSTORDER, URGENT, FINAL}
 }

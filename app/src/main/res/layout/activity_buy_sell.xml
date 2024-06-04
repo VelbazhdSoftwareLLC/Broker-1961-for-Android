@@ -30,16 +30,16 @@
                 android:id="@+id/availableCash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="3"
-                android:text="0"
-                android:textAlignment="viewEnd"
-                android:inputType="number"
+                android:autoLink="none"
                 android:clickable="false"
+                android:ems="3"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:longClickable="false"
+                android:inputType="number"
                 android:linksClickable="false"
-                android:autoLink="none" />
+                android:longClickable="false"
+                android:text="0"
+                android:textAlignment="viewEnd" />
         </LinearLayout>
 
         <LinearLayout
@@ -68,31 +68,31 @@
                 android:id="@+id/aAmountNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="3"
-                android:text="0"
-                android:textAlignment="viewEnd"
-                android:inputType="number"
+                android:autoLink="none"
                 android:clickable="false"
+                android:ems="3"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:longClickable="false"
+                android:inputType="number"
                 android:linksClickable="false"
-                android:autoLink="none" />
+                android:longClickable="false"
+                android:text="0"
+                android:textAlignment="viewEnd" />
 
             <EditText
                 android:id="@+id/aCurrentPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="3"
-                android:text="0"
-                android:textAlignment="viewEnd"
-                android:inputType="number"
+                android:autoLink="none"
                 android:clickable="false"
+                android:ems="3"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:longClickable="false"
+                android:inputType="number"
                 android:linksClickable="false"
-                android:autoLink="none" />
+                android:longClickable="false"
+                android:text="0"
+                android:textAlignment="viewEnd" />
         </LinearLayout>
 
         <LinearLayout
@@ -121,31 +121,31 @@
                 android:id="@+id/bAmountNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="3"
-                android:text="0"
-                android:textAlignment="viewEnd"
-                android:inputType="number"
+                android:autoLink="none"
                 android:clickable="false"
+                android:ems="3"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:longClickable="false"
+                android:inputType="number"
                 android:linksClickable="false"
-                android:autoLink="none" />
+                android:longClickable="false"
+                android:text="0"
+                android:textAlignment="viewEnd" />
 
             <EditText
                 android:id="@+id/bCurrentPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="3"
-                android:text="0"
-                android:textAlignment="viewEnd"
-                android:inputType="number"
+                android:autoLink="none"
                 android:clickable="false"
+                android:ems="3"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:longClickable="false"
+                android:inputType="number"
                 android:linksClickable="false"
-                android:autoLink="none" />
+                android:longClickable="false"
+                android:text="0"
+                android:textAlignment="viewEnd" />
         </LinearLayout>
 
         <LinearLayout
@@ -174,31 +174,31 @@
                 android:id="@+id/cAmountNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="3"
-                android:text="0"
-                android:textAlignment="viewEnd"
-                android:inputType="number"
+                android:autoLink="none"
                 android:clickable="false"
+                android:ems="3"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:longClickable="false"
+                android:inputType="number"
                 android:linksClickable="false"
-                android:autoLink="none" />
+                android:longClickable="false"
+                android:text="0"
+                android:textAlignment="viewEnd" />
 
             <EditText
                 android:id="@+id/cCurrentPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="3"
-                android:text="0"
-                android:textAlignment="viewEnd"
-                android:inputType="number"
+                android:autoLink="none"
                 android:clickable="false"
+                android:ems="3"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:longClickable="false"
+                android:inputType="number"
                 android:linksClickable="false"
-                android:autoLink="none" />
+                android:longClickable="false"
+                android:text="0"
+                android:textAlignment="viewEnd" />
         </LinearLayout>
 
         <LinearLayout
@@ -227,31 +227,31 @@
                 android:id="@+id/dAmountNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="3"
-                android:text="0"
-                android:textAlignment="viewEnd"
-                android:inputType="number"
+                android:autoLink="none"
                 android:clickable="false"
+                android:ems="3"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:longClickable="false"
+                android:inputType="number"
                 android:linksClickable="false"
-                android:autoLink="none" />
+                android:longClickable="false"
+                android:text="0"
+                android:textAlignment="viewEnd" />
 
             <EditText
                 android:id="@+id/dCurrentPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="3"
-                android:text="0"
-                android:textAlignment="viewEnd"
-                android:inputType="number"
+                android:autoLink="none"
                 android:clickable="false"
+                android:ems="3"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:longClickable="false"
+                android:inputType="number"
                 android:linksClickable="false"
-                android:autoLink="none" />
+                android:longClickable="false"
+                android:text="0"
+                android:textAlignment="viewEnd" />
         </LinearLayout>
 
         <Button
