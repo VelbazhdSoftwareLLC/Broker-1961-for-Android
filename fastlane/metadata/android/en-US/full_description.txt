@@ -1,0 +1,10 @@
+Buy and sell stock shares. By play of Market Action cards, strategically manipulate prices to your advantage and to the downfall of your opponents. Win by having the most money in cash and stocks after the last card has been played. But be careful: if all of your remaining stock holdings crash, it is possible to be eliminated before the game is even over.
+
+Originally published in 1961 as Broker by the Spencer-Murray Corporation of Swarthmore, Pennsylvania.
+
+The original box is white, with lettering and logo in black, very basic, drab, and uninspiring. Yet this obscure title was quite a gem considering the limitation of games to choose from during its day.
+
+In 1967 it was re-published by the German firm Otto Maier Verlag, which is the ancestor of Ravensburger Spieleverlag GmbH Verlag. Numerous re-publications followed (1972, 1977 and others) including at least one which gave the rules in German, English and Italian. It was also published in the Ravensburger Casino Series.
+Components list for these editions are as follows: 160 stock certificates, 68 Market Action cards, 4 price markers, play money, stock price board.
+
+The 1983 (9th edition) by Ravensburger Spieleverlag GmbH changes the title slightly to Börsenspiel instead of Das Börsenspiel and the original rules heavily. Although this set is well-designed and much nicer on the eyes, the bland original version featured larger (regular card deck) size action cards. An extra set of 18 "risk" cards replacing 18 market cards had been added and they act as event cards that immediately effect changes in the market. They cause the unfortunate player who draws one to play it instead of a market card, a chaotic effect that some players will not like. Android version was implemented by Martin Kostadinov. It is school project for finish 12 grade.

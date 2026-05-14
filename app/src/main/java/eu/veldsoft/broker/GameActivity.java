@@ -335,53 +335,41 @@ public class GameActivity extends Activity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.new_game:
-                startActivityForResult(new Intent(GameActivity.this, NumberOfPlayersActivity.class), LAUNCH_PLAYERS_LIST_ACTIVITY);
-                break;
-            case R.id.save_game:
-                if (board != null) {
-                    //getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).edit().putString("game_state", (new Gson()).toJson(board)).apply();
-                }
-                break;
-            case R.id.load_game:
-                //TODO Deserialization should be fixed and improved.
-                //board = (new Gson()).fromJson(getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).getString("game_state", ""), Board.class);
-                redraw();
-                break;
-            case R.id.buy_sell:
-                startActivityForResult((new Intent(GameActivity.this, BuySellActivity.class)).putExtra("possibilities", board.currentPlayerTradingPossibilities()), LAUNCH_BUY_SELL_ACTIVITY);
-                break;
-            case R.id.play_card:
-                startActivityForResult((new Intent(GameActivity.this, PlayerCardsActivity.class)).putExtra("keys", board.currentPlayerCardsKyes()), LAUNCH_PLAY_CARD_ACTIVITY);
-                break;
-            case R.id.end_turn:
-                if (!board.endTurn()) {
-                    Toast.makeText(GameActivity.this, R.string.turn_is_not_ending_text, Toast.LENGTH_LONG).show();
-                }
-                if (board.finished()) {
-                    Toast.makeText(GameActivity.this, R.string.game_finished_text, Toast.LENGTH_LONG).show();
-                }
-                redraw();
-                break;
-            case R.id.player_report:
-                startActivity(new Intent(GameActivity.this, PlayerReportActivity.class).putExtra("report", board.currentPlayerReport()));
-                break;
-            case R.id.played_cards:
-                startActivity((new Intent(GameActivity.this, PlayedCardsActivity.class)).putExtra("keys", board.playedCardsKyes()));
-                break;
-            case R.id.end_report:
-                startActivity(new Intent(GameActivity.this, EndReportActivity.class).putExtra("report", board.endReport()));
-                break;
-            case R.id.help:
-                startActivity(new Intent(GameActivity.this, HelpActivity.class));
-                break;
-            case R.id.about:
-                startActivity(new Intent(GameActivity.this, AboutActivity.class));
-                break;
-            case R.id.exit:
-                GameActivity.this.finish();
-                break;
+        int id = item.getItemId();
+        if (id == R.id.new_game) {
+            startActivityForResult(new Intent(GameActivity.this, NumberOfPlayersActivity.class), LAUNCH_PLAYERS_LIST_ACTIVITY);
+        } else if (id == R.id.save_game) {
+            if (board != null) {
+                //getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).edit().putString("game_state", (new Gson()).toJson(board)).apply();
+            }
+        } else if (id == R.id.load_game) {
+            //TODO Deserialization should be fixed and improved.
+            //board = (new Gson()).fromJson(getSharedPreferences("GameSaveLoadPreferences", MODE_PRIVATE).getString("game_state", ""), Board.class);
+            redraw();
+        } else if (id == R.id.buy_sell) {
+            startActivityForResult((new Intent(GameActivity.this, BuySellActivity.class)).putExtra("possibilities", board.currentPlayerTradingPossibilities()), LAUNCH_BUY_SELL_ACTIVITY);
+        } else if (id == R.id.play_card) {
+            startActivityForResult((new Intent(GameActivity.this, PlayerCardsActivity.class)).putExtra("keys", board.currentPlayerCardsKyes()), LAUNCH_PLAY_CARD_ACTIVITY);
+        } else if (id == R.id.end_turn) {
+            if (!board.endTurn()) {
+                Toast.makeText(GameActivity.this, R.string.turn_is_not_ending_text, Toast.LENGTH_LONG).show();
+            }
+            if (board.finished()) {
+                Toast.makeText(GameActivity.this, R.string.game_finished_text, Toast.LENGTH_LONG).show();
+            }
+            redraw();
+        } else if (id == R.id.player_report) {
+            startActivity(new Intent(GameActivity.this, PlayerReportActivity.class).putExtra("report", board.currentPlayerReport()));
+        } else if (id == R.id.played_cards) {
+            startActivity((new Intent(GameActivity.this, PlayedCardsActivity.class)).putExtra("keys", board.playedCardsKyes()));
+        } else if (id == R.id.end_report) {
+            startActivity(new Intent(GameActivity.this, EndReportActivity.class).putExtra("report", board.endReport()));
+        } else if (id == R.id.help) {
+            startActivity(new Intent(GameActivity.this, HelpActivity.class));
+        } else if (id == R.id.about) {
+            startActivity(new Intent(GameActivity.this, AboutActivity.class));
+        } else if (id == R.id.exit) {
+            GameActivity.this.finish();
         }
         return true;
     }

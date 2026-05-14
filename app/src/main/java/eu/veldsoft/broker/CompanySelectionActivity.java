@@ -25,19 +25,15 @@ public class CompanySelectionActivity extends Activity {
             @Override
             public void onClick(View view) {
                 int index = -1;
-                switch (((RadioGroup) findViewById(R.id.companies)).getCheckedRadioButtonId()) {
-                    case R.id.radioButtonA:
-                        index = 0;
-                        break;
-                    case R.id.radioButtonB:
-                        index = 1;
-                        break;
-                    case R.id.radioButtonC:
-                        index = 2;
-                        break;
-                    case R.id.radioButtonD:
-                        index = 3;
-                        break;
+                int checkedId = ((RadioGroup) findViewById(R.id.companies)).getCheckedRadioButtonId();
+                if (checkedId == R.id.radioButtonA) {
+                    index = 0;
+                } else if (checkedId == R.id.radioButtonB) {
+                    index = 1;
+                } else if (checkedId == R.id.radioButtonC) {
+                    index = 2;
+                } else if (checkedId == R.id.radioButtonD) {
+                    index = 3;
                 }
 
                 if (index == -1) {
